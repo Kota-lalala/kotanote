@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+
+<head>
+    <!-- Required meta tags -->
+    <!-- Bootstrap4.3.1用 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!--        メイン用 style.css  レスポンシブ用 responsive.css-->
+    <link rel="stylesheet" type="text/css" href="../css/style2.css">
+    <link rel="stylesheet" type="text/css" href="../css/responsive.css" media="screen and (max-width: 1120px)">
+
+    <!--        FontAwesome用-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+
+    <title>Kotanote</title>
+</head>
+
+<body>
+
+    <!--        header部分-->
+    <header>
+
+        <!--            ナビバー-->
+        <nav class="navbar navbar-dark bg-dark">
+
+            <!--                フェイスブック、ツイッター のリンクアイコン-->
+            <div class="nav-left">
+                <div>
+                    <a href="http://www.facebook.com/share.php?u=https://kotanote.com/kotanote/public/prog/prog.html">
+                        <i class="sec4-ico fab fa-facebook"></i>
+                    </a>
+                </div>
+                <div>
+                    <a href="http://twitter.com/share?text=https://kotanote.com/kotanote/public/prog/prog.html" rel="nofollow">
+                        <i class="sec4-ico fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+
+
+            <!--Webサイトのタイトル-->
+            <a href="../index.html" class="navbar-brand">Kotanote</a>
+            <!--ハンバーガーメニュー-->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navmenu1" aria-controls="navmenu1" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navmenu1">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="prog.html">プログラミング note</a>
+                    <a class="nav-item nav-link" href="../music/music.html">ミュージック note</a>
+                    <a class="nav-item nav-link" href="../info/info.html">本サイトについて</a>
+                    <!--                        <a class="nav-item nav-link" href="#">Menu#3</a>-->
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <!--        トップカード-->
+        <div class="row">
+
+        </div>
+
+        <!--        コンテンツカード-->
+        <div class="row">
+
+            <div class="col-12 col-md-12 mb-2">
+                <div class="card">
+                    <img class="card-img-top" src="../img/prog-top.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">PHP学習済み内容の吐き出し部屋</h4>
+                        <p class="con-rec-p">
+                            最新情報:1点を追加しました。-UP- 2019.3.21更新
+                            <span class="badge badge-info">new</span>
+                        </p>
+                        <p class="card-text">
+                            現在PHPを学習中につき、学習した事をただ吐き出すページです。細かい解説は無しでチートシート的に作成していこうと思っています。さっと見られるのが良い所です。現在学習中の方でしたら、あれどうだったっけ？という時にさって見ていただければと思います。ただ面白いページではありませんので、期待はしないで入室願いますm(__)m
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 mb-2">
+                <div class="card h-100 cpp cpp-190321-1">
+                    <div class="card-header">
+                        if文で条件分岐
+                    </div>
+                    <div class="card-body">
+                        <!--            <h4 class="card-title">PHPのコードだよ。と伝える。(PHPタグ)</h4>-->
+                        <p class="card-text">
+                            if ( $speed > 100 ) {<br>
+                                echo "速い !";<br>
+                            } elseif ( $speed > 50 ) {<br>
+                                echo "程よい !";<br>
+                            } elseif ( $speed > 10 ) {<br>
+                                echo "ゆっくり";<br>
+                            } else {<br>
+                                echo "スローモーション ？";<br>
+                            }<br>
+                        </p>
+                        <!--            <a href="#!" class="card-link">Card link</a>-->
+                        <!--            <p>更新日：2019.3.14</p>-->
+                        <p>作成日：2019.3.21</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 mb-2">
+                <div class="card h-100 cpp cpp-190320-3">
+                    <div class="card-header">
+                        文字列をつなげる。表示する。
+                    </div>
+                    <div class="card-body">
+                        <!--            <h4 class="card-title">PHPのコードだよ。と伝える。(PHPタグ)</h4>-->
+                        <p class="card-text">
+                            $drink = "Coca" . "Cola"; Coca と Cola をつなげる<br>
+                            echo "Hi $name !"; $nameがCoca Colaに置き換わる<br>
+                            echo "Hi {$name} !"; $nameがCoca Colaに置き換わる<br>
+                            echo "Hi ${name} !"; $nameがCoca Colaに置き換わる<br>
+                            echo 'Hi $name !'; $nameという文字がそのまま表示される<br>
+                        </p>
+                        <!--            <a href="#!" class="card-link">Card link</a>-->
+                        <!--            <p>更新日：2019.3.14</p>-->
+                        <p>作成日：2019.3.20</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 mb-2">
+                <div class="card h-100 cpp cpp-190320-2">
+                    <div class="card-header">
+                        代入する〜代入演算子と複合演算子〜
+                    </div>
+                    <div class="card-body">
+                        <!--            <h4 class="card-title">PHPのコードだよ。と伝える。(PHPタグ)</h4>-->
+                        <p class="card-text">
+                            $x = 10; 10を$xに入れる(代入する)<br>
+                            <br>
+                            $x += 10; 今の$xに10を足したものを、$xに入れる<br>
+                            $x -= 10; 今の$xから10を引いたものを、$xに入れる<br>
+                            $x *= 10; 今の$xに10を掛けたものを、$xに入れる<br>
+                            $x /= 10; 今の$xを10を割ったものを、$xに入れる<br>
+                            $x %= 10; 今の$xを10で割った余りを、$xに入れる<br>
+                            $x .= "プロテイン"; 今の$xに"プロテイン"を足したものを、$xに入れる<br>
+                        </p>
+                        <!--            <a href="#!" class="card-link">Card link</a>-->
+                        <!--            <p>更新日：2019.3.14</p>-->
+                        <p>作成日：2019.3.20</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 mb-2">
+                <div class="card h-100 cpp cpp-190320-1">
+                    <div class="card-header">
+                        計算する〜単項演算子〜
+                    </div>
+                    <div class="card-body">
+                        <!--            <h4 class="card-title">PHPのコードだよ。と伝える。(PHPタグ)</h4>-->
+                        <p class="card-text">
+                            $x++; 使用後に1を足す<br>
+                            $x--; 使用後に1を引く<br>
+                            ++$x; 1を足してから使用する<br>
+                            --$x; 1を引いてから使用する<br>
+                        </p>
+                        <!--            <a href="#!" class="card-link">Card link</a>-->
+                        <!--            <p>更新日：2019.3.14</p>-->
+                        <p>作成日：2019.3.20</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 mb-2">
+                <div class="card h-100 cpp cpp-190320-0">
+                    <div class="card-header">
+                        計算する〜代数演算子〜
+                    </div>
+                    <div class="card-body">
+                        <!--            <h4 class="card-title">PHPのコードだよ。と伝える。(PHPタグ)</h4>-->
+                        <p class="card-text">
+                            $x=10+3; 足す(加算)<br>
+                            $x=10-3; 引く(減産)<br>
+                            $x=10*3; 掛ける(乗算)<br>
+                            $x=10/3; 割る(除算)<br>
+                            $x=10%3; 余り(余剰)<br>
+                            $x=10**3; 累乗<br>
+                        </p>
+                        <!--            <a href="#!" class="card-link">Card link</a>-->
+                        <!--            <p>更新日：2019.3.14</p>-->
+                        <p>作成日：2019.3.20</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 mb-2">
+                <div class="card h-100 cpp cpp-190319-7">
+                    <div class="card-header">
+                        定数を作る(定義する)〜中身は後から変更出来ない〜
+                    </div>
+                    <div class="card-body">
+                        <!--            <h4 class="card-title">PHPのコードだよ。と伝える。(PHPタグ)</h4>-->
+                        <p class="card-text">
+                            define(“NAME”, “Steve Jobs”);<br>
+                            define("MASTER＿CARD","Priceless");<br>
+                        </p>
+                        <!--            <a href="#!" class="card-link">Card link</a>-->
+                        <!--            <p>更新日：2019.3.14</p>-->
+                        <p>作成日：2019.3.19</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 mb-2">
+                <div class="card h-100 cpp cpp-190319-6">
+                    <div class="card-header">
+                        変数のタイプ(型)を調べる
+                    </div>
+                    <div class="card-body">
+                        <!--            <h4 class="card-title">PHPのコードだよ。と伝える。(PHPタグ)</h4>-->
+                        <p class="card-text">
+                            var_dump($msg);<br>
+                            var_dump($price);<br>
+                            var_dump($juge);<br>
+                        </p>
+                        <!--            <a href="#!" class="card-link">Card link</a>-->
+                        <!--            <p>更新日：2019.3.14</p>-->
+                        <p>作成日：2019.3.19</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 mb-2">
+                <div class="card h-100 cpp cpp-190319-5">
+                    <div class="card-header">
+                        変数にはタイプがある(型)
+                    </div>
+                    <div class="card-body">
+                        <!--            <h4 class="card-title">PHPのコードだよ。と伝える。(PHPタグ)</h4>-->
+                        <p class="card-text">
+                            論理型 boolean true false<br>
+                            整数 integer -2 -1 0 1 3<br>
+                            浮動小数点 float double -2.15 -1.9 0.0 1.10 2.9<br>
+                            文字列 string 二郎　三郎　鬼瓦 権造<br>
+                            配列　arrays<br>
+                            NULL<br>
+                        </p>
+                        <!--            <a href="#!" class="card-link">Card link</a>-->
+                        <!--            <p>更新日：2019.3.14</p>-->
+                        <p>作成日：2019.3.19</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 mb-2">
+                <div class="card h-100 cpp cpp-190319-4">
+                    <div class="card-header">
+                        変数を作る(定義する)〜中身は後から変更可能〜
+                    </div>
+                    <div class="card-body">
+                        <!--            <h4 class="card-title">PHPのコードだよ。と伝える。(PHPタグ)</h4>-->
+                        <p class="card-text">
+                            $msg = “Hello World ?”;<br>
+                            $price = 100;<br>
+                            $judge = true;<br>
+                        </p>
+                        <!--            <a href="#!" class="card-link">Card link</a>-->
+                        <!--            <p>更新日：2019.3.14</p>-->
+                        <p>作成日：2019.3.19</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 mb-2">
+                <div class="card h-100 cpp cpp-190319-3">
+                    <div class="card-header">
+                        文字を表示する(出力する)
+                    </div>
+                    <div class="card-body">
+                        <!--            <h4 class="card-title">PHPのコードだよ。と伝える。(PHPタグ)</h4>-->
+                        <p class="card-text">
+                            echo "Hello World!";<br>
+                            echo 'Hello World!';<br>
+                        </p>
+                        <!--            <a href="#!" class="card-link">Card link</a>-->
+                        <!--            <p>更新日：2019.3.14</p>-->
+                        <p>作成日：2019.3.19</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 mb-2">
+                <div class="card h-100 cpp cpp-190319-2">
+                    <div class="card-header">
+                        コメントにする
+                    </div>
+                    <div class="card-body">
+                        <!--            <h4 class="card-title">PHPのコードだよ。と伝える。(PHPタグ)</h4>-->
+                        <p class="card-text">
+                            // 一行分ならこちら<br>
+                            <br>
+                            /*<br>
+                            複数行を<br>
+                            コメントにするには<br>
+                            こちら<br>
+                            */<br>
+                        </p>
+                        <!--            <a href="#!" class="card-link">Card link</a>-->
+                        <!--            <p>更新日：2019.3.14</p>-->
+                        <p>作成日：2019.3.19</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 mb-2">
+                <div class="card h-100 cpp cpp-190319-1">
+                    <div class="card-header">
+                        PHPのコードだよ。と伝える。(PHPタグ)
+                    </div>
+                    <div class="card-body">
+                        <!--            <h4 class="card-title">PHPのコードだよ。と伝える。(PHPタグ)</h4>-->
+                        <p class="card-text">
+                            &lt;?php<br>
+                            ・・・<br>
+                            ?&gt;<br>
+                        </p>
+                        <!--            <a href="#!" class="card-link">Card link</a>-->
+                        <!--            <p>更新日：2019.3.14</p>-->
+                        <p>作成日：2019.3.19</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 mb-2">
+                <div class="card h-100 cpp cpp-190319-0">
+                    <div class="card-header">
+                        Xサーバーで.htmlの中に書いたPHPを動かすにはどうするの？
+                    </div>
+                    <div class="card-body">
+                        <!--            <h4 class="card-title">PHPのコードだよ。と伝える。(PHPタグ)</h4>-->
+                        <p class="card-text">
+                            「.htaccess」の中に<br>
+                            AddHandler fcgid-script .html<br>
+                            を書き込む。<br>
+                        </p>
+                        <!--            <a href="#!" class="card-link">Card link</a>-->
+                        <!--            <p>更新日：2019.3.14</p>-->
+                        <p>作成日：2019.3.19</p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <!--        プログラミング コンテンツ-->
+
+
+
+    <!--        footer-->
+    <footer class="foot">
+        <ul class="box2">
+            <a href="../info/info.html">
+                <li class="box3">
+                    <p>本サイトについて</p>
+                </li>
+            </a>
+            <a href="mailto:kotanote2019@gmail.com">
+                <li class="box3">
+                    <p>お問合せ</p>
+                </li>
+            </a>
+            <li class="box3">
+                <p>©︎ 2019 Kotanote.com</p>
+            </li>
+        </ul>
+    </footer>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script>
+        //        Bootstrap Tooltips
+        $(function() {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+
+    </script>
+</body>
+
+</html>
