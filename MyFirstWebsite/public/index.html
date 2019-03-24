@@ -1,3 +1,24 @@
+<?php
+    //ここで時間に関する情報を設定している
+    //タイムゾーンを設定
+    date_default_timezone_set('Asia/Tokyo');
+
+    $now = '今は '.date('Y年n月j日l,G時i分s秒').' です。';
+    $nowTime=date('G');
+    if($nowTime >= 3 && $nowTime < 9){
+        $now_bot = 'おはようございます。  ';
+    } elseif($nowTime>= 10 && $nowTime < 18){
+        $now_bot = 'こんにちは。  ';
+    } else {
+        $now_bot = 'こんばんは。  ';
+    }
+
+    //ここで今日のつぶやきのコメントをセットする
+    $now_comment = "今日は「よくわかるPHPの教科書」を進め、「PART3 PHPの基本」が終わりました。HTML,CSS,Bootstrapの様に見た目を整える部分とは違った面白さがありますね。少しづつではありますが、成長している気はします。明日からは「PART4 データベースの基本」を進めます。今度はSQL、楽しみですね♪徐々にできることが広がってきました。同時にクラウドソーシングでの案件獲得もできる様、やっていきます！YouTubeのマナブさんの言っていた様に、顧客の情報がわかっている場合は、こちらからの提案をしてみようかな。ポートフォリオを追加するのも効果ありそうだな。でも時間が取られるし〜^^;
+    ";
+?>
+
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -12,7 +33,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!--        メイン用 style.css  レスポンシブ用 responsive.css-->
-    <link rel="stylesheet" type="text/css" href="css/style2.css">
+    <link rel="stylesheet" type="text/css" href="css/style1.css">
     <link rel="stylesheet" type="text/css" href="css/responsive.css" media="screen and (max-width: 1120px)">
 
     <!--        FontAwesome用-->
@@ -48,7 +69,7 @@
 
 
             <!--Webサイトのタイトル-->
-            <a href="../index.html" class="navbar-brand">Kotanote</a>
+            <a href="#" class="navbar-brand">Kotanote</a>
             <!--ハンバーガーメニュー-->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navmenu1" aria-controls="navmenu1" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -68,7 +89,7 @@
 
     <!--   アラートでお知らせ-->
     <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>2019.3.21 「Grid」を使い、やっとレスポンシブ対応しました。PCの人は前より見やすいのでは？？</strong>
+        <strong><?php print($now_bot.$now); ?></strong>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -87,7 +108,10 @@
                     <div class="card-body">
                         <!--                <h4 class="card-title">デザイン修正</h4>-->
                         <p class="card-text">
-                            2019.3.21 Programing note へ「PHP学習済み内容の吐き出し部屋」へ記事を追加しました。
+                            2019.3.23 Programing note へ「よくわかるPHPの教科書の吐き出し部屋」へ19点を追加しました。
+                            <span class="badge badge-info">new</span>
+                            <br>
+                            2019.3.23 Music note へ「足音〜Be Strong」〜Mr.Children〜 を追加しました。
                             <span class="badge badge-info">new</span>
                        </p>
                     </div>
@@ -104,8 +128,9 @@
                     <div class="card-body">
                         <!--                <h4 class="card-title">デザイン修正</h4>-->
                         <p class="card-text">
-                            2019.3.21 「Grid」を使用してレスポンシブ対応しました！
+                            2019.3.23 Alertsの部分の冒頭で、PHPにより「おはようございます」「こんにちは」「こんばんは」と表示する様にしました。
                             <span class="badge badge-info">new</span>
+
                         </p>
                     </div>
                 </div>
@@ -125,12 +150,12 @@
                     <div class="card-body">
                         <h4 class="card-title">Programming note</h4>
                         <p class="con-rec-p">
-                            最新情報:「PHP学習済み内容の吐き出し部屋」へ記事を追加しました -UP- 2019.3.21更新
+                            最新情報:「よくわかるPHPの教科書の吐き出し部屋」へ19点追加しました -UP- 2019.3.23更新
                             <span class="badge badge-info">new</span>
                         </p>
                         <p class="card-text">
                             ※一応メインコンテンツです※プログラミングに関する情報を記載。本サイト制作者のメモ的noteです。
-                            が、これから始める方のせめて参考になればと思います。尚しばらくの間はスマホオンリーの仕様となっておりますのでお願いします^^;
+                            が、これから始める方のせめて参考になればと思います。
                         </p>
                         <a href="prog/prog.html" class="btn-top btn  btn-outline-primary">Let's go see it !</a>
                     </div>
@@ -144,7 +169,7 @@
                     <div class="card-body">
                         <h4 class="card-title">Music note</h4>
                         <p class="con-rec-p">
-                            最新情報:「にじいろ」〜絢香〜 -UP- 2019.3.20更新
+                            最新情報:「足音〜Be Strong」〜Mr.Children〜 -UP- 2019.3.23更新
                             <span class="badge badge-info">new</span>
                         </p>
                         <p class="card-text">
@@ -201,7 +226,8 @@
         <div class="card-body">
             <!--                <h4 class="card-title">デザイン修正</h4>-->
             <p class="card-text">
-                <?php echo "とうとうレスポンシブ対応いたしました！やっとです。今回利用したのはBootstrapの「Grid」です。flexboxが便利で、そっちでいいんじゃない？とか思っていたのですが、実際にGridを使用しているサイトも沢山あると思うので、使ってみないとね。という事で使いました。基本的にCardsで各記事などを作ってあるのですが、cradクラスを指定してあるdivに一緒にcolくっつけたら働かず・・・何で〜？？と思いつつも、仕方ないのでその外側にもう一個div作り、そこのクラスとしてcolつけたらできた！！よかったわ。そんなん色々やっていたので記事は一つのアップのみ^^;でもレスポンシブとGrid使用が出来たので良かったv(^^)v"; ?>
+<!--                「今日のつぶやき」をPHPで聞き出している。内容はトップで$now_commentに入れている-->
+                <?php echo $now_comment; ?>
             </p>
         </div>
     </div>

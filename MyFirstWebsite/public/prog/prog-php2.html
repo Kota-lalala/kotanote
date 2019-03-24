@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+
+    <head>
+        <!-- Required meta tags -->
+        <!-- Bootstrap4.3.1用 -->
+
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <!--        メイン用 style.css  レスポンシブ用 responsive.css-->
+        <link rel="stylesheet" type="text/css" href="../css/style1.css">
+        <link rel="stylesheet" type="text/css" href="../css/responsive.css" media="screen and (max-width: 1120px)">
+
+        <!--        FontAwesome用-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+        <!-- googleのcode表示用テーマ -->
+        <link rel="stylesheet" type="text/css" href="../css/atelier-lakeside-light.css">
+
+
+        <title>Kotanote</title>
+    </head>
+
+    <body>
+
+        <!--        header部分-->
+        <header>
+
+            <!--            ナビバー-->
+            <nav class="navbar navbar-dark bg-dark">
+
+                <!--                フェイスブック、ツイッター のリンクアイコン-->
+                <div class="nav-left">
+                    <div>
+                        <a href="http://www.facebook.com/share.php?u=https://kotanote.com/kotanote/public/prog/prog.html">
+                            <i class="sec4-ico fab fa-facebook"></i>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="http://twitter.com/share?text=https://kotanote.com/kotanote/public/prog/prog.html" rel="nofollow">
+                            <i class="sec4-ico fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+
+
+                <!--Webサイトのタイトル-->
+                <a href="../index.html" class="navbar-brand">Kotanote</a>
+                <!--ハンバーガーメニュー-->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navmenu1" aria-controls="navmenu1" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navmenu1">
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link" href="prog.html">プログラミング note</a>
+                        <a class="nav-item nav-link" href="../music/music.html">ミュージック note</a>
+                        <a class="nav-item nav-link" href="../info/info.html">本サイトについて</a>
+                        <!--                        <a class="nav-item nav-link" href="#">Menu#3</a>-->
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <div class="container">
+            <!--        コンテンツカード-->
+            <div class="row">
+
+                <div class="col-12 col-md-12 mb-2">
+                    <div class="card">
+                        <img class="card-img-top" src="../img/prog-top.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h4 class="card-title">よくわかるPHPの教科書の吐き出し部屋</h4>
+                            <p class="con-rec-p">
+                                最新情報:19点を追加しました。-UP- 2019.3.23更新
+                                <span class="badge badge-info">new</span>
+                            </p>
+                            <p class="card-text">
+                                こちらは書籍「よくわかるPHPの教科書 PHP5.5対応版」を学習しながらアウトプットしていくためのページです。せっかくなので若干アレンジして載せていきたいと思います。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+<!--
+                ここから記事を書いていく
+                どんどん追加していこう！
+-->
+
+                <div class="col-12 col-md-6 mb-2">
+                    <div class="card h-100 cpp2 cpp2-190323-19">
+                        <div class="card-header">
+                            LECTURE 1-4-4
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">「RSSの情報を読み込む-simplexml_load_file」より</h4>
+                            <p class="card-text">
+                                <?php
+                                    $xmlTree = simplexml_load_file('http://h2o-space.com/category/news/feed');
+
+                                    foreach ($xmlTree->channel->item as $item) {
+                                        print('<li><a href="'.$item->link.'">'.$item->title.'</a></li>');
+                                    }
+                                ?>
+                            </p>
+                        <!--            <p>更新日：2019.3.14</p>-->
+                        <p>作成日：2019.3.23</p>
+                    </div>
+                </div>
+            </div>
+
+                <div class="col-12 col-md-6 mb-2">
+                    <div class="card h-100 cpp2 cpp2-190323-18">
+                        <div class="card-header">
+                            LECTURE 1-4-3
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">「ファイルの読み込み-file_get_contents」より</h4>
+                            <p class="card-text">
+                                <?php
+                                    $news = file_get_contents('etc/news.txt');
+                                ?>
+                                <?php
+                                    print($news);
+                                ?>
+                            </p>
+                        <!--            <p>更新日：2019.3.14</p>-->
+                        <p>作成日：2019.3.23</p>
+                    </div>
+                </div>
+            </div>
+
+                <div class="col-12 col-md-6 mb-2">
+                    <div class="card h-100 cpp2 cpp2-190323-17">
+                        <div class="card-header">
+                            LECTURE 1-4-2
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">「ファイルに内容を書き込む-file_put_contents」より</h4>
+                            <p class="card-text">
+                                <?php
+                                    print('<p>「こちらはテスト用の文章です。こちらを保存してみます。テキストの保存も簡単にできるのですね。」を.txtで保存します<br>');
+                                    $success = file_put_contents('etc/news.txt', 'こちらはテスト用の文章です。こちらを保存してみます。テキストの保存も簡単にできるのですね。');
+                                ?>
+                                <?php
+                                    if($success){
+                                        print('<p>ファイルへの書き込みが完了しました。</p>');
+                                    } else {
+                                        print('<p>書き込みに失敗しました。ディレクトリの権限などを確認してください。</p>');
+                                    }
+                                ?>
+                            </p>
+                        <!--            <p>更新日：2019.3.14</p>-->
+                        <p>作成日：2019.3.23</p>
+                    </div>
+                </div>
+            </div>
+
+                <div class="col-12 col-md-6 mb-2">
+                    <div class="card h-100 cpp2 cpp2-190323-16">
+                        <div class="card-header">
+                            LECTURE 1-4-1
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">「ファイルアップロードを受信する」より</h4>
+                            <p class="card-text">
+                            </p>
+                            <form action="php/sample18.php" method="post" enctype="multipart/form-data">
+                                <dl>
+                                    <dt>写真</dt>
+                                    <dd><input name="my_img" type="file" id="my_img" size="50"></dd>
+                                </dl>
+                                <input type="submit" value="送信する">
+                            </form>
+                        <!--            <p>更新日：2019.3.14</p>-->
+                        <p>作成日：2019.3.23</p>
+                    </div>
+                </div>
+            </div>
+
+                <div class="col-12 col-md-6 mb-2">
+                    <div class="card h-100 cpp2 cpp2-190323-15">
+                        <div class="card-header">
+                            LECTURE 1-3-8
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">「書式を整える-sprintf」より</h4>
+                            <p class="card-text">
+                                <?php
+                                    $date = sprintf('%04d年 %02d月 %02d日' , date('Y'), date('n'), date('j'));
+                                ?>
+                                <?php
+                                    print('今日は　'.$date.' です。');
+                                ?>
+                            </p>
+                        <!--            <p>更新日：2019.3.14</p>-->
+                        <p>作成日：2019.3.23</p>
+                    </div>
+                </div>
+            </div>
+
+                <div class="col-12 col-md-6 mb-2">
+                    <div class="card h-100 cpp2 cpp2-190323-14">
+                        <div class="card-header">
+                            LECTURE 1-3-7
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">「少数を整数に切り上げる・切り下げる-ceil,floor,round」より</h4>
+                            <p class="card-text">
+                                <?php
+                                    $x=195.4;
+                                    print("元の数値は「{$x}」です。<br>");
+                                    print('この数値を「切り捨て(floor)」すると：'.floor($x).' となり、<br>');
+                                    print('この数値を「切り上げ(ceil)」すると：'.ceil($x).' となり、<br>');
+                                    print('この数値を「四捨五入(round)」すると：'.round($x).' となります<br>');
+                                ?>
+                            </p>
+                        <!--            <p>更新日：2019.3.14</p>-->
+                        <p>作成日：2019.3.23</p>
+                    </div>
+                </div>
+            </div>
+
+                <div class="col-12 col-md-6 mb-2">
+                    <div class="card h-100 cpp2 cpp2-190323-13">
+                        <div class="card-header">
+                            LECTURE 1-3-6
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">「2つのトップページにランダムで誘導する-rand」より</h4>
+                            <p class="card-text">
+                                <a href="php/sample17.php" role="button" class="btn btn-outline-primary">こちらのページはランダムで2つのサイトの内のどちらかへ飛ぶ様になっています。</a>
+                            </p>
+                        <!--            <p>更新日：2019.3.14</p>-->
+                        <p>作成日：2019.3.23</p>
+                    </div>
+                </div>
+            </div>
+
+                <div class="col-12 col-md-6 mb-2">
+                    <div class="card h-100 cpp2 cpp2-190323-12">
+                        <div class="card-header">
+                            LECTURE 1-3-5
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">「電子メールを送信する」より</h4>
+                            <p class="card-text"></p>
+                            <form action="php/sample16.php" method="post">
+                                <dl>
+                                    <dt>送信先(To)</dt>
+                                    <dd><input name="email" type="text" id="email" size="50" maxlength="255"></dd>
+                                    <dt>サブジェクト</dt>
+                                    <dd><input name="subject" type="text" id="subject" size="50" maxlength="255"></dd>
+                                    <dt>内容</dt>
+                                    <dd><textarea name="message" id="message" cols="50" rows="10"></textarea></dd>
+                                </dl>
+                                <input type="submit" value="送信する">
+                            </form>
+                        <!--            <p>更新日：2019.3.14</p>-->
+                        <p>作成日：2019.3.23</p>
+                    </div>
+                </div>
+            </div>
+
+                <div class="col-12 col-md-6 mb-2">
+                    <div class="card h-100 cpp2 cpp2-190323-11">
+                        <div class="card-header">
+                            LECTURE 1-3-4
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">「ログイン情報をログアウトするまで保持する-セッション」より</h4>
+                            <p class="card-text"></p>
+                            <form action="php/sample15.php" method="post">
+                                <dl>
+                                    <dt>ID</dt>
+                                    <dd><input type="text" name="my_id" id="my_id"></dd>
+                                    <dt>パスワード</dt>
+                                    <dd><input type="password" name="password" id="password"></dd>
+                                </dl>
+                                <input type="submit" value="送信する">
+                            </form>
+                        <!--            <p>更新日：2019.3.14</p>-->
+                        <p>作成日：2019.3.23</p>
+                    </div>
+                </div>
+            </div>
+
+                <div class="col-12 col-md-6 mb-2">
+                    <div class="card h-100 cpp2 cpp2-190323-10">
+                        <div class="card-header">
+                            LECTURE 1-3-3
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">「入力されたIDを次回アクセス時まで覚える-Cookie」より</h4>
+                            <p class="card-text">
+                                <?php
+                                    if(isset($_COOKIE['my_id'])){
+                                        $myId = $_COOKIE['my_id'];
+                                    } else {
+                                        $myId = '';
+                                    }
+                                ?>
+                            <form action="php/sample14.php" method="post">
+                                <dl>
+                                    <dt>ID</dt>
+                                    <dd>
+                                        <input type="text" name="my_id" id="my_id" value="<?php echo $myId; ?>">
+                                    </dd>
+                                    <dt>パスワード</dt>
+                                    <dd>
+                                        <input type="password" name="password" id="password">
+                                    </dd>
+                                    <dt>IDの保存</dt>
+                                    <dd>
+                                        <input type="checkbox" name="save" id="save" value="on">
+                                        <label for="save">IDを保存する</label>
+                                    </dd>
+                                    <input type="submit" value="送信する">
+                                </dl>
+                            </form>
+                            </p>
+                        <!--            <p>更新日：2019.3.14</p>-->
+                        <p>作成日：2019.3.23</p>
+                    </div>
+                </div>
+            </div>
+
+                <div class="col-12 col-md-6 mb-2">
+                    <div class="card h-100 cpp2 cpp2-190323-9">
+                        <div class="card-header">
+                            LECTURE 1-3-2
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">「一行ごとにテーブルセルの色を変える-余剰算」より</h4>
+                            <div class="card-text" style="display: flex; justify-content: space-around;">
+                                    <div>
+                                       <table>
+                                        <?php
+                                            for($i=1;$i<=10;$i++){
+                                                if($i%2){
+                                                    print('<tr style="background-color:lightblue">');
+                                                } else {
+                                                    print('<tr>');
+                                                }
+                                                print('<td>'.$i.'</td>');
+                                                print('<td>'.$i.'行目の情報がこちら</td>');
+                                                print('</tr>');
+                                            }
+                                        ?>
+                                    </table>
+                                    <table>
+                                        <?php
+                                            for($i=1;$i<=10;$i++){
+                                                $j=$i*25;
+                                                print('<tr style="background-color: rgb(255,255,'."{$j}".')">');
+                                                print('<td>'.$i.'</td>');
+                                                print('<td>'.$i.'行目の情報がこちら</td>');
+                                                print('</tr>');
+                                            }
+                                        ?>
+                                    </table>
+                                </div>
+                                <div style="font-size: 11px;">
+                                    <?php
+                                        $week = array('金','土','日','月','火','水','木');
+                                        for($i=1;$i<=31;$i++){
+                                            $j=$i%7;
+                                            if($j===2){
+                                                print('<span style="color:red;">');
+                                            } elseif($j===1) {
+                                                print('<span style="color:blue">');
+                                            } else {
+                                                print('<span>');
+                                            }
+                                            print($i.'日('.$week[$j].')<br>');
+                                            print('</span>');
+                                        }
+                                    ?>
+                                </div>
+                            <!--            <p>更新日：2019.3.14</p>-->
+                        </div>
+                            <p>作成日：2019.3.23</p>
+                    </div>
+                </div>
+                </div>
+
+                <div class="col-12 col-md-6 mb-2">
+                    <div class="card h-100 cpp2 cpp2-190323-8">
+                        <div class="card-header">
+                            LECTURE 1-3-1
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">「別のページにジャンプする」より</h4>
+                            <p class="card-text">
+                                こちらは設定すると飛んでしまうので、コードのみ表示しておきます。
+                            <div class="cord-box" style="background-color: #ebf8ff;">
+                                <pre><code class="prettyprint">
+    &lt;?php
+        header(&#039;Location: https://manablog.org/&#039;);
+        exit();
+    ?&gt;
+            </code></pre>
+                            </div>
+                            上記をページの先頭に記述することで、他のページに飛ばしてくれます。
+                            </p>
+                            <!--            <p>更新日：2019.3.14</p>-->
+                            <p>作成日：2019.3.23</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 mb-2">
+                    <div class="card h-100 cpp2 cpp2-190323-7">
+                        <div class="card-header">
+                            LECTURE 1-2-7
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">「半角数字に直して、数字であるかをチェックする」より</h4>
+                            <p class="card-text">
+                                <form action="php/sample13.php" method="get">
+                                    <label for="my_age">年齢を数字でご入力ください：</label>
+                                    <input type="text" id="my_age" name="my_age" size="5" maxlength="3" value="">
+                                    <input type="submit" value="送信する">
+                                </form>
+                            </p>
+                            <!--            <p>更新日：2019.3.14</p>-->
+                            <p>作成日：2019.3.23</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 mb-2">
+                    <div class="card h-100 cpp2 cpp2-190323-6">
+                        <div class="card-header">
+                            LECTURE 1-2-6
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">「複数選択可能なチェックボックス、リストボックスの値を取得する」より</h4>
+                            <p class="card-text">
+                            <form action="php/sample12.php" method="get">
+                                <dl>
+                                    <dt>機器をせんたくしてください</dt>
+                                    <dd>
+                                        <?php
+                                            $items = array('win'=>'Windows','mac'=>'Macintosh','iphone'=>'iPhone','ipad'=>'iPad','android'=>'Android');
+                                            foreach ($items as $itemKey => $itemValue) {
+                                            print('<input type="checkbox" id="'.$itemKey.'" value="'.$itemKey.'" name="$itemKey[]">');
+                                            print('<label for="'.$itemKey.'">'.$itemValue.'</label>');
+                                            }
+                                        ?>
+                                    </dd>
+                                </dl>
+                                <input type="submit" value="送信する">
+                            </form>
+                            </p>
+                            <!--            <p>更新日：2019.3.14</p>-->
+                            <p>作成日：2019.3.23</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 mb-2">
+                    <div class="card h-100 cpp2 cpp2-190323-5">
+                        <div class="card-header">
+                            LECTURE 1-2-5
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">「フォームの内容が空の場合に警告を表示する-if構文」より</h4>
+                            <p class="card-text">
+                            <form action="php/sample11.php" method="get">
+                                <label for="my_name">(get使用)お名前：</label>
+                                <input type="text" id="my_name" name="my_name" size="35" maxlength="255" value="">
+                                <input type="submit" value="送信する">
+                            </form>
+                            </p>
+                            <!--            <p>更新日：2019.3.14</p>-->
+                            <p>作成日：2019.3.23</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 mb-2">
+                    <div class="card h-100 cpp2 cpp2-190323-4">
+                        <div class="card-header">
+                            LECTURE 1-2-4
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">「商品の一覧をチェックボックスに表示する-連想配列」より</h4>
+                            <p class="card-text">
+                            <form action="" method="get">
+                                <dl>
+                                    <dt>商品</dt>
+                                    <dd>
+                                        <?php
+                                            $items = array('a-1'=>'ガム','b-1'=>'チョコレート','c-3'=>'クッキー');
+                                            foreach ($items as $itemKey => $itemValue) {
+                                            print('<input type="checkbox" id="'.$itemKey.'" value="'.$itemKey.'">');
+                                            print('<label for="'.$itemKey.'">'.$itemValue.'</label>');
+                                            }
+                                        ?>
+                                    </dd>
+                                </dl>
+                                <input type="submit" value="送信する">
+                            </form>
+                            <hr>
+                            <form action="" method="get">
+                                <dl>
+                                    <dt>お使いの機器</dt>
+                                    <dd>
+                                        <?php
+                                            $items = array('win'=>'Windows','mac'=>'Macintosh','iphone'=>'iPhone','ipad'=>'iPad','android'=>'Android');
+                                            foreach ($items as $itemKey => $itemValue) {
+                                            print('<input type="checkbox" id="'.$itemKey.'" value="'.$itemKey.'">');
+                                            print('<label for="'.$itemKey.'">'.$itemValue.'</label>');
+                                            }
+                                        ?>
+                                    </dd>
+                                </dl>
+                                <input type="submit" value="送信する">
+                            </form>
+
+                            </p>
+                            <!--            <p>更新日：2019.3.14</p>-->
+                            <p>作成日：2019.3.23</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 mb-2">
+                    <div class="card h-100 cpp2 cpp2-190323-3">
+                        <div class="card-header">
+                            LECTURE 1-2-3
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">「都道府県の一覧をドロップダウンに表示する-配列」より</h4>
+                            <p class="card-text">
+                                <label for="pref">foreach使用</label>
+                                <select name="pref" id="pref">
+                                    <?php
+                                        $prefs = array('北海道','青森県','岩手県','宮城県','秋田県','山形県','福島県','茨城県','栃木県','群馬県','埼玉県','千葉県','東京都','神奈川県','新潟県','富山県','石川県','福井県','山梨県','長野県','岐阜県','静岡県','愛知県','三重県','滋賀県','京都府','大阪府','兵庫県','奈良県','和歌山県','鳥取県','島根県','岡山県','広島県','山口県','徳島県','香川県','愛媛県','高知県','福岡県','佐賀県','長崎県','熊本県','大分県','宮崎県','鹿児島県','沖縄県');
+                                        foreach($prefs as $pref){
+                                        print('<option value="'.$pref.'">'.$pref.'</option>');
+                                        }
+                                    ?>
+                                </select>
+                            <hr>
+                            <label for="pref">while使用</label>
+                            <select name="pref2" id="pref2">
+                                <?php
+                                    $i=0;
+                                    while($i < 47){
+                                    print('<option value="'.$prefs[$i].'">'.$prefs[$i].'</option>');
+                                    $i++;
+                                    }
+                                ?>
+                            </select>
+                            </p>
+                            <!--            <p>更新日：2019.3.14</p>-->
+                            <p>作成日：2019.3.23</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 mb-2">
+                    <div class="card h-100 cpp2 cpp2-190323-2">
+                        <div class="card-header">
+                            LECTURE 1-2-2
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">「今月の日にちをドロップダウンに表示する」より</h4>
+                            <p class="card-text">
+
+                            <form action="" method="get">
+                                <dl>
+                                    <dt>日にち</dt>
+                                    <dd>
+                                        <?php print(date('n')); ?>月
+                                        <select name="day" id="day">
+                                            <?php
+                                                for($day=1;$day<=date('t');$day++){
+                                                print('<option value="'.$day.'">'.$day.'日</option>');
+                                                }
+                                            ?>
+                                        </select>
+                                    </dd>
+                                </dl>
+                                <input type="submit" value="送信する">
+                            </form>
+
+<!--                            以下は実際のコード-->
+                            <div class="cord-box" style="background-color: #ebf8ff;">
+                                <pre><code class="prettyprint">
+    &lt;form action=&quot;&quot; method=&quot;get&quot;&gt;
+        &lt;dl&gt;
+            &lt;dt&gt;日にち&lt;/dt&gt;
+            &lt;dd&gt;
+                &lt;?php print(date(&#039;n&#039;)); ?&gt;月
+                &lt;select name=&quot;day&quot; id=&quot;day&quot;&gt;
+                    &lt;?php
+                        for($day=1;$day&lt;=date(&#039;t&#039;);$day++){
+                            print(&#039;&lt;option value=&quot;&#039;.$day.&#039;&quot;&gt;&#039;.$day.&#039;日&lt;/option&gt;&#039;);
+                        }
+                    ?&gt;
+                &lt;/select&gt;
+            &lt;/dd&gt;
+        &lt;/dl&gt;
+        &lt;input type=&quot;submit&quot; value=&quot;送信する&quot;&gt;
+    &lt;/form&gt;
+                                </code></pre>
+                            </div>
+                            コードの掲載をしてみました。下記のページを参考にさせていただきましたので、
+                            これからコード掲載を検討されている方は覗いてみてくださいね。
+                            <a href="https://mae.chab.in/archives/2963">maesblog
+                            </a>
+
+                            </p>
+                            <!--            <p>更新日：2019.3.14</p>-->
+                            <p>作成日：2019.3.23</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 mb-2">
+                    <div class="card h-100 cpp2 cpp2-190323-1">
+                        <div class="card-header">
+                            LECTURE 1-2-1
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">「10歳から70歳まで選べる、ドロップダウンボックスを表示する」より</h4>
+                            <p class="card-text">
+                                <label for="age">10歳から70歳まで</label>
+                                <select name="age" id="age">
+                                    <?php
+                                        for($i=10;$i<=70;$i++) {
+                                            print('<option value='.$i.'>'.$i.'歳</option>');
+                                        }
+                                    ?>
+                                </select>
+                                <hr>
+                                <label for="age2">10歳から70歳まで(偶数のみ)</label>
+                                <select name="age2" id="age2">
+                                    <?php
+                                        for($i=10;$i<=70;$i++) {
+                                            if($i%2 === 0){
+                                                print('<option value='.$i.'>'.$i.'歳</option>');
+                                            }
+                                        }
+                                    ?>
+                                </select>
+                            </p>
+                            <!--            <p>更新日：2019.3.14</p>-->
+                            <p>作成日：2019.3.23</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 mb-2">
+                    <div class="card h-100 cpp2 cpp2-190320-6">
+                        <div class="card-header">
+                            LECTURE 1-1-6
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">「変数を使って、同じプログラムが重なるのを防ぐ」より</h4>
+                            <p class="card-text">
+                                <form action="php/sample06.php" method="post">
+                                    <dl>
+                                        <dt>名前</dt>
+                                        <dd>
+                                            <input type="text" id="my_name2" name="my_name2" size="35" maxlength="255" value="">
+                                        </dd>
+                                    </dl>
+                                    <input type="submit" value="送信する">
+                                </form>
+                            </p>
+                            <!--            <p>更新日：2019.3.14</p>-->
+                            <p>作成日：2019.3.22</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 mb-2">
+                    <div class="card h-100 cpp2 cpp2-190320-5">
+                        <div class="card-header">
+                            LECTURE 1-1-5
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">「チェックボックス、ラジオボタン、リストボックス(ドロップダウンリスト)の値を取得する」より</h4>
+                            <p class="card-text">
+                            <form action="php/sample05-1.php" method="post">
+                                <dl>
+                                    <dt>性別：</dt>
+                                    <dd>
+                                        <input type="radio" id="gender_male" name="gender" value="male">
+                                        <label for="gender_male">男性</label>
+                                        <input type="radio" id="gender_female" name="gender" value="female">
+                                        <label for="gender_female">女性</label>
+                                    </dd>
+                                </dl>
+                                <input type="submit" value="送信する">
+                            </form>
+
+                                <hr>
+
+                            <form action="php/sample05-2.php" method="post">
+                                <dl>
+                                    <dt>性別：</dt>
+                                    <dd>
+                                        <input type="checkbox" id="gender_male-ck" name="gender2" value="male">
+                                        <label for="gender_male-ck">男性</label>
+                                        <input type="checkbox" id="gender_female-ck" name="gender2" value="female">
+                                        <label for="gender_female-ck">女性</label>
+                                    </dd>
+                                </dl>
+                                <input type="submit" value="送信する">
+                            </form>
+
+                                <hr>
+
+                            <form action="php/sample05-3.php" method="post">
+                                <label for="gender_sel">性別</label>
+                                <select name="gender3" id="gender3">
+                                    <option value="male">男性</option>
+                                    <option value="female">女性</option>
+                                    option
+                                </select>
+                                <br>
+                                <input type="submit" value="送信する">
+
+                            </form>
+
+                            </p>
+                            <!--            <p>更新日：2019.3.14</p>-->
+                            <p>作成日：2019.3.22</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-12 col-md-6 mb-2">
+                    <div class="card h-100 cpp2 cpp2-190320-4">
+                        <div class="card-header">
+                            LECTURE 1-1-4
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">「フォームに入力した内容を取得する」より</h4>
+                            <p class="card-text">
+                                <form action="php/sample04-1.php" method="get">
+                                    <label for="my_name">(get使用)お名前：</label>
+                                    <input type="text" id="my_name" name="my_name" size="35" maxlength="255" value="">
+                                    <input type="submit" value="送信する">
+                                </form>
+
+                                <form action="php/sample04-2.php" method="post">
+                                    <label for="my_name">(post使用)お名前：</label>
+                                    <input type="text" id="my_name" name="my_name" size="35" maxlength="255" value="">
+                                    <input type="submit" value="送信する">
+                                </form>
+
+                                <hr>
+
+                            <form action="php/sample04-3.php" method="get">
+                                <dl>
+                                    <dt><label for="my_name">お名前：</label></dt>
+                                    <dd>
+                                        <input type="text" id="my_name" name="my_name" size="35" maxlength="255" value="">
+                                    </dd>
+                                    <dt><label for="food">好きな食べ物：</label></dt>
+                                    <dd>
+                                        <input type="text" id="food" name="food" size="35" maxlength="255" value="">
+                                    </dd>
+                                    <dt><label for="color">好きな色：</label></dt>
+                                    <dd>
+                                        <input type="text" id="color" name="color" size="35" maxlength="255" value="">
+                                    </dd>
+                                    <dt><label for="message">嫌いな言葉：</label></dt>
+                                    <dd>
+                                        <input type="text" id="message" name="message" size="35" maxlength="255" value="">
+                                    </dd>
+                                </dl>
+                                <input type="submit" value="送信する">
+                            </form>
+
+                            </p>
+                            <!--            <p>更新日：2019.3.14</p>-->
+                            <p>作成日：2019.3.22</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 mb-2">
+                    <div class="card h-100 cpp2 cpp2-190320-3">
+                        <div class="card-header">
+                            LECTURE 1-1-3
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">「画面に現在の時刻を表示する」より</h4>
+                            <p class="card-text">
+                                <?php
+                                    print('まずはタイムゾーンをAsia/Tokyoに設定します<br>');
+                                    date_default_timezone_set('Asia/Tokyo');
+                                    print('年は'.date('Y年,y年').'といった表示ができます<br>');
+                                    print('月は'.date('n月,m月,F,M').'といった表示ができます<br>');
+                                    print('日は'.date('j日,d日').'といった表示ができます<br>');
+                                    print('時は'.date('g,G,h,H').'といった表示ができます<br>');
+                                    print('分は'.date('i分').'といった表示ができます<br>');
+                                    print('秒は'.date('s秒').'といった表示ができます<br>');
+                                    print('マイクロ秒は'.date('u秒').'といった表示ができます<br>');
+                                    print('今日は'.date('Y年n月j日').'です<br>');
+                                    print('今は'.date('g時i分s秒').'です<br>');
+                                ?>
+                            </p>
+                            <!--            <p>更新日：2019.3.14</p>-->
+                            <p>作成日：2019.3.22</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 mb-2">
+                    <div class="card h-100 cpp2 cpp2-190320-2">
+                        <div class="card-header">
+                            LECTURE 1-1-2
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">「画面にHTMLを表示する」より</h4>
+                            <p class="card-text">
+                                <?php
+                                    print('<h1>こちらはh1タグを付けて表示しています</h1>');
+                                    print('<h2>こちらはh2タグを付けて表示しています</h2>');
+                                    print('<h3>こちらはh3タグを付けて表示しています</h3>');
+                                    print('<h4>こちらはh4タグを付けて表示しています</h4>');
+                                    print('<h5>こちらはh5タグを付けて表示しています</h5>');
+                                    print('タグの属性で"は使用するので\'を使って囲むのが良い<br>');
+                                ?>
+                            </p>
+                            <!--            <p>更新日：2019.3.14</p>-->
+                            <p>作成日：2019.3.22</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 mb-2">
+                    <div class="card h-100 cpp2 cpp2-190320-1">
+                        <div class="card-header">
+                            LECTURE 1-1-1
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">「画面に文章を表示する」より</h4>
+                            <p class="card-text">
+                                <?php
+                                    print('これはPHPのprintを使って文章を表示しています<br>');
+                                    echo 'こちらはPHPのechoを使って文章を表示しています<br>';
+                                    print("ダブルクォーテーションで囲むと'などもそのまま表示できます<br>");
+                                    print('シングルクォーテーションでも'.'\\'.'をつけると\'という具合にエスケープシーケンスも表示できます<br>');
+                                ?>
+                            </p>
+                            <!--            <p>更新日：2019.3.14</p>-->
+                            <p>作成日：2019.3.22</p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div><!--            rowはここまで-->
+
+        </div><!--        containerここまで-->
+
+
+
+
+        <!--        footer-->
+        <footer class="foot">
+            <ul class="box2">
+                <a href="../info/info.html">
+                    <li class="box3">
+                        <p>本サイトについて</p>
+                    </li>
+                </a>
+                <a href="mailto:kotanote2019@gmail.com">
+                    <li class="box3">
+                        <p>お問合せ</p>
+                    </li>
+                </a>
+                <li class="box3">
+                    <p>©︎ 2019 Kotanote.com</p>
+                </li>
+            </ul>
+        </footer>
+
+
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+        <script>
+            //        Bootstrap Tooltips
+            $(function() {
+                $('[data-toggle="tooltip"]').tooltip();
+            });
+
+        </script>
+
+<!--        googleのcode-prettify用のスクリプト。コード表示を色分けで表示-->
+        <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    </body>
+
+</html>

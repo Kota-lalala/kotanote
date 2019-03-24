@@ -1,3 +1,5 @@
+/*全体的な基本設定*/
+
 * {
     margin: 0;
 }
@@ -22,73 +24,39 @@ li {
     color: black;
 }
 
-body {
-/*    background-color: white;*/
-}
-
-.box1 {
-    background-color: #353a3f;
-    /*    border: 2px solid white;*/
-    /*    box-sizing: border-box;*/
-    margin: 2px;
-}
-
-.box2 {
-/*    background-color: gray;*/
-    margin: 0;
-}
-
-.box3 {
-    background-color: #353a3f;
-    border-top: 1px solid gray;
-}
-
-.sec-info h1,
-.sec-info p {
-    display: inline-block;
+/*リンクのhover時の下線をなくす*/
+a:hover {
+    text-decoration: none;
 }
 
 
-footer ul {
-    padding-left: 0;
+/*header部分*/
+
+/*フェイスブック、ツイッター のリンクアイコンへ適用*/
+.nav-left {
+    width: 80px;
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
 }
 
 
-footer li {
-    list-style: none;
-    /*    padding-left: 0;*/
+
+
+/*カード部分の設定*/
+
+/*カードにマージンを設定して隙間を作った*/
+.card {
+/*    margin: 15px;*/
+    margin-bottom: 15px;
 }
 
-
-.foot {
-    text-align: center;
-}
-
-.con-unneed h1,
-.con-unneed p {
-    color: black;
-}
-
+/*メインカードの更新内容部分のフォントカラーを設定*/
 .con-rec-p {
     color: dodgerblue;
 }
 
-.con-rec-pg {
-    color: gray;
-}
-
-.con-area li {
-    color: black;
-}
-
-.box-con-sub {
-    margin: 10px;
-}
-
-.card-190311 .btn {
-    width: 90%;
-}
-
+/*カード内のリンクへ適用*/
 .card-link-img {
     width: 150px;
 }
@@ -98,44 +66,38 @@ footer li {
     margin-bottom: 15px;
 }
 
-.cont-tweet-header {
-    color: dimgray;
+/*カードの画像のopacityを少し薄くしておく*/
+.card-img-top {
+    opacity: 0.7;
 }
 
-.nav-left {
-    width: 80px;
-    display: flex;
-    justify-content: space-around;
-    font-size: 20px;
+/*カードがhoverの時の変色を設定*/
+.card:hover {
+    background-color: #e2eef4;
 }
-
 .card:hover .card-header{
-    background-color: #caeefc;
+    background-color: #b1e3f7;
 }
 
+/*
 .card:hover .card-body {
-    background-color: #f6f9fa;
+    background-color: #e2eef4;
 }
-
-
+*/
 
 .card:hover .card-img-top {
     opacity: 1.0;
 }
 
-.card-img-top {
-    opacity: 0.7;
+.btn-top {
+    width: 100%;
 }
 
 
-.card-body-m {
-    height: auto;
-}
 
-.card-m-190317 {
-    height: auto;
-}
+/*music note の設定*/
 
+/*awa部分の設定*/
 .music-iframe {
     max-width: 354px;
     width: 100%;
@@ -154,3 +116,37 @@ footer li {
     background-color: #353a3f;
 }
 
+
+
+
+/*ツイート部分の「今日のつぶやき」文字色*/
+.cont-tweet-header {
+    color: dimgray;
+}
+
+
+
+
+/*footer部分の設定用*/
+.box2 {
+    /*    background-color: gray;*/
+    margin: 0;
+}
+
+.box3 {
+    background-color: #353a3f;
+    border-top: 1px solid gray;
+}
+
+footer ul {
+    padding-left: 0;
+}
+
+footer li {
+    list-style: none;
+    /*    padding-left: 0;*/
+}
+
+.foot {
+    text-align: center;
+}
