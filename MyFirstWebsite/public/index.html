@@ -14,7 +14,7 @@
     }
 
     //ここで今日のつぶやきのコメントをセットする
-    $now_comment = "今日は「よくわかるPHPの教科書」を進め、「PART3 PHPの基本」が終わりました。HTML,CSS,Bootstrapの様に見た目を整える部分とは違った面白さがありますね。少しづつではありますが、成長している気はします。明日からは「PART4 データベースの基本」を進めます。今度はSQL、楽しみですね♪徐々にできることが広がってきました。同時にクラウドソーシングでの案件獲得もできる様、やっていきます！YouTubeのマナブさんの言っていた様に、顧客の情報がわかっている場合は、こちらからの提案をしてみようかな。ポートフォリオを追加するのも効果ありそうだな。でも時間が取られるし〜^^;
+    $now_comment = "今日は顧客への提案サンプル？を作成、PC幅でのレイアウトがそこそこ終わった。これから微調整して整えてゆく。でレスポンシブにできたら、客先への提案に使用する予定。なんてことをやっていたりでSQLがほとんど出来なかった(>_<)なんだか今日は残念な日だったな。気をとりなおして明日また進めよう。おやすみなさい(-_-)zzZZZ
     ";
 ?>
 
@@ -108,10 +108,7 @@
                     <div class="card-body">
                         <!--                <h4 class="card-title">デザイン修正</h4>-->
                         <p class="card-text">
-                            2019.3.23 Programing note へ「よくわかるPHPの教科書の吐き出し部屋」へ19点を追加しました。
-                            <span class="badge badge-info">new</span>
-                            <br>
-                            2019.3.23 Music note へ「足音〜Be Strong」〜Mr.Children〜 を追加しました。
+                            2019.3.24 Programing note へ「PHP学習済み内容の吐き出し部屋」へ1点のみ追加しました。
                             <span class="badge badge-info">new</span>
                        </p>
                     </div>
@@ -128,7 +125,7 @@
                     <div class="card-body">
                         <!--                <h4 class="card-title">デザイン修正</h4>-->
                         <p class="card-text">
-                            2019.3.23 Alertsの部分の冒頭で、PHPにより「おはようございます」「こんにちは」「こんばんは」と表示する様にしました。
+                            2019.3.24 Bootstrapの「popovers」を入れてみました。
                             <span class="badge badge-info">new</span>
 
                         </p>
@@ -150,12 +147,15 @@
                     <div class="card-body">
                         <h4 class="card-title">Programming note</h4>
                         <p class="con-rec-p">
-                            最新情報:「よくわかるPHPの教科書の吐き出し部屋」へ19点追加しました -UP- 2019.3.23更新
+                            最新情報:「PHP学習済み内容の吐き出し部屋」へ1点追加しました -UP- 2019.3.24更新
                             <span class="badge badge-info">new</span>
                         </p>
                         <p class="card-text">
                             ※一応メインコンテンツです※プログラミングに関する情報を記載。本サイト制作者のメモ的noteです。
                             が、これから始める方のせめて参考になればと思います。
+                            <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="top" data-content="プログラミングに関するnoteです" data-original-title="" title="">
+                                ?
+                            </button>
                         </p>
                         <a href="prog/prog.html" class="btn-top btn  btn-outline-primary">Let's go see it !</a>
                     </div>
@@ -170,7 +170,7 @@
                         <h4 class="card-title">Music note</h4>
                         <p class="con-rec-p">
                             最新情報:「足音〜Be Strong」〜Mr.Children〜 -UP- 2019.3.23更新
-                            <span class="badge badge-info">new</span>
+<!--                            <span class="badge badge-info">new</span>-->
                         </p>
                         <p class="card-text">
                             ♪AWAにて気になった曲やアーティストをご紹介していきますので、プログラミングの合間に聞いてみてくださいね♪
@@ -260,6 +260,13 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<!--    Bootstrapのポップアップ用-->
+    <script>
+        $(function(){
+            $('[data-toggle="popover"]').popover()
+        });
+    </script>
 </body>
 
 </html>
