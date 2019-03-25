@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+
+    <head>
+        <!-- Required meta tags -->
+        <!-- Bootstrap4.3.1用 -->
+
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <!--        メイン用 style.css  レスポンシブ用 responsive.css-->
+        <link rel="stylesheet" type="text/css" href="../css/style1.css">
+        <link rel="stylesheet" type="text/css" href="../css/responsive.css" media="screen and (max-width: 1120px)">
+
+        <!--        FontAwesome用-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+        <!-- googleの「code-prettify」表示用テーマ -->
+        <link rel="stylesheet" type="text/css" href="../css/atelier-lakeside-light.css">
+
+
+
+        <title>Kotanote</title>
+    </head>
+
+    <body>
+
+        <!--        header部分-->
+        <header>
+
+            <!--            ナビバー-->
+            <nav class="navbar navbar-dark bg-dark">
+
+                <!--                フェイスブック、ツイッター のリンクアイコン-->
+                <div class="nav-left">
+                    <div>
+                        <a href="http://www.facebook.com/share.php?u=https://kotanote.com/kotanote/public/prog/prog.html">
+                            <i class="sec4-ico fab fa-facebook"></i>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="http://twitter.com/share?text=https://kotanote.com/kotanote/public/prog/prog.html" rel="nofollow">
+                            <i class="sec4-ico fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+
+
+                <!--Webサイトのタイトル-->
+                <a href="../index.html" class="navbar-brand">Kotanote</a>
+                <!--ハンバーガーメニュー-->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navmenu1" aria-controls="navmenu1" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navmenu1">
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link" href="prog.html">プログラミング note</a>
+                        <a class="nav-item nav-link" href="../music/music.html">ミュージック note</a>
+                        <a class="nav-item nav-link" href="../info/info.html">本サイトについて</a>
+                        <!--                        <a class="nav-item nav-link" href="#">Menu#3</a>-->
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <div class="container">
+            <!--        トップカード-->
+            <div class="row">
+
+            </div>
+
+            <!--        コンテンツカード-->
+            <div class="row">
+
+                <div class="col-12 col-md-12 mb-2">
+                    <div class="card">
+                        <img class="card-img-top" src="../img/prog-top.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h4 class="card-title">SQL学習済み内容の吐き出し部屋</h4>
+                            <p class="con-rec-p">
+                                最新情報:1点を追加しました。-UP- 2019.3.25更新
+                                <span class="badge badge-info">new</span>
+                            </p>
+                            <p class="card-text">
+                                現在SQLを学習中につき、学習した事をただ吐き出すページです。細かい解説は無しでチートシート的に作成していこうと思っています。さっと見られるのが良い所です。こちらは「Collapse」で折りたたみ式にして作ってみます。見やすく出来るかな？
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-12 col-md-6 mb-2 p-sql p-sql-190325-014">
+                    <div id="accordion" role="tablist">
+
+                        <div class="card">
+                            <a data-toggle="collapse" href="#collapse-sql-190325-014" aria-expanded="true" aria-controls="collapse-sql-190325-014" class="">
+                                <div class="card-header" role="tab" id="headingOne">
+                                    <h5 class="mb-0">
+                                        14.データを並び替える
+                                    </h5>
+                                </div>
+                            </a>
+
+                            <div id="collapse-sql-190325-014" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                                <div class="card-body">
+                                    <pre><code class="prettyprint">
+SELECT * FROM test_table ORDER BY id ASC;
+SELECT * FROM test_table ORDER BY id;
+                                    </code></pre>
+                                    <p>
+                                        idを見て昇順で整列させる。ASCは省略可能(デフォルトの為)
+                                    </p>
+
+                                    <pre><code class="prettyprint">
+SELECT * FROM test_table ORDER BY id DESC;
+                                    </code></pre>
+                                    <p>
+                                        idを見て降順で整列させる。
+                                    </p>
+
+                                    <pre><code class="prettyprint">
+SELECT * FROM test_table WHERE price&lt;100 ORDER BY id ASC;
+                                    </code></pre>
+                                    <p>
+                                        この様にWHEREと一緒に使うことができ「絞り込み結果を整列させる」という合わせ技が可能。<br>
+                                        これで、priceが100未満に絞り込み、なおかつidの昇順で表示する。となる。
+                                    </p>
+                                    <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                    <p class="text-right">作成日：2019.3.25</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 mb-2 p-sql p-sql-190325-013">
+                    <div id="accordion" role="tablist">
+
+                        <div class="card">
+                            <a data-toggle="collapse" href="#collapse-sql-190325-013" aria-expanded="true" aria-controls="collapse-sql-190325-013" class="">
+                                <div class="card-header" role="tab" id="headingOne">
+                                    <h5 class="mb-0">
+                                        13.データを検索する〜WHEREに複数条件を加える
+                                    </h5>
+                                </div>
+                            </a>
+
+                            <div id="collapse-sql-190325-013" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                                <div class="card-body">
+                                    <pre><code class="prettyprint">
+SELECT id, name, price FROM test_table WHERE price&lt;100 AND name=&#039;じゃがりこ&#039;;
+                                    </code></pre>
+                                    <p>
+                                        100円未満で、なおかつ「じゃがりこ」であるデータを探してくれる。
+                                    </p>
+
+                                    <pre><code class="prettyprint">
+SELECT id, name, price FROM test_table WHERE price&lt;100 OR name=&#039;じゃがりこ&#039;;
+                                    </code></pre>
+                                    <p>
+                                        100円未満であること、または「じゃがりこ」であること、両方にヒットするデータを探してくれる。
+                                    </p>
+
+                                    <pre><code class="prettyprint">
+SELECT id, name, price FROM test_table WHERE (id=1 OR id=2) AND price&lt;100 AND name LIKE &#039;%じゃが%&#039;;
+                                    </code></pre>
+                                    <p>
+                                        複雑！！
+                                        <ul>
+                                            <li>idが1か2であること</li>
+                                            <li>priceが100未満であること</li>
+                                            <li>nameが「じゃが」を含んだ文字であること</li>
+                                        </ul>
+                                        の条件をすべて満たしたデータを一瞬で探してくれる。凄い！便利。
+                                    </p>
+                                    <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                    <p class="text-right">作成日：2019.3.25</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 mb-2 p-sql p-sql-190325-012">
+                    <div id="accordion" role="tablist">
+
+                        <div class="card">
+                            <a data-toggle="collapse" href="#collapse-sql-190325-012" aria-expanded="true" aria-controls="collapse-sql-190325-012" class="">
+                                <div class="card-header" role="tab" id="headingOne">
+                                    <h5 class="mb-0">
+                                        12.データを検索する〜WHEREをもう少し詳しく
+                                    </h5>
+                                </div>
+                            </a>
+
+                            <div id="collapse-sql-190325-012" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                                <div class="card-body">
+                                    <pre><code class="prettyprint">
+SELECT id, name, price FROM test_table WHERE name LIKE '*じゃが*';
+                                    </code></pre>
+                                    <p>
+                                        これでnameの値に「じゃが」を含むデータを全て検索して表示してくれます。
+                                        *を片方だけ使えば前方一致、後方一致も出来ます。
+                                    </p>
+                                    <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                    <p class="text-right">作成日：2019.3.25</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 mb-2 p-sql p-sql-190325-011">
+                    <div id="accordion" role="tablist">
+
+                        <div class="card">
+                            <a data-toggle="collapse" href="#collapse-sql-190325-011" aria-expanded="true" aria-controls="collapse-sql-190325-011" class="">
+                                <div class="card-header" role="tab" id="headingOne">
+                                    <h5 class="mb-0">
+                                        11.データを検索する〜WHEREをもう少し詳しく
+                                    </h5>
+                                </div>
+                            </a>
+
+                            <div id="collapse-sql-190325-011" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                                <div class="card-body">
+                                    <pre><code class="prettyprint">
+SELECT id, name, price FROM test_table WHERE id=1;
+                                    </code></pre>
+                                    <p>
+                                        はすでに紹介済みのもの。idが1のデータを探してくれます。
+                                    </p>
+                                    <pre><code class="prettyprint">
+SELECT id, name, price FROM test_table WHERE name='じゃがりこ';
+                                    </code></pre>
+                                    <p>
+                                        の様にTEXTの一致でも検索可能。
+                                    </p>
+                                    <pre><code class="prettyprint">
+SELECT id, name, price FROM test_table WHERE price&lt;100;
+                                    </code></pre>
+                                    <p>
+                                        とすればpriceが100未満のデータを全て表示してくれます。便利！
+                                    </p>
+                                    <pre><code class="prettyprint">
+SELECT id, name, price FROM test_table WHERE price&gt;100;
+                                    </code></pre>
+                                    <p>
+                                        となれば当然これもできます。priceが100より大きいデータを表示。
+                                    </p>
+                                    <pre><code class="prettyprint">
+SELECT id, name, price FROM test_table WHERE price&lt;=100;
+SELECT id, name, price FROM test_table WHERE price&gt;=100;
+                                    </code></pre>
+                                    <p>
+                                        は以上、以下の指定で絞り込みが可能。
+                                    </p>
+
+                                     <pre><code class="prettyprint">
+SELECT id, name, price FROM test_table WHERE price&lt;&gt;100;
+                                    </code></pre>
+                                    <p>
+                                        これは？見慣れませんが、priceが100出ないもの全て。となります。<br>
+                                        100より小さくて、100より大きいという意味ですね。
+                                    </p>
+                                    <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                    <p class="text-right">作成日：2019.3.25</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 mb-2 p-sql p-sql-190325-010">
+                    <div id="accordion" role="tablist">
+
+                        <div class="card">
+                            <a data-toggle="collapse" href="#collapse-sql-190325-010" aria-expanded="true" aria-controls="collapse-sql-190325-010" class="">
+                                <div class="card-header" role="tab" id="headingOne">
+                                    <h5 class="mb-0">
+                                        10.カラムを追加する
+                                    </h5>
+                                </div>
+                            </a>
+
+                            <div id="collapse-sql-190325-010" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                                <div class="card-body">
+                                    <pre><code class="prettyprint">
+ALTER TABLE `test_table` ADD `comment` TEXT NOT NULL AFTER `price`;
+                                    </code></pre>
+                                    <p>
+                                        これでテーブル「test_table」の「priceの後」にカラム「comment」を「TEXT」型で追加。
+                                    </p>
+                                    <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                    <p class="text-right">作成日：2019.3.25</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 mb-2 p-sql p-sql-190325-09">
+                    <div id="accordion" role="tablist">
+
+                        <div class="card">
+                            <a data-toggle="collapse" href="#collapse-sql-190325-09" aria-expanded="true" aria-controls="collapse-sql-190325-09" class="">
+                                <div class="card-header" role="tab" id="headingOne">
+                                    <h5 class="mb-0">
+                                        9.オートインクリメントでプライマリーキー値を入力する
+                                    </h5>
+                                </div>
+                            </a>
+
+                            <div id="collapse-sql-190325-09" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                                <div class="card-body">
+                                    <pre><code class="prettyprint">
+ALTER TABLE `makers` CHANGE `id` `id` INT(11) NOT NULL AUTO_INCREMENT;
+                                    </code></pre>
+                                    <p>
+                                        上記でidをAUTO_INCREMENTに設定できる。<br>
+                                        これで主キーの値は自動で入力され、常に固有の値が得られるので便利。
+                                    </p>
+                                    <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                    <p class="text-right">作成日：2019.3.25</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 mb-2 p-sql p-sql-190325-08">
+                    <div id="accordion" role="tablist">
+
+                        <div class="card">
+                            <a data-toggle="collapse" href="#collapse-sql-190325-08" aria-expanded="true" aria-controls="collapse-sql-190325-08" class="">
+                                <div class="card-header" role="tab" id="headingOne">
+                                    <h5 class="mb-0">
+                                        8.プライマリーキー(主キー)を設定する
+                                    </h5>
+                                </div>
+                            </a>
+
+                            <div id="collapse-sql-190325-08" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                                <div class="card-body">
+                                    <pre><code class="prettyprint">
+ALTER TABLE `test_table` ADD PRIMARY KEY(`id`);
+                                    </code></pre>
+                                    <p>
+                                        とすると「idを主キー」に設定できる。<br>
+                                        主キーは固有な数値なので、重複した数値は入力できない。<br>
+                                        また、識別するための数値なので、未入力もできない。
+                                    </p>
+                                    <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                    <p class="text-right">作成日：2019.3.25</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 mb-2 p-sql p-sql-190325-07">
+                    <div id="accordion" role="tablist">
+
+                        <div class="card">
+                            <a data-toggle="collapse" href="#collapse-sql-190325-07" aria-expanded="true" aria-controls="collapse-sql-190325-07" class="">
+                                <div class="card-header" role="tab" id="headingOne">
+                                    <h5 class="mb-0">
+                                        7.データを検索する
+                                    </h5>
+                                </div>
+                            </a>
+
+                            <div id="collapse-sql-190325-07" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                                <div class="card-body">
+                                    <pre><code class="prettyprint">
+SELECT name, price FROM test_table WHERE name='じゃがりこ';
+                                    </code></pre>
+                                    <p>
+                                        テーブル「test_table」の「nameが'じゃがりこ'」のデータのみを抽出し、「name」「price」の値を表示する。
+                                    </p>
+                                    <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                    <p class="text-right">作成日：2019.3.25</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 mb-2 p-sql p-sql-190325-06">
+                    <div id="accordion" role="tablist">
+
+                        <div class="card">
+                            <a data-toggle="collapse" href="#collapse-sql-190325-06" aria-expanded="true" aria-controls="collapse-sql-190325-06" class="">
+                                <div class="card-header" role="tab" id="headingOne">
+                                    <h5 class="mb-0">
+                                        6.データを削除する
+                                    </h5>
+                                </div>
+                            </a>
+
+                            <div id="collapse-sql-190325-06" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                                <div class="card-body">
+                                    <pre><code class="prettyprint">
+DELETE FROM test_table WHERE id=10;
+                                    </code></pre>
+                                    <p>
+                                        テーブル「test_table」の「idが10」のデータを削除する。
+                                    </p>
+                                    <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                    <p class="text-right">作成日：2019.3.25</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 mb-2 p-sql p-sql-190325-05">
+                    <div id="accordion" role="tablist">
+
+                        <div class="card">
+                            <a data-toggle="collapse" href="#collapse-sql-190325-05" aria-expanded="true" aria-controls="collapse-sql-190325-05" class="">
+                                <div class="card-header" role="tab" id="headingOne">
+                                    <h5 class="mb-0">
+                                        5.データを変更する
+                                    </h5>
+                                </div>
+                            </a>
+
+                            <div id="collapse-sql-190325-05" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                                <div class="card-body">
+                                    <pre><code class="prettyprint">
+UPDATE test_table SET price=98 WHERE name='じゃがりこ';
+                                    </code></pre>
+                                    <p>
+                                        テーブル「test_tabe」のnameが「じゃがりこ」のデータのpriceを「98」に変更する。<br>
+                                        WHERE以降を書かないと「すべてのデータ」となるので注意！
+                                    </p>
+                                    <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                    <p class="text-right">作成日：2019.3.25</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 mb-2 p-sql p-sql-190325-04">
+                    <div id="accordion" role="tablist">
+
+                        <div class="card">
+                            <a data-toggle="collapse" href="#collapse-sql-190325-04" aria-expanded="true" aria-controls="collapse-sql-190325-04" class="">
+                                <div class="card-header" role="tab" id="headingOne">
+                                    <h5 class="mb-0">
+                                        4.SQL文のスペース注意点
+                                    </h5>
+                                </div>
+                            </a>
+
+                            <div id="collapse-sql-190325-04" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                                <div class="card-body">
+                                    <p>
+                                        キーワードがつながってしまう書き方はNG。
+                                        つまり「INSERTINTOtest_table」ではコマンドとテーブル名の堺がわからないのでNG。
+                                        しかし「id=1,name='カール',price=99;」は記号で区切りがはっきりしてるので、スペースは関係が無い。
+                                    </p>
+                                    <pre><code class="prettyprint">
+INSERT INTO test_table SET id  =   2 , name =   'じゃがりこ' , price   =     1249;
+                                    </code></pre>
+                                    <p>
+                                        の様にスペースを入れても問題なし。(見辛いけど)<br>
+                                        でも、
+                                    </p>
+                                    <pre><code class="prettyprint">
+name='   カール'
+                                    </code></pre>
+                                    <p>
+                                        だと、入力は出来るが、余計なスペースが値として入ってしまうのでNG。<br>
+                                        さらに、
+                                    </p>
+                                    <pre><code class="prettyprint">
+price = 12  49;
+                                    </code></pre>
+                                    <p>
+                                        もカラムpriceの値として12と49という指示になってしまうのでNG。こちらはエラーになる。
+                                    </p>
+                                    <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                    <p class="text-right">作成日：2019.3.25</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 mb-2 p-sql p-sql-190325-03">
+                    <div id="accordion" role="tablist">
+
+                        <div class="card">
+                            <a data-toggle="collapse" href="#collapse-sql-190325-03" aria-expanded="true" aria-controls="collapse-sql-190325-03" class="">
+                                <div class="card-header" role="tab" id="headingOne">
+                                    <h5 class="mb-0">
+                                            3.データを入力する
+                                    </h5>
+                                </div>
+                            </a>
+
+                            <div id="collapse-sql-190325-03" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                                <div class="card-body">
+                                    <pre><code class="prettyprint">
+    INSERT INTO test_table SET id=1 , name='カール' , price=99;
+                                    </code></pre>
+                                    <p>
+                                        「test_table」データベースに<br>
+                                        カラム「id」へ「1」を、カラム「name」へ「カール」を、カラム「price」へ「99」を入力する。
+                                    </p>
+                                    <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                    <p class="text-right">作成日：2019.3.25</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 mb-2 p-sql p-sql-190325-02">
+                    <div id="accordion" role="tablist">
+
+                        <div class="card">
+                            <a data-toggle="collapse" href="#collapse-sql-190325-02" aria-expanded="true" aria-controls="collapse-sql-190325-02" class="">
+                                <div class="card-header" role="tab" id="headingOne">
+                                    <h5 class="mb-0">
+                                            2.テーブルを作成する
+                                    </h5>
+                                </div>
+                            </a>
+
+                            <div id="collapse-sql-190325-02" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                                <div class="card-body">
+                                    <pre><code class="prettyprint">
+    CREATE TABLE test_table ( id INT , name TEXT , price INT );
+                                    </code></pre>
+                                    <p>
+                                        「test_table」データベースを作成する。<br>
+                                        また同時に3つのカラムを作成する。「id」を「INT」型「name」を「TEXT」型「price」を「INT」型。
+                                    </p>
+                                    <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                    <p class="text-right">作成日：2019.3.25</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="col-12 col-md-6 mb-2 p-sql p-sql-190325-01">
+                    <div id="accordion" role="tablist">
+
+                        <div class="card">
+                            <a data-toggle="collapse" href="#collapse-sql-190325-01" aria-expanded="true" aria-controls="collapse-sql-190325-01" class="">
+                                <div class="card-header" role="tab" id="headingOne">
+                                    <h5 class="mb-0">
+                                            1.データ一覧を表示する
+                                    </h5>
+                                </div>
+                            </a>
+
+                            <div id="collapse-sql-190325-01" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                                <div class="card-body">
+                                    <pre><code class="prettyprint">
+    SELECT * FORM test_table;
+                                    </code></pre>
+                                    <p>テーブル「test_table」からすべて(*)のデータを表示する。</p>
+                                    <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                    <p class="text-right">作成日：2019.3.25</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+
+
+        </div><!--        コンテンツカードここまで-->
+
+        </div><!--containerここまで-->
+
+
+    <!--        footer-->
+    <footer class="foot">
+        <ul class="box2">
+            <a href="../info/info.html">
+                <li class="box3">
+                    <p>本サイトについて</p>
+                </li>
+            </a>
+            <a href="mailto:kotanote2019@gmail.com">
+                <li class="box3">
+                    <p>お問合せ</p>
+                </li>
+            </a>
+            <li class="box3">
+                <p>©︎ 2019 Kotanote.com</p>
+            </li>
+        </ul>
+    </footer>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script>
+        //        Bootstrap Tooltips
+        $(function() {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+
+<!--    googleの「code-prettify」を使用する-->
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=sql"></script>
+
+    </body>
+
+</html>
