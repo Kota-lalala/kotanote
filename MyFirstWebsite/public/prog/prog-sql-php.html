@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+
+    <head>
+        <!-- Required meta tags -->
+        <!-- Bootstrap4.3.1用 -->
+
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <!--        メイン用 style.css  レスポンシブ用 responsive.css-->
+        <link rel="stylesheet" type="text/css" href="../css/style1.css">
+        <link rel="stylesheet" type="text/css" href="../css/responsive.css" media="screen and (max-width: 1120px)">
+
+        <!--        FontAwesome用-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+        <!-- googleの「code-prettify」表示用テーマ -->
+        <link rel="stylesheet" type="text/css" href="../css/atelier-lakeside-light.css">
+
+        <!--    Google font-->
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&amp;subset=latin-ext" rel="stylesheet">
+
+
+        <title>Kotanote</title>
+    </head>
+
+    <body>
+
+        <!--        header部分-->
+        <header>
+
+            <!--            ナビバー-->
+            <nav class="navbar navbar-dark bg-dark">
+
+                <!--                フェイスブック、ツイッター のリンクアイコン-->
+                <div class="nav-left">
+                    <div>
+                        <a href="http://www.facebook.com/share.php?u=https://kotanote.com/kotanote/public/prog/prog.html">
+                            <i class="sec4-ico fab fa-facebook"></i>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="http://twitter.com/share?text=https://kotanote.com/kotanote/public/prog/prog.html" rel="nofollow">
+                            <i class="sec4-ico fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+
+
+                <!--Webサイトのタイトル-->
+                <a href="../index.html" class="navbar-brand">Kotanote</a>
+                <!--ハンバーガーメニュー-->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navmenu1" aria-controls="navmenu1" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navmenu1">
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link" href="prog.html">プログラミング note</a>
+                        <a class="nav-item nav-link" href="../music/music.html">ミュージック note</a>
+                        <a class="nav-item nav-link" href="../info/info.html">本サイトについて</a>
+                        <!--                        <a class="nav-item nav-link" href="#">Menu#3</a>-->
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <div class="container con-prog-sql">
+            <!--        トップカード-->
+            <div class="row">
+
+            </div>
+
+            <!--        コンテンツカード-->
+            <div class="row">
+
+                <div class="col-12 col-md-12 mb-2">
+                    <div class="card card-top">
+                        <img class="card-img-top" src="../img/prog-sql.png" alt="Card image cap">
+                        <div class="card-body">
+                            <h4 class="card-title">SQL学習済み内容の吐き出し部屋〜PHPと共に編</h4>
+                            <p class="con-rec-p">
+                                最新情報:5点を追加しました。-UP- 2019.3.27更新
+                                <span class="badge badge-info">new</span>
+                            </p>
+                            <p class="card-text">
+                                ここではMySQLとPHPを組み合わせた情報を載せていきます。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-12 col-md-6 mb-2 p-sql-php p-sql-php-190327-05">
+
+                    <div class="card">
+                        <a data-toggle="collapse" href="#collapse-sql-php-190327-05" aria-expanded="true" aria-controls="collapse-sql-php-190327-05" class="">
+                            <div class="card-header" role="tab">
+                                <h5 class="mb-0">
+                                    5.テーブルから1件のデータを取り出す
+                                </h5>
+                            </div>
+                        </a>
+
+                        <div id="collapse-sql-php-190327-05" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                            <div class="card-body">
+                                <pre><code class="prettyprint">
+$recordSet = mysqli_query(
+    $db ,
+    ' SELECT * FROM my_items '
+);
+$data = mysqli_fetch_assoc($recordSet);
+echo $data['item_name'];
+                                    </code></pre>
+                                <p>
+                                    $dbに対し、my_itemeテーブルの全てのデータの全てのカラム(*)を$recordSetへ入れ、
+                                    その中から1件のデータを$dataに代入し、echoで画面に表示している。<br>
+                                    mysqli_query()を使いSQL文を実行する。<br>
+                                    $dbに対して「SELECT・・・」を実行。<br>
+                                    「SELECT yyy FROM xxx」<br>
+                                    xxxには「テーブル」yyyには「取得するカラム」を入力。<br>
+                                    mysqli_fetch_assoc()で$recordSet(配列データ)のデータ１件を$dataに代入。<br>
+                                    $data['item_name']で配列$dataの中のitem_nameカラムの値をechoで表示させている。
+                                </p>
+                                <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                <p class="text-right">作成日：2019.3.27</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-12 col-md-6 mb-2 p-sql-php p-sql-php-190327-04">
+
+                    <div class="card">
+                        <a data-toggle="collapse" href="#collapse-sql-php-190327-04" aria-expanded="true" aria-controls="collapse-sql-php-190327-04" class="">
+                            <div class="card-header" role="tab">
+                                <h5 class="mb-0">
+                                    4.データを削除する
+                                </h5>
+                            </div>
+                        </a>
+
+                        <div id="collapse-sql-php-190327-04" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                            <div class="card-body">
+                                <pre><code class="prettyprint">
+mysqli_query(
+    $db ,
+    ' DELETE FROM my_items
+      WHERE id=5 '
+)
+or die(mysqli_error($db));
+                                    </code></pre>
+                                <p>
+                                    $dbに対し、my_itemeテーブルのid=5のデータを削除している。<br>
+                                    mysqli_query()を使いSQL文を実行する。<br>
+                                    $dbに対して「DELETE・・・」を実行。<br>
+                                    「DELETE FROM xxx WHERE zzz」<br>
+                                    xxxには「テーブル名」zzzには絞り込み条件を記す。<br>
+                                    「or die・・・」の部分はorなので、前文が無事実行されればスルーされ、
+                                    そうでなければ実行。エラーを出力して、強制終了させる。
+                                </p>
+                                <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                <p class="text-right">作成日：2019.3.27</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-12 col-md-6 mb-2 p-sql-php p-sql-php-190327-03">
+
+                    <div class="card">
+                        <a data-toggle="collapse" href="#collapse-sql-php-190327-03" aria-expanded="true" aria-controls="collapse-sql-php-190327-03" class="">
+                            <div class="card-header" role="tab">
+                                <h5 class="mb-0">
+                                    3.データを変更する
+                                </h5>
+                            </div>
+                        </a>
+
+                        <div id="collapse-sql-php-190327-03" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                            <div class="card-body">
+                                <pre><code class="prettyprint">
+mysqli_query(
+    $db ,
+    ' UPDATE my_items
+    SET item_name="桃"
+    WHERE id=5 '
+)
+or die(mysqli_error($db));
+                                    </code></pre>
+                                <p>
+                                    $dbに対し、my_itemeテーブルのid=5のデータに対し、item_nameの値を桃に変更。<br>
+                                    mysqli_query()を使いSQL文を実行する。<br>
+                                    $dbに対して「UPDATE・・・」を実行。<br>
+                                    「UPDATE xxx SET yyy WHERE zzz」<br>
+                                    xxxには「テーブル名」yyyにはカラムと値「price=210」zzzには絞り込み条件を記す。<br>
+                                    「or die・・・」の部分はorなので、前文が無事実行されればスルーされ、
+                                    そうでなければ実行。エラーを出力して、強制終了させる。
+                                </p>
+                                <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                <p class="text-right">作成日：2019.3.27</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-12 col-md-6 mb-2 p-sql-php p-sql-php-190327-02">
+
+                    <div class="card">
+                        <a data-toggle="collapse" href="#collapse-sql-php-190327-02" aria-expanded="true" aria-controls="collapse-sql-php-190327-02" class="">
+                            <div class="card-header" role="tab">
+                                <h5 class="mb-0">
+                                    2.データを入力する
+                                </h5>
+                            </div>
+                        </a>
+
+                        <div id="collapse-sql-php-190327-02" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                            <div class="card-body">
+                                <pre><code class="prettyprint">
+mysqli_query(
+    $db ,
+    ' INSERT INTO my_items
+    SET maker_id=1, item_name="もも", price=210 '
+)
+or die(mysqli_error($db));
+                                    </code></pre>
+                                <p>
+                                    $dbに対し、my_itemsへ3つのカラムの値を持つデータを入力している。<br>
+                                    mysqli_query()を使いSQL文を実行する。<br>
+                                    $dbに対して「INSERT・・・」を実行。<br>
+                                    「INSERT INTO xxx SET yyy」<br>
+                                    xxxには「テーブル名」yyyにはカラムと値「price=210」を記す。<br>
+                                    「or die・・・」の部分はorなので、前文が無事実行されればスルーされ、
+                                    そうでなければ実行。エラーを出力して、強制終了させる。
+                                </p>
+                                <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                <p class="text-right">作成日：2019.3.27</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-12 col-md-6 mb-2 p-sql-php p-sql-php-190327-01">
+
+                    <div class="card">
+                        <a data-toggle="collapse" href="#collapse-sql-php-190327-01" aria-expanded="true" aria-controls="collapse-sql-php-190327-01" class="">
+                            <div class="card-header" role="tab">
+                                <h5 class="mb-0">
+                                    1.データベースに接続する
+                                </h5>
+                            </div>
+                        </a>
+
+                        <div id="collapse-sql-php-190327-01" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                            <div class="card-body">
+                                <pre><code class="prettyprint">
+&lt;?php
+
+$db = mysqli_connect(&#039;localhost&#039;,&#039;root&#039;,&#039;&#039;,&#039;my_data&#039;)
+      or die(mysqli_connect_error());
+mysqli_set_charset($db , &#039;utf8&#039;);
+
+?&gt;
+                                    </code></pre>
+                                <p>
+                                    データベース「my_data」に接続する。(最初の決まり文句の様なもの)<br>
+                                    mysqli_connect('ホスト名','ユーザ名','パスワード','テーブル名')
+                                    の部分で接続している。<br>
+                                    「or die・・・」の部分はorなので、前文が無事実行されればスルーされ、
+                                    そうでなければ実行。エラーを出力して、強制終了させる。<br>
+                                    $dbの文字コードを「utf8」に設定する。
+                                </p>
+                                <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                <p class="text-right">作成日：2019.3.27</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+        </div><!--        コンテンツカードここまで-->
+
+        </div><!--containerここまで-->
+
+
+    <!--        footer-->
+    <footer class="foot">
+        <ul class="box2">
+            <a href="../info/info.html">
+                <li class="box3">
+                    <p>本サイトについて</p>
+                </li>
+            </a>
+            <a href="mailto:kotanote2019@gmail.com">
+                <li class="box3">
+                    <p>お問合せ</p>
+                </li>
+            </a>
+            <li class="box3">
+                <p>©︎ 2019 Kotanote.com</p>
+            </li>
+        </ul>
+    </footer>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+    <!--    googleの「code-prettify」を使用する-->
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=sql"></script>
+
+    </body>
+
+</html>

@@ -24,6 +24,9 @@
         <link rel="stylesheet" type="text/css" href="../css/atelier-lakeside-light.css">
 
 
+        <!--    Google font-->
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&amp;subset=latin-ext" rel="stylesheet">
+
 
         <title>Kotanote</title>
     </head>
@@ -68,7 +71,7 @@
             </nav>
         </header>
 
-        <div class="container">
+        <div class="container con-prog-sql">
             <!--        トップカード-->
             <div class="row">
 
@@ -78,13 +81,13 @@
             <div class="row">
 
                 <div class="col-12 col-md-12 mb-2">
-                    <div class="card">
-                        <img class="card-img-top" src="../img/prog-top.jpg" alt="Card image cap">
+                    <div class="card card-top">
+                        <img class="card-img-top" src="../img/prog-sql.png" alt="Card image cap">
                         <div class="card-body">
                             <h4 class="card-title">SQL学習済み内容の吐き出し部屋</h4>
                             <p class="con-rec-p">
-                                最新情報:1点を追加しました。-UP- 2019.3.25更新
-                                <span class="badge badge-info">new</span>
+                                最新情報:11点を追加しました。-UP- 2019.3.26更新
+<!--                                <span class="badge badge-info">new</span>-->
                             </p>
                             <p class="card-text">
                                 現在SQLを学習中につき、学習した事をただ吐き出すページです。細かい解説は無しでチートシート的に作成していこうと思っています。さっと見られるのが良い所です。こちらは「Collapse」で折りたたみ式にして作ってみます。見やすく出来るかな？
@@ -96,12 +99,589 @@
 
 
 
+                <div class="col-12 col-md-6 mb-2 p-sql p-sql-190326-11">
+
+                        <div class="card">
+                            <a data-toggle="collapse" href="#collapse-sql-190326-11" aria-expanded="true" aria-controls="collapse-sql-190326-11" class="">
+                                <div class="card-header" role="tab">
+                                    <h5 class="mb-0">
+                                        25.まとめ〜一通りの流れを盛り込んでみた
+                                    </h5>
+                                </div>
+                            </a>
+
+                            <div id="collapse-sql-190326-11" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                                <div class="card-body">
+                                    <p>
+                                        テーブルを作る
+                                    </p>
+                                    <pre><code class="prettyprint">
+CREATE TABLE carts ( id INT , item_id INT , count INT );
+                                    </code></pre>
+                                    <p>
+                                        主キーを設定する
+                                    </p>
+
+                                    <pre><code class="prettyprint">
+ALTER TABLE `carts` ADD PRIMARY KEY(`id`);
+                                    </code></pre>
+                                    <p>
+                                        主キーをオートインクリメントに設定する
+                                    </p>
+
+                                    <pre><code class="prettyprint">
+ALTER TABLE `carts` CHANGE `id` `id` INT(11) NOT NULL AUTO_INCREMENT;
+                                    </code></pre>
+                                    <p>
+                                        データを入力する
+                                    </p>
+
+                                    <pre><code class="prettyprint">
+INSERT INTO carts SET item_id=1 , count=5 ;
+INSERT INTO carts SET item_id=2 , count=3 ;
+INSERT INTO carts SET item_id=3 , count=1 ;
+                                    </code></pre>
+                                    <p>
+                                        リレーションを張る(test_table.idとcarts.item_idに)
+                                    </p>
+
+                                    <pre><code class="prettyprint">
+SELECT test_table.name, carts.count FROM test_table, carts WHERE test_table.id=carts.item_id;
+                                    </code></pre>
+                                    <p>
+                                        グループ化して集計をする
+                                    </p>
+                                    <pre><code class="prettyprint">
+SELECT item_id , SUM(count) FROM carts GROUP BY item_id;
+                                    </code></pre>
+                                    <p>
+                                        リレーションを張り、かつグループ化して集計する
+                                    </p>
+                                    <pre><code class="prettyprint">
+SELECT t.name , SUM(c.count) FROM test_table t, carts c WHERE t.id=c.item_id GROUP BY c.item_id;
+                                    </code></pre>
+
+                                    <p>
+                                        外部結合させ、かつグループ化して集計する
+                                    </p>
+                                    <pre><code class="prettyprint">
+SELECT t.name , SUM(c.count) FROM test_table t LEFT JOIN carts c ON t.id=c.item_id GROUP BY c.item_id;
+                                    </code></pre>
+
+                                    <p>
+                                        3つのテーブルをリレーションさせ、かつグループ化して集計する
+                                    </p>
+                                    <pre><code class="prettyprint">
+SELECT m.name , t.name ,SUM(c.count) AS sales_count_sum FROM makers m, test_table t LEFT JOIN carts c ON t.id=c.item_id WHERE m.id=t.maker_id GROUP BY c.item_id ORDER BY sales_count_sum DESC;
+                                    </code></pre>
+
+                                    <p>
+                                        以上です。上記の解説(簡単ではございますが)は他のカードに書いてありますので、ご覧いただけたらと思います。
+                                    </p>
+                                    <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                    <p class="text-right">作成日：2019.3.26</p>
+                                </div>
+                            </div>
+                        </div>
+
+                </div>
+
+                <div class="col-12 col-md-6 mb-2 p-sql p-sql-190326-10">
+
+                        <div class="card">
+                            <a data-toggle="collapse" href="#collapse-sql-190326-10" aria-expanded="true" aria-controls="collapse-sql-190326-10" class="">
+                                <div class="card-header" role="tab">
+                                    <h5 class="mb-0">
+                                        24.3つのテーブルにリレーションを張る（悲鳴があがるので要注意！ぎゃ〜〜）
+                                    </h5>
+                                </div>
+                            </a>
+
+                            <div id="collapse-sql-190326-10" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                                <div class="card-body">
+                                    <pre><code class="prettyprint">
+SELECT m.name , t.name ,SUM(c.count) AS sales_count_sum FROM makers m, test_table t LEFT JOIN carts c ON t.id=c.item_id WHERE m.id=t.maker_id GROUP BY c.item_id ORDER BY sales_count_sum DESC;
+                                    </code></pre>
+                                    <p>
+                                        makers」「test_table」「carts」にリレーションを張って「c.item_id」でグループ化して、「m.name」「t.name」「SUM(c.count) AS sales_count_sum」を「sales_count_sum」の降順で並び替えて表示しています。
+                                    </p>
+
+                                    <pre><code class="prettyprint">
+SELECT m.name , t.name ,SUM(c.count) AS sales_count_sum
+                                    </code></pre>
+                                    <p>
+                                        「m.name」「t.name」「SUM(c.count)」を表示してね。そのときSUM(c.count)は「 AS sales_count_sum」とする事。
+                                    </p>
+
+                                    <pre><code class="prettyprint">
+FROM makers m, test_table t LEFT JOIN carts c ON t.id=c.item_id
+                                    </code></pre>
+                                    <p>
+                                        使用するテーブルの指示。「makers」を使うよ。それと「test_table」をベースとして「carts」を外部結合させてね。
+                                    </p>
+
+                                    <pre><code class="prettyprint">
+WHERE m.id=t.maker_id
+                                    </code></pre>
+                                    <p>
+                                        「makers」と「test_table」を内部結合させてね。
+                                    </p>
+
+                                    <pre><code class="prettyprint">
+GROUP BY c.item_id
+                                    </code></pre>
+                                    <p>
+                                        「c.item_id」でグループ化させてね。
+                                    </p>
+
+                                    <hr>
+
+                                    <pre><code class="prettyprint">
+ORDER BY sales_count_sum DESC;
+                                    </code></pre>
+                                    <p>
+                                        「sales_count_sum」の値で降順で並び替えするんだよ。
+                                    </p>
+                                    <p>
+                                        以上！！解るけど・・・・長い。辛い。よく頑張った！笑。そのうち慣れると信じて眠らせておこうzzZZ
+                                    </p>
+                                    <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                    <p class="text-right">作成日：2019.3.26</p>
+                                </div>
+                            </div>
+                        </div>
+
+                </div>
+
+                <div class="col-12 col-md-6 mb-2 p-sql p-sql-190326-09">
+
+                        <div class="card">
+                            <a data-toggle="collapse" href="#collapse-sql-190326-09" aria-expanded="true" aria-controls="collapse-sql-190326-09" class="">
+                                <div class="card-header" role="tab">
+                                    <h5 class="mb-0">
+                                        23.便利なコマンド集
+                                    </h5>
+                                </div>
+                            </a>
+
+                            <div id="collapse-sql-190326-09" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                                <div class="card-body">
+                                    <pre><code class="prettyprint">
+DISTINCT item_id FROM carts;
+                                    </code></pre>
+                                    <p>
+                                        「item_id」だけを表示してね。だけど「重複したデータ」は1度だけの表示にしてね。で抽出。
+                                    </p>
+
+                                    <pre><code class="prettyprint">
+SELECT * FROM test_table WHERE price&gt;=50 AND price&lt;150;
+SELECT * FROM test_table WHERE price BETWEEN 50 AND 149;
+                                    </code></pre>
+                                    <p>
+                                        上記の2分は同じ指示。ANDで範囲指定するのと同じ意味で、BETWEENを使った記述も出来る。
+                                    </p>
+
+                                    <pre><code class="prettyprint">
+SELECT * FROM test_table WHERE id=1 OR id=3;
+SELECT * FROM test_table WHERE id IN (1,3);
+                                    </code></pre>
+                                    <p>
+                                        上記の2分は同じ指示。ORで複数指定するとの同じ意味で、IN()を使った記述の出来る。
+                                    </p>
+
+                                    <pre><code class="prettyprint">
+SELECT * FROM test_table LIMIT 10;
+                                    </code></pre>
+                                    <p>
+                                        LIMITを付け、抽出件数のリミットを10件までに制限しています。
+                                    </p>
+
+                                    <pre><code class="prettyprint">
+SELECT * FROM test_table LIMIT 5,10;
+                                    </code></pre>
+                                    <p>
+                                        また、この様に指示すると、最初5件は飛ばして6件目から表示を開始、その後10件分までにするという指示。
+                                    </p>
+
+                                    <hr>
+
+                                    <pre><code class="prettyprint">
+SELECT item_id , SUM(count) AS sales_count_sum FROM carts GROUP BY item_id;
+                                    </code></pre>
+                                    <p>
+                                        抽出結果を表示する際のカラムを「SUM(count)」から「sales_count_sum」に置き換えて表示させる事が出来ます。
+                                    </p>
+
+                                    <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                    <p class="text-right">作成日：2019.3.26</p>
+                                </div>
+                            </div>
+                        </div>
+
+                </div>
+
+                <div class="col-12 col-md-6 mb-2 p-sql p-sql-190326-08">
+
+                        <div class="card">
+                            <a data-toggle="collapse" href="#collapse-sql-190326-08" aria-expanded="true" aria-controls="collapse-sql-190326-08" class="">
+                                <div class="card-header" role="tab">
+                                    <h5 class="mb-0">
+                                        22.リレーションを更に〜外部結合させる
+                                    </h5>
+                                </div>
+                            </a>
+
+                            <div id="collapse-sql-190326-08" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                                <div class="card-body">
+                                    <pre><code class="prettyprint">
+SELECT t.name , SUM(c.count) FROM test_table t LEFT JOIN carts c ON t.id=c.item_id GROUP BY c.item_id;
+                                    </code></pre>
+                                    <p>
+                                        「test_table」をベースとして「carts」にリレーションを張って、そのテーブルから「item_id」でグループ化した後、「name」と「SUM(c.count)」(集計結果)を表示しています。
+                                    </p>
+
+                                    <pre><code class="prettyprint">
+SELECT t.name , SUM(c.count)
+                                    </code></pre>
+                                    <p>
+                                        ここで「t.name」「SUM(c.count)」の値を表示してね。と依頼。（先程と同じ）
+                                    </p>
+
+                                    <pre><code class="prettyprint">
+FROM test_table t, LEFT JOIN carts c
+                                    </code></pre>
+                                    <p>
+                                        次にこの部分で「test_table」をベースとして「carts」のテーブルも使ってねと依頼。更に「t」「c」と呼ぶから。とも伝えている。
+                                    </p>
+
+                                    <pre><code class="prettyprint">
+ON t.id=c.item_id
+                                    </code></pre>
+                                    <p>
+                                        で、「t.id」「c.item_id」を関連付けてね。と依頼。リレーション
+                                    </p>
+
+                                    <pre><code class="prettyprint">
+GROUP BY c.item_id;
+                                    </code></pre>
+                                    <p>
+                                        最後に「c.item_id」でグループ化した状態で行ってね。と依頼。（先程と同じ）
+                                    </p>
+
+                                    <hr>
+
+                                    <pre><code class="prettyprint">
+SELECT t.name , SUM(c.count) FROM test_table t, carts c WHERE t.id=c.item_id GROUP BY c.item_id;
+                                    </code></pre>
+                                    <p>
+                                        内部結合の書き方その1
+                                    </p>
+
+                                    <pre><code class="prettyprint">
+SELECT t.name , SUM(c.count) FROM test_table t INNER JOIN carts c ON t.id=c.item_id GROUP BY c.item_id;
+                                    </code></pre>
+                                    <p>
+                                        内部結合の書き方その2
+                                    </p>
+
+                                    <pre><code class="prettyprint">
+SELECT t.name , SUM(c.count) FROM test_table t LEFT JOIN carts c ON t.id=c.item_id GROUP BY c.item_id;
+                                    </code></pre>
+                                    <p>
+                                        外部結合で左側をベースとする書き方
+                                    </p>
+
+                                    <pre><code class="prettyprint">
+SELECT t.name , SUM(c.count) FROM carts c RIGHT JOIN test_table t ON t.id=c.item_id GROUP BY c.item_id;
+                                    </code></pre>
+                                    <p>
+                                        外部結合で右側をベースとする書き方
+                                    </p>
+                                    <p>
+                                        成る程。なんとなく分かった気はするが、ややこしい！！ですよね^^;
+                                    </p>
+
+                                    <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                    <p class="text-right">作成日：2019.3.26</p>
+                                </div>
+                            </div>
+                        </div>
+
+                </div>
+
+                <div class="col-12 col-md-6 mb-2 p-sql p-sql-190326-07">
+
+                        <div class="card">
+                            <a data-toggle="collapse" href="#collapse-sql-190326-07" aria-expanded="true" aria-controls="collapse-sql-190326-07" class="">
+                                <div class="card-header" role="tab">
+                                    <h5 class="mb-0">
+                                        21.更に複雑な集計をする〜グループ化とリレーション
+                                    </h5>
+                                </div>
+                            </a>
+
+                            <div id="collapse-sql-190326-07" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                                <div class="card-body">
+                                    <pre><code class="prettyprint">
+SELECT t.name , SUM(c.count) FROM test_table t, carts c WHERE t.id=c.item_id GROUP BY c.item_id;
+                                    </code></pre>
+                                    <p>
+                                        「test_table」と「carts」の二つのテーブルにリレーションを張って、「item_id」でグループ化した後、「name」と「SUM(c.count)」(集計結果)を表示しています。
+                                    </p>
+
+                                    <pre><code class="prettyprint">
+SELECT t.name , SUM(c.count)
+                                    </code></pre>
+                                    <p>
+                                        ここで「t.name」「SUM(c.count)」の値を表示してね。と依頼。
+                                    </p>
+
+                                    <pre><code class="prettyprint">
+FROM test_table t, carts c
+                                    </code></pre>
+                                    <p>
+                                        次にこの部分で「test_table」「carts」のテーブルを使ってねと依頼。更に「t」「c」と呼ぶから。とも伝えている。
+                                    </p>
+
+                                    <pre><code class="prettyprint">
+WHERE t.id=c.item_id
+                                    </code></pre>
+                                    <p>
+                                        で、「t.id」「c.item_id」を関連付けてね。と依頼。リレーション
+                                    </p>
+
+                                    <pre><code class="prettyprint">
+GROUP BY c.item_id;
+                                    </code></pre>
+                                    <p>
+                                        最後に「c.item_id」でグループ化した状態で行ってね。と依頼。
+                                    </p>
+
+                                    <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                    <p class="text-right">作成日：2019.3.26</p>
+                                </div>
+                            </div>
+                        </div>
+
+                </div>
+
+                <div class="col-12 col-md-6 mb-2 p-sql p-sql-190326-06">
+
+                        <div class="card">
+                            <a data-toggle="collapse" href="#collapse-sql-190326-06" aria-expanded="true" aria-controls="collapse-sql-190326-06" class="">
+                                <div class="card-header" role="tab">
+                                    <h5 class="mb-0">
+                                        20.複雑な集計をする〜グループ化
+                                    </h5>
+                                </div>
+                            </a>
+
+                            <div id="collapse-sql-190326-06" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                                <div class="card-body">
+                                    <pre><code class="prettyprint">
+SELECT item_id , SUM(count) FROM carts GROUP BY item_id;
+                                    </code></pre>
+                                    <p>
+                                        「item_id」でグループ化した時の「item_id」「SUM(count)」が表示されています。<br>
+
+                                        SELECTを使って「item_id」「SUM(count)」の値を表示させます。<br>
+                                        FROMで「carts」からデータを抽出するよ。と伝え、<br>
+                                        GROUP BYの後の指示で「item_id」でグループ化したものを計算してね。と伝えています。<br>
+                                        ので、結果として「item_id」でグループ化した時の「item_id」「SUM(count)」が表示されています。
+                                    </p>
+                                    <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                    <p class="text-right">作成日：2019.3.26</p>
+                                </div>
+                            </div>
+                        </div>
+
+                </div>
+
+                <div class="col-12 col-md-6 mb-2 p-sql p-sql-190326-05">
+
+                        <div class="card">
+                            <a data-toggle="collapse" href="#collapse-sql-190326-05" aria-expanded="true" aria-controls="collapse-sql-190326-05" class="">
+                                <div class="card-header" role="tab">
+                                    <h5 class="mb-0">
+                                        19.テーブル名のショートカット
+                                    </h5>
+                                </div>
+                            </a>
+
+                            <div id="collapse-sql-190326-05" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                                <div class="card-body">
+                                    <pre><code class="prettyprint">
+SELECT * FROM makers m, test_table t WHERE m.id = t.maker_id;
+                                    </code></pre>
+                                    <p>
+                                        こちらは先ほどのリレーションの項目で使用したコードを修正したもの。
+                                        FROMの後にご注目。「makers」を「makers m」とし、「test_table」を「test_table t」としてあります。<br>
+                                        イメージとしてはPHPで行ったインスタンスの生成に似ているでしょうか？
+                                        それぞれを「m」「t」として使用できるのです。なるほど便利！
+                                    </p>
+                                    <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                    <p class="text-right">作成日：2019.3.26</p>
+                                </div>
+                            </div>
+                        </div>
+
+                </div>
+
+                <div class="col-12 col-md-6 mb-2 p-sql p-sql-190326-04">
+
+                        <div class="card">
+                            <a data-toggle="collapse" href="#collapse-sql-190326-04" aria-expanded="true" aria-controls="collapse-sql-190326-04" class="">
+                                <div class="card-header" role="tab">
+                                    <h5 class="mb-0">
+                                        18.リレーション
+                                    </h5>
+                                </div>
+                            </a>
+
+                            <div id="collapse-sql-190326-04" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                                <div class="card-body">
+                                    <pre><code class="prettyprint">
+SELECT * FROM makers, test_table WHERE test_table.id=1 AND makers.id=test_table.maker_id;
+                                    </code></pre>
+                                    <p>
+                                        ANDの前・・・「test_tableのidが1」を指定<br>
+                                        ANDの後・・・上記のmaker_idとmakers.idの一致を指定<br>
+                                        つまり、idが1の商品情報と、その生産者の情報を一緒に表示してね。という意味。<br>
+
+                                        次に以下の様にすると
+                                    </p>
+                                    <pre><code class="prettyprint">
+SELECT * FROM makers, test_table WHERE makers.id = test_table.maker_id;
+                                    </code></pre>
+                                    <p>
+                                        makers.idとtest_table.maker_idを関連付けて、すべてのデータが表示できる。
+                                    </p>
+                                    <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                    <p class="text-right">作成日：2019.3.26</p>
+                                </div>
+                            </div>
+                        </div>
+
+                </div>
+
+                <div class="col-12 col-md-6 mb-2 p-sql p-sql-190326-03">
+
+                        <div class="card">
+                            <a data-toggle="collapse" href="#collapse-sql-190326-03" aria-expanded="true" aria-controls="collapse-sql-190326-03" class="">
+                                <div class="card-header" role="tab">
+                                    <h5 class="mb-0">
+                                        17.計算・集計をする
+                                    </h5>
+                                </div>
+                            </a>
+
+                            <div id="collapse-sql-190326-03" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                                <div class="card-body">
+                                    <pre><code class="prettyprint">
+SELECT SUM(price) FROM test_table;
+                                    </code></pre>
+                                    <p>
+                                        SUM()でpriceの合計を表示する。
+                                    </p>
+                                    <pre><code class="prettyprint">
+SELECT MAX(price) FROM test_table;
+                                    </code></pre>
+                                    <p>
+                                        MAX()でpriceの最大値を表示する。
+                                    </p>
+                                    <pre><code class="prettyprint">
+SELECT MIN(price) FROM test_table;
+                                    </code></pre>
+                                    <p>
+                                        MIN()でpriceの最小値を表示する。
+                                    </p>
+                                    <pre><code class="prettyprint">
+SELECT COUNT(price) FROM test_table;
+                                    </code></pre>
+                                    <p>
+                                        COUNT()でpriceのヒット数を表示する。
+                                    </p>
+                                    <pre><code class="prettyprint">
+SELECT AVG(price) FROM test_table;
+                                    </code></pre>
+                                    <p>
+                                        AVG()でpriceの平均値を表示する。
+                                    </p>
+                                    <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                    <p class="text-right">作成日：2019.3.26</p>
+                                </div>
+                            </div>
+                        </div>
+
+                </div>
+
+                <div class="col-12 col-md-6 mb-2 p-sql p-sql-190326-02">
+
+                        <div class="card">
+                            <a data-toggle="collapse" href="#collapse-sql-190326-02" aria-expanded="true" aria-controls="collapse-sql-190326-02" class="">
+                                <div class="card-header" role="tab">
+                                    <h5 class="mb-0">
+                                        16.日付を入力する(データ更新日)
+                                    </h5>
+                                </div>
+                            </a>
+
+                            <div id="collapse-sql-190326-02" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                                <div class="card-body">
+                                    <pre><code class="prettyprint">
+ALTER TABLE `test_table` ADD `modified` TIMESTAMP NOT NULL AFTER `created`;
+                                    </code></pre>
+                                    <p>
+                                        の様に「TIMESTAMP」型でカラムを追加すれば、そこにはデータの更新日時が自動入力されます。
+                                    </p>
+                                    <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                    <p class="text-right">作成日：2019.3.26</p>
+                                </div>
+                            </div>
+                        </div>
+
+                </div>
+
+                <div class="col-12 col-md-6 mb-2 p-sql p-sql-190326-01">
+
+                        <div class="card">
+                            <a data-toggle="collapse" href="#collapse-sql-190326-01" aria-expanded="true" aria-controls="collapse-sql-190326-01" class="">
+                                <div class="card-header" role="tab">
+                                    <h5 class="mb-0">
+                                        15.日付を入力する(指定日)
+                                    </h5>
+                                </div>
+                            </a>
+
+                            <div id="collapse-sql-190326-01" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                                <div class="card-body">
+                                    <pre><code class="prettyprint">
+UPDATE test_table SET created = '2010-07-01' WHERE id = 1 ;
+                                    </code></pre>
+                                    <p>
+                                        とすると、idが1のデータに対して、createdに「2010-07-01」の日付を入力できる。<br>
+                                        (createdはDATETIME型で作成済み)
+                                    </p>
+
+                                    <pre><code class="prettyprint">
+UPDATE test_table SET created = now() WHERE id = 2 ;
+                                    </code></pre>
+                                    <p>
+                                        とすれば今の日付と時刻が入力される。
+                                    </p>
+                                    <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                    <p class="text-right">作成日：2019.3.26</p>
+                                </div>
+                            </div>
+                        </div>
+
+                </div>
+
                 <div class="col-12 col-md-6 mb-2 p-sql p-sql-190325-014">
-                    <div id="accordion" role="tablist">
 
                         <div class="card">
                             <a data-toggle="collapse" href="#collapse-sql-190325-014" aria-expanded="true" aria-controls="collapse-sql-190325-014" class="">
-                                <div class="card-header" role="tab" id="headingOne">
+                                <div class="card-header" role="tab">
                                     <h5 class="mb-0">
                                         14.データを並び替える
                                     </h5>
@@ -138,15 +718,15 @@ SELECT * FROM test_table WHERE price&lt;100 ORDER BY id ASC;
                             </div>
                         </div>
 
-                    </div>
                 </div>
 
+
                 <div class="col-12 col-md-6 mb-2 p-sql p-sql-190325-013">
-                    <div id="accordion" role="tablist">
+
 
                         <div class="card">
                             <a data-toggle="collapse" href="#collapse-sql-190325-013" aria-expanded="true" aria-controls="collapse-sql-190325-013" class="">
-                                <div class="card-header" role="tab" id="headingOne">
+                                <div class="card-header" role="tab">
                                     <h5 class="mb-0">
                                         13.データを検索する〜WHEREに複数条件を加える
                                     </h5>
@@ -187,15 +767,14 @@ SELECT id, name, price FROM test_table WHERE (id=1 OR id=2) AND price&lt;100 AND
                             </div>
                         </div>
 
-                    </div>
                 </div>
 
                 <div class="col-12 col-md-6 mb-2 p-sql p-sql-190325-012">
-                    <div id="accordion" role="tablist">
+
 
                         <div class="card">
                             <a data-toggle="collapse" href="#collapse-sql-190325-012" aria-expanded="true" aria-controls="collapse-sql-190325-012" class="">
-                                <div class="card-header" role="tab" id="headingOne">
+                                <div class="card-header" role="tab">
                                     <h5 class="mb-0">
                                         12.データを検索する〜WHEREをもう少し詳しく
                                     </h5>
@@ -217,15 +796,14 @@ SELECT id, name, price FROM test_table WHERE name LIKE '*じゃが*';
                             </div>
                         </div>
 
-                    </div>
                 </div>
 
                 <div class="col-12 col-md-6 mb-2 p-sql p-sql-190325-011">
-                    <div id="accordion" role="tablist">
+
 
                         <div class="card">
                             <a data-toggle="collapse" href="#collapse-sql-190325-011" aria-expanded="true" aria-controls="collapse-sql-190325-011" class="">
-                                <div class="card-header" role="tab" id="headingOne">
+                                <div class="card-header" role="tab">
                                     <h5 class="mb-0">
                                         11.データを検索する〜WHEREをもう少し詳しく
                                     </h5>
@@ -279,15 +857,14 @@ SELECT id, name, price FROM test_table WHERE price&lt;&gt;100;
                             </div>
                         </div>
 
-                    </div>
                 </div>
 
                 <div class="col-12 col-md-6 mb-2 p-sql p-sql-190325-010">
-                    <div id="accordion" role="tablist">
+
 
                         <div class="card">
                             <a data-toggle="collapse" href="#collapse-sql-190325-010" aria-expanded="true" aria-controls="collapse-sql-190325-010" class="">
-                                <div class="card-header" role="tab" id="headingOne">
+                                <div class="card-header" role="tab">
                                     <h5 class="mb-0">
                                         10.カラムを追加する
                                     </h5>
@@ -308,15 +885,14 @@ ALTER TABLE `test_table` ADD `comment` TEXT NOT NULL AFTER `price`;
                             </div>
                         </div>
 
-                    </div>
                 </div>
 
                 <div class="col-12 col-md-6 mb-2 p-sql p-sql-190325-09">
-                    <div id="accordion" role="tablist">
+
 
                         <div class="card">
                             <a data-toggle="collapse" href="#collapse-sql-190325-09" aria-expanded="true" aria-controls="collapse-sql-190325-09" class="">
-                                <div class="card-header" role="tab" id="headingOne">
+                                <div class="card-header" role="tab">
                                     <h5 class="mb-0">
                                         9.オートインクリメントでプライマリーキー値を入力する
                                     </h5>
@@ -338,15 +914,14 @@ ALTER TABLE `makers` CHANGE `id` `id` INT(11) NOT NULL AUTO_INCREMENT;
                             </div>
                         </div>
 
-                    </div>
                 </div>
 
                 <div class="col-12 col-md-6 mb-2 p-sql p-sql-190325-08">
-                    <div id="accordion" role="tablist">
+
 
                         <div class="card">
                             <a data-toggle="collapse" href="#collapse-sql-190325-08" aria-expanded="true" aria-controls="collapse-sql-190325-08" class="">
-                                <div class="card-header" role="tab" id="headingOne">
+                                <div class="card-header" role="tab">
                                     <h5 class="mb-0">
                                         8.プライマリーキー(主キー)を設定する
                                     </h5>
@@ -369,15 +944,14 @@ ALTER TABLE `test_table` ADD PRIMARY KEY(`id`);
                             </div>
                         </div>
 
-                    </div>
                 </div>
 
                 <div class="col-12 col-md-6 mb-2 p-sql p-sql-190325-07">
-                    <div id="accordion" role="tablist">
+
 
                         <div class="card">
                             <a data-toggle="collapse" href="#collapse-sql-190325-07" aria-expanded="true" aria-controls="collapse-sql-190325-07" class="">
-                                <div class="card-header" role="tab" id="headingOne">
+                                <div class="card-header" role="tab">
                                     <h5 class="mb-0">
                                         7.データを検索する
                                     </h5>
@@ -398,15 +972,14 @@ SELECT name, price FROM test_table WHERE name='じゃがりこ';
                             </div>
                         </div>
 
-                    </div>
                 </div>
 
                 <div class="col-12 col-md-6 mb-2 p-sql p-sql-190325-06">
-                    <div id="accordion" role="tablist">
+
 
                         <div class="card">
                             <a data-toggle="collapse" href="#collapse-sql-190325-06" aria-expanded="true" aria-controls="collapse-sql-190325-06" class="">
-                                <div class="card-header" role="tab" id="headingOne">
+                                <div class="card-header" role="tab">
                                     <h5 class="mb-0">
                                         6.データを削除する
                                     </h5>
@@ -427,15 +1000,14 @@ DELETE FROM test_table WHERE id=10;
                             </div>
                         </div>
 
-                    </div>
                 </div>
 
                 <div class="col-12 col-md-6 mb-2 p-sql p-sql-190325-05">
-                    <div id="accordion" role="tablist">
+
 
                         <div class="card">
                             <a data-toggle="collapse" href="#collapse-sql-190325-05" aria-expanded="true" aria-controls="collapse-sql-190325-05" class="">
-                                <div class="card-header" role="tab" id="headingOne">
+                                <div class="card-header" role="tab">
                                     <h5 class="mb-0">
                                         5.データを変更する
                                     </h5>
@@ -457,15 +1029,14 @@ UPDATE test_table SET price=98 WHERE name='じゃがりこ';
                             </div>
                         </div>
 
-                    </div>
                 </div>
 
                 <div class="col-12 col-md-6 mb-2 p-sql p-sql-190325-04">
-                    <div id="accordion" role="tablist">
+
 
                         <div class="card">
                             <a data-toggle="collapse" href="#collapse-sql-190325-04" aria-expanded="true" aria-controls="collapse-sql-190325-04" class="">
-                                <div class="card-header" role="tab" id="headingOne">
+                                <div class="card-header" role="tab">
                                     <h5 class="mb-0">
                                         4.SQL文のスペース注意点
                                     </h5>
@@ -505,15 +1076,14 @@ price = 12  49;
                             </div>
                         </div>
 
-                    </div>
                 </div>
 
                 <div class="col-12 col-md-6 mb-2 p-sql p-sql-190325-03">
-                    <div id="accordion" role="tablist">
+
 
                         <div class="card">
                             <a data-toggle="collapse" href="#collapse-sql-190325-03" aria-expanded="true" aria-controls="collapse-sql-190325-03" class="">
-                                <div class="card-header" role="tab" id="headingOne">
+                                <div class="card-header" role="tab">
                                     <h5 class="mb-0">
                                             3.データを入力する
                                     </h5>
@@ -535,15 +1105,14 @@ price = 12  49;
                             </div>
                         </div>
 
-                    </div>
                 </div>
 
                 <div class="col-12 col-md-6 mb-2 p-sql p-sql-190325-02">
-                    <div id="accordion" role="tablist">
+
 
                         <div class="card">
                             <a data-toggle="collapse" href="#collapse-sql-190325-02" aria-expanded="true" aria-controls="collapse-sql-190325-02" class="">
-                                <div class="card-header" role="tab" id="headingOne">
+                                <div class="card-header" role="tab">
                                     <h5 class="mb-0">
                                             2.テーブルを作成する
                                     </h5>
@@ -565,16 +1134,15 @@ price = 12  49;
                             </div>
                         </div>
 
-                    </div>
                 </div>
 
 
                 <div class="col-12 col-md-6 mb-2 p-sql p-sql-190325-01">
-                    <div id="accordion" role="tablist">
+
 
                         <div class="card">
                             <a data-toggle="collapse" href="#collapse-sql-190325-01" aria-expanded="true" aria-controls="collapse-sql-190325-01" class="">
-                                <div class="card-header" role="tab" id="headingOne">
+                                <div class="card-header" role="tab">
                                     <h5 class="mb-0">
                                             1.データ一覧を表示する
                                     </h5>
@@ -593,9 +1161,7 @@ price = 12  49;
                             </div>
                         </div>
 
-                    </div>
                 </div>
-
 
 
 

@@ -2,6 +2,8 @@
 
 * {
     margin: 0;
+/*    font-family: 'Nova Mono', monospace;*/
+    font-family: 'Source Code Pro', monospace;
 }
 
 h1 {
@@ -31,6 +33,10 @@ a:hover {
 
 
 /*header部分*/
+
+.brand-name {
+    font-family: 'Nova Mono', monospace;
+}
 
 /*フェイスブック、ツイッター のリンクアイコンへ適用*/
 .nav-left {
@@ -71,6 +77,23 @@ a:hover {
     opacity: 0.7;
 }
 
+.con-prog-sql .card-top img {
+    max-width: 800px;
+    height: 250px;
+    object-fit: none;
+    object-position: 100% 10%;
+}
+
+.con-prog-php .card-top img {
+    max-width: 800px;
+    height: 250px;
+    object-fit: cover;
+    object-position: 100% 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
 /*カードがhoverの時の変色を設定*/
 .card:hover {
     background-color: #e2eef4;
@@ -91,6 +114,7 @@ a:hover {
 
 .btn-top {
     width: 100%;
+    margin-top: 15px;
 }
 
 
