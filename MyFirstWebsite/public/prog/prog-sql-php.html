@@ -85,7 +85,7 @@
                         <div class="card-body">
                             <h4 class="card-title">SQL学習済み内容の吐き出し部屋〜PHPと共に編</h4>
                             <p class="con-rec-p">
-                                最新情報:5点を追加しました。-UP- 2019.3.27更新
+                                最新情報:15点を追加しました。-UP- 2019.3.28更新
                                 <span class="badge badge-info">new</span>
                             </p>
                             <p class="card-text">
@@ -98,7 +98,978 @@
 
 
 
-                <div class="col-12 col-md-6 mb-2 p-sql-php p-sql-php-190327-05">
+                <div class="col-12 mb-2 p-sql-php p-sql-php-190328-15">
+
+                    <div class="card">
+                        <a data-toggle="collapse" href="#collapse-sql-php-190328-15" aria-expanded="true" aria-controls="collapse-sql-php-190328-15" class="">
+                            <div class="card-header" role="tab">
+                                <h5 class="mb-0">
+                                    20.指定したレコードを削除する
+                                </h5>
+                            </div>
+                        </a>
+
+                        <div id="collapse-sql-php-190328-15" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                            <div class="card-body">
+                                <p>
+                                    受け取ったidの値をもとにレコードを削除する、下記のコードを1つのファイルとして作成する。
+                                </p>
+                                <pre><code class="prettyprint">
+&lt;?php
+    require(&#039;dbconnect.php&#039;);
+
+    $sql = sprintf(
+        &quot; DELETE FROM my_items
+        WHERE id=%d &quot; ,
+        mysqli_real_escape_string($db , $_REQUEST[&#039;id&#039;])
+        );
+
+    mysqli_query($db , $sql) or die(mysqli_error($db));
+?&gt;
+                                </code></pre>
+                                <p>
+                                    require()いつものデータベース接続。<br>
+                                    DELETEのSQLコードを$sqlへ代入している。<br>
+                                    その際、sprintf()で%dに書式をセットしてidの値を使用。<br>
+                                    その中ではmysqli_real_escape_string()を使用して$_REQUEST['id']の値をサニタイズしてから渡している。<br>
+                                    mysqli_query()で$dbに対し$sqlのSQLコードを実行し、レコードを削除。<br>
+                                    その際のエラー対策として「or die・・・」をつけてある。
+                                </p>
+                                <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                <p class="text-right">作成日：2019.3.28</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-12 mb-2 p-sql-php p-sql-php-190328-14">
+
+                    <div class="card">
+                        <a data-toggle="collapse" href="#collapse-sql-php-190328-14" aria-expanded="true" aria-controls="collapse-sql-php-190328-14" class="">
+                            <div class="card-header" role="tab">
+                                <h5 class="mb-0">
+                                    19.変更内容をデータベースへ保存するファイルを作る。
+                                </h5>
+                            </div>
+                        </a>
+
+                        <div id="collapse-sql-php-190328-14" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                            <div class="card-body">
+                                <p>
+                                    「18.」から受け取ったデータをデータベースへ保存します。
+                                </p>
+                                <pre><code class="prettyprint">
+&lt;?php
+    require(&#039;dbconnect.php&#039;);
+
+    $sql = sprintf(
+    &#039; UPDATE my_items
+      SET maker_id =%d ,
+          item_name=&quot;%s&quot;,
+       WHERE id=%d &#039;,
+            mysqli_real_escape_string($db,$_POST[&#039;maker_id&#039; ]),
+            mysqli_real_escape_string($db,$_POST[&#039;item_name&#039;]),
+            mysqli_real_escape_string($db,$_POST[&#039;id&#039;  ]),
+    );
+    mysqli_query($db,$sql) or die(mysqli_error($db));
+?&gt;
+                                </code></pre>
+                                <p>
+                                    「8.フォームから情報を受け取り、テーブルに保存するまで」をコピーして一部を修正すればよい。
+                                    まず変更させるのでUPDATEを使用します。また、どのレコードを更新するかをidで指定しています。
+                                    後はそのまま。
+                                </p>
+                                <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                <p class="text-right">作成日：2019.3.28</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-12 mb-2 p-sql-php p-sql-php-190328-13">
+
+                    <div class="card">
+                        <a data-toggle="collapse" href="#collapse-sql-php-190328-13" aria-expanded="true" aria-controls="collapse-sql-php-190328-13" class="">
+                            <div class="card-header" role="tab">
+                                <h5 class="mb-0">
+                                    18.編集へのリンクを作成する
+                                </h5>
+                            </div>
+                        </a>
+
+                        <div id="collapse-sql-php-190328-13" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                            <div class="card-body">
+                                <p>
+                                    「12.データベースのデータをブラウザに表示する」を修正して編集へのリンクを追加し、
+                                    上記「17.編集ページの作成」へidを渡して移動する。という仕様を加える。
+                                </p>
+                                <pre><code class="prettyprint">
+&lt;?php
+require(&#039;dbconnect.php&#039;);
+
+$page = $_REQUEST[&#039;page&#039;];
+if ($page == &#039;&#039;) {
+    $page = 1;
+}
+$page = max($page, 1);
+
+//最終ページを取得する
+$sql = &#039;SELECT COUNT(*) AS cnt FROM my_items&#039;;
+$recordSet = mysqli_query($db , $sql);
+$table = mysqli_fetch_assoc($recordSet);
+$maxPage = ceil($table[&#039;cnt&#039;]/5);
+$page = min($page, $maxPage);
+
+$start = ($page - 1) * 5;
+$recordSet = mysqli_query($db, &#039; SELECT m.name , i.* FROM makers m, my_items i
+WHERE m.id=i.maker_id ORDER BY id LIMIT &#039; .$start.&#039;,5&#039;);
+?&gt;
+
+&lt;table width=&quot;100%&quot;&gt;
+    &lt;tr&gt;
+        &lt;th scope=&quot;col&quot;&gt;ID&lt;/th&gt;
+        &lt;th scope=&quot;col&quot;&gt;メーカー&lt;/th&gt;
+        &lt;th scope=&quot;col&quot;&gt;商品名&lt;/th&gt;
+        &lt;th scope=&quot;col&quot;&gt;価格&lt;/th&gt;
+        &lt;th scope=&quot;col&quot;&gt;編集・削除&lt;/th&gt; //この行を追加
+    &lt;/tr&gt;
+
+    &lt;?php
+    while ( $table = mysqli_fetch_assoc($recordSet) ) {
+    ?&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;?php print(htmlspecialchars($table[&#039;id&#039;])); ?&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;?php print(htmlspecialchars($table[&#039;name&#039;])); ?&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;?php print(htmlspecialchars($table[&#039;item_name&#039;])); ?&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;?php print(htmlspecialchars($table[&#039;price&#039;])); ?&gt;&lt;/td&gt;
+        //下の行を追加
+        &lt;td&gt;&lt;a href=&quot;update.php?id=&lt;?php print(htmlspecialchars($table[&#039;id&#039;])); ?&gt;&quot;&gt;編集&lt;/a&gt;&lt;/td&gt;
+
+    &lt;/tr&gt;
+    &lt;?php
+    }
+    ?&gt;
+&lt;/table&gt;
+
+&lt;ul class=&quot;paging&quot;&gt;
+    &lt;?php if ( $page &gt; 1) { ?&gt;
+    &lt;li&gt;&lt;a href=&quot;index.php?page=&lt;?php print($page-1);?&gt;&quot;&gt;前のページへ&lt;/a&gt;&lt;/li&gt;
+    &lt;?php } else { ?&gt;
+        &lt;li&gt;前のページへ&lt;/li&gt;
+    &lt;?php } ?&gt;
+
+    &lt;?php if ( $page &lt; $maxPage) { ?&gt;
+    &lt;li&gt;&lt;a href=&quot;index.php?page=&lt;?php print($page+1);?&gt;&quot;&gt;次のページへ&lt;/a&gt;&lt;/li&gt;
+    &lt;?php } else { ?&gt;
+    &lt;li&gt;次のページへ&lt;/li&gt;
+    &lt;?php } ?&gt;
+&lt;/ul&gt;
+                                </code></pre>
+                                <p>
+                                    ここでは
+                                </p>
+                                <pre><code class="prettyprint">
+&lt;th scope=&quot;col&quot;&gt;編集・削除&lt;/th&gt;
+                                </code></pre>
+                                <p>
+                                    と
+                                </p>
+                                <pre><code class="prettyprint">
+&lt;td&gt;&lt;a href=&quot;update.php?id=&lt;?php print(htmlspecialchars($table[&#039;id&#039;])); ?&gt;&quot;&gt;編集&lt;/a&gt;&lt;/td&gt;
+                                </code></pre>
+                                <p>
+                                    を追加している。<br>
+                                    tdタグの中は「編集」という文字にリンクを張っている。<br>
+                                    その際、「update.php?id=」でidを渡しているが、そのidはprint()で表示しており、<br>
+                                    その中では$table['id']の値がhtmlspecialchars()を使用してサニタイズされてから渡されている。
+                                </p>
+                                <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                <p class="text-right">作成日：2019.3.28</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-12 mb-2 p-sql-php p-sql-php-190328-12">
+
+                    <div class="card">
+                        <a data-toggle="collapse" href="#collapse-sql-php-190328-12" aria-expanded="true" aria-controls="collapse-sql-php-190328-12" class="">
+                            <div class="card-header" role="tab">
+                                <h5 class="mb-0">
+                                    17.編集ページの作成
+                                </h5>
+                            </div>
+                        </a>
+
+                        <div id="collapse-sql-php-190328-12" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                            <div class="card-body">
+                                <p>
+                                    「8.フォームから情報を受け取り、テーブルに保存するまで」を改良して制作する。
+                                </p>
+                                <pre><code class="prettyprint">
+// 1.ここでいつものデータベース接続およびデータの取得を行う
+&lt;?php
+require(&#039;dbconnect.php&#039;);
+
+//idのデータを受け取り、データベースからそのidのデータを取り出す
+$id = $_REQUEST[&#039;id&#039;];
+$sql = sprintf(&quot;SELECT * FROM my_items WHERE id=%d&quot; ,
+              mysqli_real_escape_string($db , $id)
+              );
+$recordSet = mysqli_query($db , $sql);
+$data = mysqli_fetch_assoc($recordSet);
+?&gt;
+
+
+// 2.上記で取得したデータを、下記で表示している
+&lt;p&gt;変更内容を記入してください。&lt;/p&gt;
+
+&lt;form id=&quot;frmUpdate&quot; name=&quot;frmUpdate&quot; method=&quot;post&quot; action=&quot;update_do.php&quot;&gt;
+
+    &lt;dl&gt;
+        &lt;dt&gt;&lt;label for=&quot;maker_id&quot;&gt;メーカーID&lt;/label&gt;&lt;/dt&gt;
+        &lt;dd&gt;&lt;input name=&quot;maker_id&quot; type=&quot;text&quot; id=&quot;maker_id&quot; size=&quot;10&quot; maxlength=&quot;10&quot;
+             value=&quot;&lt;?php print(htmlspecialchars($data[&#039;maker_id&#039;], ENT_QUOTES) ); ?&gt;&quot;&gt;&lt;/dd&gt;
+    &lt;/dl&gt;
+
+    &lt;dl&gt;
+        &lt;dt&gt;&lt;label for=&quot;item_name&quot;&gt;商品名&lt;/label&gt;&lt;/dt&gt;
+        &lt;dd&gt;&lt;input name=&quot;item_name&quot; type=&quot;text&quot; id=&quot;item_name&quot; size=&quot;35&quot; maxlength=&quot;255&quot;
+                   value=&quot;&lt;?php print(htmlspecialchars($data[&#039;item_name&#039;], ENT_QUOTES) ); ?&gt;&quot;&gt;&lt;/dd&gt;
+    &lt;/dl&gt;
+
+    &lt;input type=&quot;submit&quot; value=&quot;登録する&quot;&gt;
+    &lt;input name=&quot;id&quot; type=&quot;hidden&quot;
+           value=&quot;&lt;?php print(htmlspecialchars($data[&#039;id&#039;], ENT_QUOTES) ); ?&gt;&quot;&gt;
+&lt;/form&gt;
+                                </code></pre>
+                                <p>
+                                    1.ここでいつものデータベース接続およびデータの取得を行う
+                                </p>
+                                <pre><code class="prettyprint">
+&lt;?php
+require(&#039;dbconnect.php&#039;);
+
+//idのデータを受け取り、データベースからそのidのデータを取り出す
+$id = $_REQUEST[&#039;id&#039;];
+$sql = sprintf(&quot;SELECT * FROM my_items WHERE id=%d&quot; ,
+              mysqli_real_escape_string($db , $id)
+              );
+$recordSet = mysqli_query($db , $sql);
+$data = mysqli_fetch_assoc($recordSet);
+?&gt;
+                                </code></pre>
+                                <p>
+                                    まずはrequire()で別ファイルにしてあるデータベース接続コードを実行。<br>
+
+                                    「$id=・・・」でidの値を受け取り、$idへ代入。<br>
+                                    「$sql=・・・」で「idのデータ」取り出しのためのSQLコードを作成し$sqlへ代入。<br>その際sprintf()を使用してidの値を%dに書式設定している。<br>またその中でmysqli_real_escape_string()を使用して値をサニタイズしてから渡している。<br>
+                                    「$recordSet=・・・」ではmysqli_query()を使用し、$dbに対してSQLコード($sql)を実行し、データを$recordSetに代入している。<br>
+                                    「$data=・・・」でmysqli_fetch_assoc()を使用して$recordSetのデータを$dataに配列データとして代入している。<br>
+                                    ということで、結果$dataの中には届いたidのレコードのデータが代入されている。<br>後はこの$dataを使って取り出していけば良い。<br>
+                                    次は表示する部分。
+                                </p>
+                                <pre><code class="prettyprint">
+&lt;form id=&quot;frmUpdate&quot; name=&quot;frmUpdate&quot; method=&quot;post&quot; action=&quot;update_do.php&quot;&gt;
+
+    &lt;dl&gt;
+        &lt;dt&gt;&lt;label for=&quot;maker_id&quot;&gt;メーカーID&lt;/label&gt;&lt;/dt&gt;
+        &lt;dd&gt;&lt;input name=&quot;maker_id&quot; type=&quot;text&quot; id=&quot;maker_id&quot; size=&quot;10&quot; maxlength=&quot;10&quot;
+             value=&quot;&lt;?php print(htmlspecialchars($data[&#039;maker_id&#039;], ENT_QUOTES) ); ?&gt;&quot;&gt;&lt;/dd&gt;
+    &lt;/dl&gt;
+
+    &lt;dl&gt;
+        &lt;dt&gt;&lt;label for=&quot;item_name&quot;&gt;商品名&lt;/label&gt;&lt;/dt&gt;
+        &lt;dd&gt;&lt;input name=&quot;item_name&quot; type=&quot;text&quot; id=&quot;item_name&quot; size=&quot;35&quot; maxlength=&quot;255&quot;
+                   value=&quot;&lt;?php print(htmlspecialchars($data[&#039;item_name&#039;], ENT_QUOTES) ); ?&gt;&quot;&gt;&lt;/dd&gt;
+    &lt;/dl&gt;
+
+    &lt;input type=&quot;submit&quot; value=&quot;登録する&quot;&gt;
+    &lt;input name=&quot;id&quot; type=&quot;hidden&quot;
+           value=&quot;&lt;?php print(htmlspecialchars($data[&#039;id&#039;], ENT_QUOTES) ); ?&gt;&quot;&gt;
+&lt;/form&gt;
+                                </code></pre>
+                                <p>
+                                    inputタグにvalueを追加し、その値は
+                                </p>
+
+                                <pre><code class="prettyprint">
+&lt;?php print(htmlspecialchars($data[&#039;maker_id&#039;], ENT_QUOTES) ); ?&gt;
+                                </code></pre>
+                                <p>
+                                    としてある。先ほどデータベースから取り出した$dataを使用して「$data['maker_id']」で取り出し、
+                                    htmlspecialchars()でサニタイズして表示させている。<br>
+                                    また、データの更新の際にはidを渡したいので、submitのinputタグの次に
+                                </p>
+
+                                <pre><code class="prettyprint">
+&lt;input name=&quot;id&quot; type=&quot;hidden&quot;
+value=&quot;&lt;?php print(htmlspecialchars($data[&#039;id&#039;], ENT_QUOTES) ); ?&gt;&quot;&gt;
+                                </code></pre>
+                                <p>
+                                    を入れてある。type="hidden"なので表示はされないが、submitの際にはupdate_do.phpへ他のデータと一緒に送られる。
+                                </p>
+                                <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                <p class="text-right">作成日：2019.3.28</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-12 mb-2 p-sql-php p-sql-php-190328-11">
+
+                    <div class="card">
+                        <a data-toggle="collapse" href="#collapse-sql-php-190328-11" aria-expanded="true" aria-controls="collapse-sql-php-190328-11" class="">
+                            <div class="card-header" role="tab">
+                                <h5 class="mb-0">
+                                    16.ページングする〜最初と最後の戻ると次へは入らないのでは？
+                                </h5>
+                            </div>
+                        </a>
+
+                        <div id="collapse-sql-php-190328-11" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                            <div class="card-body">
+                                <p>
+                                    「15.」のページ移動のリンク部を下記の様に修正する。
+                                </p>
+                                <pre><code class="prettyprint">
+&lt;ul class=&quot;paging&quot;&gt;
+    &lt;?php if ( $page &gt; 1) { ?&gt;
+    &lt;li&gt;&lt;a href=&quot;index.php?page=&lt;?php print($page-1);?&gt;&quot;&gt;前のページへ&lt;/a&gt;&lt;/li&gt;
+    &lt;?php } else { ?&gt;
+        &lt;li&gt;前のページへ&lt;/li&gt;
+    &lt;?php } ?&gt;
+
+    &lt;?php if ( $page &lt; $maxPage) { ?&gt;
+    &lt;li&gt;&lt;a href=&quot;index.php?page=&lt;?php print($page+1);?&gt;&quot;&gt;次のページへ&lt;/a&gt;&lt;/li&gt;
+    &lt;?php } else { ?&gt;
+    &lt;li&gt;次のページへ&lt;/li&gt;
+    &lt;?php } ?&gt;
+&lt;/ul&gt;
+                                </code></pre>
+                                <p>
+                                    その場合は上記の様にページ移動のリンク部分を修正すると解決できます。<br>
+                                    「$page &gt; 1」つまり2ページ以上であれば「前のページへ」を「リンク」で表示する。<br>
+                                    そうでなければ(1ページ目であれば)「前のページへ」を「リンクなし」で表示する。<br>
+                                    「$page &lt; $maxPage」つまり$maxPage未満であれば「次のページへ」を「リンク」で表示する。<br>
+                                    そうでなければ「次のページへ」を「リンクなし」で表示する。<br>
+                                    これを完了すれば不要な場合は表示しない事もできます。
+                                </p>
+
+                                <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                <p class="text-right">作成日：2019.3.28</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-12 mb-2 p-sql-php p-sql-php-190328-10">
+
+                    <div class="card">
+                        <a data-toggle="collapse" href="#collapse-sql-php-190328-10" aria-expanded="true" aria-controls="collapse-sql-php-190328-10" class="">
+                            <div class="card-header" role="tab">
+                                <h5 class="mb-0">
+                                    15.ページングする〜複数ページへの対応(戻るも追加)
+                                </h5>
+                            </div>
+                        </a>
+
+                        <div id="collapse-sql-php-190328-10" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                            <div class="card-body">
+                                <p>
+                                    「14.」のコードに手を加えたものです。<br>
+                                    ※ページの冒頭にエラーが表示されます。がすみません。解決できておりません。
+                                    分かる時まで保留です！！$pageの問題です・・・
+                                </p>
+                                <pre><code class="prettyprint">
+//ページの頭に以下を書く
+&lt;?php
+require(&#039;dbconnect.php&#039;);
+
+$page = $_REQUEST[&#039;page&#039;];
+if ($page == &#039;&#039;) {
+    $page = 1;
+}
+//0ページとなるのを防ぐ
+$page = max($page, 1);
+
+//ページが行き過ぎるのを防ぐ。(最終ページを取得する)
+$sql = &#039;SELECT COUNT(*) AS cnt FROM my_items&#039;;
+$recordSet = mysqli_query($db , $sql);
+$table = mysqli_fetch_assoc($recordSet);
+$maxPage = ceil($table[&#039;cnt&#039;]/5);
+$page = min($page, $maxPage);
+
+//何番目のデータから表示するかをセット
+$start = ($page - 1) * 5;
+
+//$start番目のデータから5件を取り出す
+$recordSet = mysqli_query($db, &#039; SELECT m.name , i.* FROM makers m, my_items i
+WHERE m.id=i.maker_id ORDER BY id LIMIT &#039; .$start.&#039;,5&#039;);
+?&gt;
+
+
+//・・・・・中略
+
+
+//ページへのリンク
+&lt;ul class=&quot;paging&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;index.php?page=&lt;?php print($page-1);?&gt;&quot;&gt;前のページへ&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;index.php?page=&lt;?php print($page+1);?&gt;&quot;&gt;次のページへ&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+                                </code></pre>
+                                <p>
+                                    まずはこの部分から
+                                </p>
+                                <pre><code class="prettyprint">
+$page = max($page, 1);
+                                    </code></pre>
+                                <p>
+                                    でmax()を使って最大値を取得。ここでもし$pageが0だった場合に、$pageに1を入れる様にしている。<br>
+                                    $pageが0だと、$startの計算の所で-5になってしまうので。
+                                </p>
+                                <pre><code class="prettyprint">
+$sql = &#039;SELECT COUNT(*) AS cnt FROM my_items&#039;;
+$recordSet = mysqli_query($db , $sql);
+$table = mysqli_fetch_assoc($recordSet);
+$maxPage = ceil($table[&#039;cnt&#039;]/5);
+$page = min($page, $maxPage);
+                                    </code></pre>
+                                <p>
+                                    「14.」に上記のコードが追加になっています。<br>
+                                    「$sql・・・」でCOUNT()を使い、データの件数を取得する式を$splに代入し、<br>
+                                    「$recordSet・・・」でmysqli_query()で$dbに対し$splのSQLコードを実行し、得られた件数(cnt)を$recordSetに代入しています。<br>
+                                    次に「$table・・・」でmysqli_fetch_assoc()を使い、先ほどの$recordSetからデータを取り出し、$tableに配列として代入している。<br>
+                                    その後「$maxPage・・・」でデータの件数である「$table['cnt']」を5(件)で割って、<br>ceil()を使い、余りの部分は切り上げでページ数に入れる様にしている。<br>
+                                    最後に「$page=・・・」でmin()を使い、$page(もらったページ数)と$maxPage(上記で算出した最大のページ数)を比べて小さい方を$pageに代入している。<br>つまり、$maxPageを超えない限り$pageはそのまま。もし超える様なことがあれば、後は$maxPageの値しか入らない。のでページが進んでしまうことが防げる。<br>
+
+                                    さて間を飛ばして、最後のリンク部分を見ると
+                                </p>
+                                <pre><code class="prettyprint">
+&lt;ul class=&quot;paging&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;index.php?page=&lt;?php print($page-1);?&gt;&quot;&gt;前のページへ&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;index.php?page=&lt;?php print($page+1);?&gt;&quot;&gt;次のページへ&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+                                    </code></pre>
+                                <p>
+                                    「index.php?」でページ数を渡すのは変わらず。<br>
+                                    ただしページ数を
+                                </p>
+                                <pre><code class="prettyprint">
+&lt;?php print($page-1);?&gt;
+&lt;?php print($page+1);?&gt;
+                                    </code></pre>
+                                <p>
+                                    とし、前ページは「$page-1」次のページは「$page+1」としてあります。<br>
+                                    これでその時のページ数が$pageで得られ、勝手に切り替えてくれます。<br>
+
+                                    以上！
+                                </p>
+
+                                <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                <p class="text-right">作成日：2019.3.28</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-12 mb-2 p-sql-php p-sql-php-190328-09">
+
+                    <div class="card">
+                        <a data-toggle="collapse" href="#collapse-sql-php-190328-09" aria-expanded="true" aria-controls="collapse-sql-php-190328-09" class="">
+                            <div class="card-header" role="tab">
+                                <h5 class="mb-0">
+                                    14.ページングする〜2ページ目を表示する
+                                </h5>
+                            </div>
+                        </a>
+
+                        <div id="collapse-sql-php-190328-09" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                            <div class="card-body">
+                                <p>
+                                    「13.」のコードに手を加えたものです。<br>
+                                    ※ページの冒頭にエラーが表示されます。がすみません。解決できておりません。
+                                    分かる時まで保留です！！$pageの問題です・・・
+                                </p>
+                                <pre><code class="prettyprint">
+//ページの頭を以下の様に変更
+&lt;?php
+require(&#039;dbconnect.php&#039;);
+
+$page = $_REQUEST[&#039;page&#039;];
+if ($page == &#039;&#039;) {
+    $page = 1;
+}
+$page = max($page, 1);
+$start = ($page - 1) * 5;
+$recordSet = mysqli_query($db, &#039; SELECT m.name , i.* FROM makers m, my_items i
+WHERE m.id=i.maker_id ORDER BY id LIMIT &#039; .$start.&#039;,5&#039;);
+?&gt;
+
+
+//・・・・・中略
+
+
+//ページの最後に以下を書く
+&lt;ul class=&quot;paging&quot;&gt;
+    //このコードのファイル名の後に「?page=2」を付けた形
+    &lt;li&gt;&lt;a href=&quot;index.php?page=2&quot;&gt;次のページへ&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+                                </code></pre>
+                                <p>
+                                    まずはこの部分から
+                                </p>
+                                <pre><code class="prettyprint">
+$page = $_REQUEST[&#039;page&#039;];
+if ($page == &#039;&#039;) {
+    $page = 1;
+}
+$start = ($page - 1) * 5;
+                                    </code></pre>
+                                <p>
+                                    $_REQUEST['page']」で最後に書き加えた「index.php?page=2」の「page=2」を受け取る。<br>
+                                    次のif文で、$pageが空なら1を入れている。0ページ目となってしまうのを防ぐ為。<br>
+                                    次に$startに何番目のデータから表示するか。の数字を入れています。<br>
+                                    例えば1ページ目であれば0になるはずなので、0番目(最初のデータ)から表示となります。<br>
+                                    次にこちら
+                                </p>
+                                <pre><code class="prettyprint">
+$recordSet = mysqli_query(
+    $db ,
+    &#039; SELECT m.name , i.*
+      FROM makers m, my_items i
+      WHERE m.id=i.maker_id
+      ORDER BY id
+      LIMIT &#039; .$start.&#039;,5&#039;  //ここに注目
+);
+                                    </code></pre>
+                                <p>
+                                    「13.」のコードから「LIMIT ' .$start. ',5'」の部分が変わっています。<br>
+                                    「LIMIT 0 , 5」の様に記述すると、0から始めて5つのデータを表示するという意味です。<br>
+                                    「$start」を入れる事で、始まりのデータ位置を都度変更して行ける様になっています。<br>
+                                    最後に
+                                </p>
+                                <pre><code class="prettyprint">
+&lt;ul class=&quot;paging&quot;&gt;
+    //このコードのファイル名の後に「?page=2」を付けた形
+    &lt;li&gt;&lt;a href=&quot;index.php?page=2&quot;&gt;次のページへ&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+                                    </code></pre>
+                                <p>
+                                    の部分で次ページへのリンクを作っていますが、リンク先は今のファイルです。<br>
+                                    ただし「index.php?page=2」として「page=2」のデータを一緒に渡しています。<br>
+                                    このデータを最初の方の「$_REQUEST['page']」で受け取り使っています。<br>
+                                    これで、このリンクをクリックした後は、2ページ目が表示され、<br>
+                                    データとしては「5番目から5件」が表示されるはずです。
+                                </p>
+
+                                <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                <p class="text-right">作成日：2019.3.28</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-12 mb-2 p-sql-php p-sql-php-190328-08">
+
+                    <div class="card">
+                        <a data-toggle="collapse" href="#collapse-sql-php-190328-08" aria-expanded="true" aria-controls="collapse-sql-php-190328-08" class="">
+                            <div class="card-header" role="tab">
+                                <h5 class="mb-0">
+                                    13.ページングする〜1ページの表示件数を制限する
+                                </h5>
+                            </div>
+                        </a>
+
+                        <div id="collapse-sql-php-190328-08" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                            <div class="card-body">
+                                <pre><code class="prettyprint">
+&lt;?php
+require(&#039;dbconnect.php&#039;);
+
+$recordSet = mysqli_query(
+    $db ,
+    &#039; SELECT m.name , i.*
+      FROM makers m, my_items i
+      WHERE m.id=i.maker_id
+      ORDER BY id
+      LIMIT 5 &#039;  //ここを加えるのみ
+    );
+?&gt;
+                                    </code></pre>
+                                <p>
+                                    「12.」で作成したコードに「LIMIT 5」を書き加えるのみ。<br>
+                                    これでデータの抽出が5件までに制限される。
+                                </p>
+                                <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                <p class="text-right">作成日：2019.3.28</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-12 mb-2 p-sql-php p-sql-php-190328-07">
+
+                    <div class="card">
+                        <a data-toggle="collapse" href="#collapse-sql-php-190328-07" aria-expanded="true" aria-controls="collapse-sql-php-190328-07" class="">
+                            <div class="card-header" role="tab">
+                                <h5 class="mb-0">
+                                    12.データベースのデータをブラウザに表示する
+                                </h5>
+                            </div>
+                        </a>
+
+                        <div id="collapse-sql-php-190328-07" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                            <div class="card-body">
+                                <pre><code class="prettyprint">
+&lt;?php
+
+//1.まずはデータベースに接続
+$db = mysqli_connect(&#039;localhost&#039;,&#039;root&#039;,&#039;&#039;,&#039;my_data&#039;)or die(mysqli_connect_error());
+    mysqli_set_charset($db , &#039;utf8&#039;);
+
+//2.データベースからデータを取り出す
+$recordSet = mysqli_query($db, &#039; SELECT m.name , i.* FROM makers m, my_items i WHERE m.id=i.maker_id ORDER BY id DESC &#039;)
+?&gt;
+
+//3.テーブルタグの中にphpコードを埋め込み、データを表示させる
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th scope=&quot;col&quot;&gt;ID&lt;/th&gt;
+        &lt;th scope=&quot;col&quot;&gt;商品名&lt;/th&gt;
+    &lt;/tr&gt;
+
+    &lt;?php while ( $table = mysqli_fetch_assoc($recordSet) ) { ?&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&lt;?php print(htmlspecialchars($table[&#039;id&#039;])); ?&gt;&lt;/td&gt;
+            &lt;td&gt;&lt;?php print(htmlspecialchars($table[&#039;item_name&#039;])); ?&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;?php } ?&gt;
+&lt;/table&gt;
+                                    </code></pre>
+                                <p>
+                                    1.いつものコードでデータベースへ接続
+                                    (ここは別ファイルに保存してrequire()で呼び出しても良い)
+                                </p>
+                                <p>
+                                    2.データベースからデータを取り出す
+                                    mysqli_query()を使い、$dbからSELECTで取り出したデータを$recordSetへ保存(配列)<br>
+                                    テーブルは2種類「makersをm」「my_imtesをi」とし<br>
+                                    「WHERE m.id=i.maker_id」としてリレーション(内部接続)を張っていて、<br>
+                                    「ORDER BY id DESC」でidを降順で並べる様に指示をしている。<br>
+                                </p>
+                                <p>
+                                    3.テーブルタグの中にphpコードを埋め込み、データを表示させる。<br>
+                                    mysqli_fetch_assoc()を使う事で配列からデータを取り出せる。<br>
+                                    また、whileでループさせることで、入れておいたデータを全て取り出している。<br>
+                                    また、htmlspecialchars()でhtml表示が可能な様に特殊文字を変換てから表示させている。
+                                </p>
+                                <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                <p class="text-right">作成日：2019.3.28</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-12 mb-2 p-sql-php p-sql-php-190328-06">
+
+                    <div class="card">
+                        <a data-toggle="collapse" href="#collapse-sql-php-190328-06" aria-expanded="true" aria-controls="collapse-sql-php-190328-06" class="">
+                            <div class="card-header" role="tab">
+                                <h5 class="mb-0">
+                                    11.共通のphpコードは別ファイルにしてrequireで呼び出す。
+                                </h5>
+                            </div>
+                        </a>
+
+                        <div id="collapse-sql-php-190328-06" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                            <div class="card-body">
+                                <p>
+                                    例えば
+                                </p>
+                                <pre><code class="prettyprint">
+&lt;?php
+    $db = mysqli_connect(&#039;localhost&#039;,&#039;root&#039;,&#039;&#039;,&#039;my_data&#039;)
+        or die(mysqli_connect_error());
+    mysqli_set_charset($db , &#039;utf8&#039;);
+?&gt;
+                                    </code></pre>
+                                <p>
+                                    の部分だけのファイルを作成し「connect.php」などとして別のファイルで保存しておく。<br>
+                                    後は使用したいファイルに下記の様にrequire()を使って必要な所で呼び出すことが出来る。
+                                </p>
+                                <pre><code class="prettyprint">
+&lt;?php
+require(&#039;dbconnect.php&#039;);
+?&gt;
+                                    </code></pre>
+                                <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                <p class="text-right">作成日：2019.3.28</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-12 mb-2 p-sql-php p-sql-php-190328-05">
+
+                    <div class="card">
+                        <a data-toggle="collapse" href="#collapse-sql-php-190328-05" aria-expanded="true" aria-controls="collapse-sql-php-190328-05" class="">
+                            <div class="card-header" role="tab">
+                                <h5 class="mb-0">
+                                    10.サニタイズs
+                                </h5>
+                            </div>
+                        </a>
+
+                        <div id="collapse-sql-php-190328-05" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                            <div class="card-body">
+                                <pre><code class="prettyprint">
+$sql = sprintf(
+    &#039;INSERT INTO my_table
+     SET my_id   =  %d ,
+         my_name = &quot;%s&quot; &#039; ,
+         mysqli_real_escape_string($db,$_POST[&#039;maker_id&#039; ]),
+         mysqli_real_escape_string($db,$_POST[&#039;item_name&#039;])
+    );
+                                    </code></pre>
+                                <p>
+                                    mysqli_real_escape_string()」でpostから取り出されたデータを「サニタイズ(無害化)」してから渡している。<br>
+                                    危険な文字をサニタイズしてくれるので、必須。フォームから受け取る際には必ず使用する事。
+                                </p>
+                                <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                <p class="text-right">作成日：2019.3.28</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-12 mb-2 p-sql-php p-sql-php-190328-04">
+
+                    <div class="card">
+                        <a data-toggle="collapse" href="#collapse-sql-php-190328-04" aria-expanded="true" aria-controls="collapse-sql-php-190328-04" class="">
+                            <div class="card-header" role="tab">
+                                <h5 class="mb-0">
+                                    9.書式を指定してデータを取り込む
+                                </h5>
+                            </div>
+                        </a>
+
+                        <div id="collapse-sql-php-190328-04" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                            <div class="card-body">
+                                <pre><code class="prettyprint">
+$sql = sprintf(
+    &#039;INSERT INTO my_table
+     SET my_id   =  %d ,
+         my_name = &quot;%s&quot; &#039; ,
+         mysqli_real_escape_string($db,$_POST[&#039;maker_id&#039; ]),
+         mysqli_real_escape_string($db,$_POST[&#039;item_name&#039;])
+    );
+
+                                    </code></pre>
+                                <p>
+                                    INSERT INTO xxx SET yyy」でデータをテーブルに保存するのだが、
+                                    その際、sprintf()で書式を「%d」「%s」に設定している。<br>
+                                    またその中で、「mysqli_real_escape_string()」でpostから取り出されたデータを「サニタイズ(無害化)」している。
+                                </p>
+                                <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                <p class="text-right">作成日：2019.3.28</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-12 mb-2 p-sql-php p-sql-php-190328-03">
+
+                    <div class="card">
+                        <a data-toggle="collapse" href="#collapse-sql-php-190328-03" aria-expanded="true" aria-controls="collapse-sql-php-190328-03" class="">
+                            <div class="card-header" role="tab">
+                                <h5 class="mb-0">
+                                    8.フォームから情報を受け取り、テーブルに保存するまで
+                                </h5>
+                            </div>
+                        </a>
+
+                        <div id="collapse-sql-php-190328-03" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                            <div class="card-body">
+                                <p>まずは下記コードで1ファイルを作成します</p>
+                                <pre><code class="prettyprint">
+&lt;form id=&quot;inputSmple&quot; name=&quot;inputSmple&quot; method=&quot;post&quot; action=&quot;in.php&quot;&gt;
+
+    &lt;dl&gt;
+        &lt;dt&gt;&lt;label for=&quot;my_id&quot;&gt;ID&lt;/label&gt;&lt;/dt&gt;
+        &lt;dd&gt;&lt;input name=&quot;my_id&quot; type=&quot;text&quot; id=&quot;my_id&quot; size=&quot;10&quot; maxlength=&quot;10&quot;&gt;&lt;/dd&gt;
+    &lt;/dl&gt;
+
+    &lt;dl&gt;
+        &lt;dt&gt;&lt;label for=&quot;my_name&quot;&gt;名前&lt;/label&gt;&lt;/dt&gt;
+        &lt;dd&gt;&lt;input name=&quot;my_name&quot; type=&quot;text&quot; id=&quot;my_name&quot; size=&quot;20&quot; maxlength=&quot;100&quot;&gt;&lt;/dd&gt;
+    &lt;/dl&gt;
+
+    &lt;input type=&quot;submit&quot; value=&quot;登録&quot;&gt;
+
+&lt;/form&gt;
+                                    </code></pre>
+                                <p>
+                                    ここではinputは「type="text"」を二つ用意し「type="submit"」で送信を実行する。としたります。<br>
+                                    そのデータは「post」で「in.php」へ送る。<br>
+                                    以下が送信先の「in.php」のコード
+                                </p>
+                                <pre><code class="prettyprint">
+&lt;?php
+    //1.データベースへの接続
+    $db = mysqli_connect(&#039;localhost&#039;,&#039;root&#039;,&#039;&#039;,&#039;my_data&#039;)
+        or die(mysqli_connect_error());
+    mysqli_set_charset($db , &#039;utf8&#039;);
+
+    //2.データの受け取り
+    $sql = sprintf(
+    &#039;INSERT INTO my_table
+     SET my_id   =  %d ,
+         my_name = &quot;%s&quot; &#039; ,
+         mysqli_real_escape_string($db,$_POST[&#039;maker_id&#039; ]),
+         mysqli_real_escape_string($db,$_POST[&#039;item_name&#039;])
+
+    );
+
+    //3.データの保存
+    mysqli_query($db,$sql) or die(mysqli_error($db));
+?&gt;
+                                </code></pre>
+                                <p>
+                                    1.データベースへの接続<br>
+                                    「$db = mysqli_connect・・・」でテーブル「my_data」へ接続。<br>
+                                    「mysqli_set_charset・・・」で文字コードを「utf-8」に設定。<br>
+                                </p>
+                                <p>
+                                    2.データの受け取り<br>
+                                    「$sql = sprintf・・・」でPOSTからのデータを$splへ保存。<br>
+                                    その際、sprintf()で書式を「%d」「%s」に設定している。<br>
+                                    またその中で、「mysqli_real_escape_string()」で入力されたデータを「サニタイズ(無害化)」している。
+                                    危険な文字をサニタイズしてくれるので、必須。フォームから受け取る際には必ず使用する事。
+                                </p>
+                                <p>
+                                    3.データの保存<br>
+                                    「mysqli_query・・・」で$splのデータを$dbへ保存。<br>
+                                    「or die・・・」の部分はorなので、前文が無事実行されればスルーされ、
+                                    そうでなければ実行。エラーを出力して、強制終了させる。
+                                </p>
+                                <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                <p class="text-right">作成日：2019.3.28</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-12 mb-2 p-sql-php p-sql-php-190328-02">
+
+                    <div class="card">
+                        <a data-toggle="collapse" href="#collapse-sql-php-190328-02" aria-expanded="true" aria-controls="collapse-sql-php-190328-02" class="">
+                            <div class="card-header" role="tab">
+                                <h5 class="mb-0">
+                                    7.テーブルの全件のデータを取り出す
+                                </h5>
+                            </div>
+                        </a>
+
+                        <div id="collapse-sql-php-190328-02" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                            <div class="card-body">
+                                <pre><code class="prettyprint">
+$recordSet = mysqli_query(
+    $db ,
+    &#039;SELECT * FROM my_items&#039;
+);
+while($data = mysqli_fetch_assoc($recordSet)) {
+    echo $data[&#039;item_name&#039;];
+    echo &#039;&lt;br&gt;&#039;;
+}
+                                    </code></pre>
+                                <p>
+                                    「5.」のコードの「$data = mysqli・・・」の部分をwhileでループにして全件のデータを取り出し表示している。<br>
+                                    前半のテーブルからデータを取得するところは「5.」そのまま。<br>
+                                    後半をwhileの()内に入れ「$data = mysqli・・・」で1件づつデータを取り出している。データが取り出せる内はtrueとなるのでループが繰り返され、取り出したデータはechoで表示。データを出し終えるとfalseとなるのでループが終わる。
+                                </p>
+                                <p>
+                                    mysqli_fetch_rowbr<br>
+                                    mysqli_fetch_array<br>
+                                    mysqli_fetch_field<br>
+                                    mysqli_fetch_length<br>
+                                    などあるので必要に応じて使用する。
+                                </p>
+                                <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                <p class="text-right">作成日：2019.3.28</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-12 mb-2 p-sql-php p-sql-php-190328-01">
+
+                    <div class="card">
+                        <a data-toggle="collapse" href="#collapse-sql-php-190328-01
+                          " aria-expanded="true" aria-controls="collapse-sql-php-190328-01
+                           " class="">
+                            <div class="card-header" role="tab">
+                                <h5 class="mb-0">
+                                    6.テーブルから2件のデータを取り出す
+                                </h5>
+                            </div>
+                        </a>
+
+                        <div id="collapse-sql-php-190328-01
+                           " class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                            <div class="card-body">
+                                <pre><code class="prettyprint">
+$recordSet = mysqli_query(
+    $db ,
+    'SELECT * FROM my_items'
+);
+$data = mysqli_fetch_assoc($recordSet);
+echo $data['item_name'];
+$data = mysqli_fetch_assoc($recordSet);
+echo $data['item_name'];
+                                    </code></pre>
+                                <p>
+                                    「5.」のコードに「$data = mysqli・・・」の部分を追加しただけ。<br>
+                                    ここを増やしていくと、次々と取り出すことができる。<br>
+                                    ただし、こういった複数の取り出しの際は事項「7.」の方法で行う。
+                                </p>
+                                <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                <p class="text-right">作成日：2019.3.28</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-12 mb-2 p-sql-php p-sql-php-190327-05">
 
                     <div class="card">
                         <a data-toggle="collapse" href="#collapse-sql-php-190327-05" aria-expanded="true" aria-controls="collapse-sql-php-190327-05" class="">
@@ -137,7 +1108,8 @@ echo $data['item_name'];
 
                 </div>
 
-                <div class="col-12 col-md-6 mb-2 p-sql-php p-sql-php-190327-04">
+
+                <div class="col-12 mb-2 p-sql-php p-sql-php-190327-04">
 
                     <div class="card">
                         <a data-toggle="collapse" href="#collapse-sql-php-190327-04" aria-expanded="true" aria-controls="collapse-sql-php-190327-04" class="">
@@ -176,7 +1148,7 @@ or die(mysqli_error($db));
                 </div>
 
 
-                <div class="col-12 col-md-6 mb-2 p-sql-php p-sql-php-190327-03">
+                <div class="col-12 mb-2 p-sql-php p-sql-php-190327-03">
 
                     <div class="card">
                         <a data-toggle="collapse" href="#collapse-sql-php-190327-03" aria-expanded="true" aria-controls="collapse-sql-php-190327-03" class="">
@@ -216,7 +1188,7 @@ or die(mysqli_error($db));
                 </div>
 
 
-                <div class="col-12 col-md-6 mb-2 p-sql-php p-sql-php-190327-02">
+                <div class="col-12 mb-2 p-sql-php p-sql-php-190327-02">
 
                     <div class="card">
                         <a data-toggle="collapse" href="#collapse-sql-php-190327-02" aria-expanded="true" aria-controls="collapse-sql-php-190327-02" class="">
@@ -255,7 +1227,7 @@ or die(mysqli_error($db));
                 </div>
 
 
-                <div class="col-12 col-md-6 mb-2 p-sql-php p-sql-php-190327-01">
+                <div class="col-12 mb-2 p-sql-php p-sql-php-190327-01">
 
                     <div class="card">
                         <a data-toggle="collapse" href="#collapse-sql-php-190327-01" aria-expanded="true" aria-controls="collapse-sql-php-190327-01" class="">

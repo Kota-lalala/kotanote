@@ -7,14 +7,42 @@
 }
 
 h1 {
-    font-size: 14px;
+    font-size: 26px;
+    color: black;
+    margin: 0;
+    padding: 2px;
+}
+
+h2 {
+    font-size: 22px;
+    color: black;
+    margin: 0;
+    padding: 2px;
+}
+
+h3 {
+    font-size: 20px;
+    color: black;
+    margin: 0;
+    padding: 2px;
+}
+
+h4 {
+    font-size: 18px;
+    color: black;
+    margin: 0;
+    padding: 2px;
+}
+
+h5 {
+    font-size: 16px;
     color: black;
     margin: 0;
     padding: 2px;
 }
 
 p {
-    font-size: 12px;
+    font-size: 14px;
     color: gray;
     margin: 0;
     padding: 2px;
@@ -22,8 +50,12 @@ p {
 }
 
 li {
-    font-size: 12px;
+    font-size: 14px;
     color: black;
+}
+
+pre {
+    background-color: #ebf8ff;
 }
 
 /*リンクのhover時の下線をなくす*/
@@ -101,12 +133,6 @@ a:hover {
 .card:hover .card-header{
     background-color: #b1e3f7;
 }
-
-/*
-.card:hover .card-body {
-    background-color: #e2eef4;
-}
-*/
 
 .card:hover .card-img-top {
     opacity: 1.0;
