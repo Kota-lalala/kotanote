@@ -89,6 +89,10 @@ a:hover {
     margin-bottom: 15px;
 }
 
+.con-prog-sql-php2 .card {
+    margin-bottom: 0;
+}
+
 /*メインカードの更新内容部分のフォントカラーを設定*/
 .con-rec-p {
     color: dodgerblue;
@@ -137,6 +141,19 @@ a:hover {
 .card:hover .card-img-top {
     opacity: 1.0;
 }
+
+/*カードがhoverの時の変色を設定con-prog-sql-php2のnote用*/
+.con-prog-sql-php2 .card:hover {
+    background-color: inherit;
+}
+.con-prog-sql-php2 .card:hover .card-header{
+    background-color: #b1e3f7;
+}
+
+.con-prog-sql-php2 .card:hover .card-img-top {
+    opacity: 1.0;
+}
+
 
 .btn-top {
     width: 100%;
@@ -199,4 +216,56 @@ footer li {
 
 .foot {
     text-align: center;
+}
+
+/*Twitter風に関する設定*/
+
+/*リンクの設定*/
+/*リンクの設定*/
+.con-prog-sql-php2 a{
+    text-decoration: none;
+    color: black;
+    font-size:14px;
+    border-bottom: 1px dashed dodgerblue;
+}
+.con-prog-sql-php2 a:hover {
+    opacity: 0.5;
+}
+
+/*ピックアップボックスの設定*/
+.pikup-box {
+    box-sizing: border-box;
+    border: 5px solid #b5c9f0;
+    padding: 10px 5px;
+    margin-bottom: 20px;
+}
+
+/*ピックアップテーブルの設定*/
+table {
+    border-collapse: collapse;
+    border: 2px solid #b5c9f0;
+    margin-bottom: 20px;
+}
+table th, table td {
+    border: 1px dashed #b5c9f0;
+}
+table th {
+/*    color: white;*/
+    background-color: #b5c9f0;
+    text-align: center;
+}
+
+/*チップスボックスの設定*/
+.chips-box {
+    box-sizing: border-box;
+    border: 2px dashed #b5c9f0;
+    padding: 10px 5px;
+    margin-bottom: 20px;
+}
+
+/*リンクボックスの設定*/
+.link-box {
+    box-sizing: border-box;
+    background-color: #e5edf2;
+    margin-bottom: 20px;
 }

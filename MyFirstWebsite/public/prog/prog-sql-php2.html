@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+
+<head>
+    <!-- Required meta tags -->
+    <!-- Bootstrap4.3.1用 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!--        メイン用 style.css  レスポンシブ用 responsive.css-->
+    <link rel="stylesheet" type="text/css" href="../css/style1.css">
+    <link rel="stylesheet" type="text/css" href="../css/responsive.css" media="screen and (max-width: 1120px)">
+
+    <!--        FontAwesome用-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <!-- googleの「code-prettify」表示用テーマ -->
+    <link rel="stylesheet" type="text/css" href="../css/atelier-lakeside-light.css">
+
+    <!--    Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&amp;subset=latin-ext" rel="stylesheet">
+
+
+    <title>Kotanote</title>
+</head>
+
+<body>
+
+    <!--        header部分-->
+    <header>
+
+        <!--            ナビバー-->
+        <nav class="navbar navbar-dark bg-dark">
+
+            <!--                フェイスブック、ツイッター のリンクアイコン-->
+            <div class="nav-left">
+                <div>
+                    <a href="http://www.facebook.com/share.php?u=https://kotanote.com/kotanote/public/prog/prog.html">
+                        <i class="sec4-ico fab fa-facebook"></i>
+                    </a>
+                </div>
+                <div>
+                    <a href="http://twitter.com/share?text=https://kotanote.com/kotanote/public/prog/prog.html" rel="nofollow">
+                        <i class="sec4-ico fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+
+
+            <!--Webサイトのタイトル-->
+            <a href="../index.html" class="navbar-brand">Kotanote</a>
+            <!--ハンバーガーメニュー-->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navmenu1" aria-controls="navmenu1" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navmenu1">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="prog.html">プログラミング note</a>
+                    <a class="nav-item nav-link" href="../music/music.html">ミュージック note</a>
+                    <a class="nav-item nav-link" href="../info/info.html">本サイトについて</a>
+                    <!--                        <a class="nav-item nav-link" href="#">Menu#3</a>-->
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <h1 class="text-center mb-1">「PRACTICE2〜Twitter風ひとこと掲示板を作成する」note</h1>
+
+    <div class="container con-prog-sql-php2">
+        <!--        トップカード-->
+        <div class="row">
+
+            <div class="col-12 mb-1 p-sql-php p-sql-php3-190329-top">
+
+                <div class="card">
+                    <a data-toggle="collapse" href="#collapse-sql-php3-190329-top" aria-expanded="true" aria-controls="collapse-sql-php3-190329-top" class="">
+                        <div class="card-header" role="tab">
+                            <h5 class="mb-0">
+                                このnoteについて
+                            </h5>
+                        </div>
+                    </a>
+
+                    <div id="collapse-sql-php3-190329-top" class="collapse multi-collapse" role="tabpanel" aria-labelledby="headingOne" style="">
+                        <!--                            <img class="card-img-top" src="../img/prog-sql.png" alt="Card image cap">-->
+                        <div class="card-body">
+                            <h4 class="card-title">このnoteについて</h4>
+                            <p class="card-text">
+                                本noteには、私が「よくわかるPHPの教科書 PHP5.5対応版」にある「PRACTICE2〜Twitter風ひとこと掲示板を作成する」の部分を学習するにあたり、その学習過程をここに残すことにしました。また分かりやすい様に、説明も加えていくつもりですので、同じ様な初学者の方の参考にしていただけたらとも思います。また、おかしな点など気づかれた方、是非ご連絡いただけたらありがたいです^o^
+                            </p>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">更新履歴</h4>
+                            <ol class="card-text" reversed>
+                                <li>「1.データベースを設計する」を追加しました-UP- 2019.3.29 18:45更新<span class="badge badge-info">new</span></li>
+                                <li>本noteを追加しました-UP- 2019.3.29 14:00更新</li>
+                            </ol>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!--        コンテンツカード-->
+        <div class="row">
+
+            <!--                ナビゲーション部分-->
+            <div class="col-nav col-sm-12 col-md-2" style="background-color:lightblue;">
+                <ol reversed>
+
+                    <li>
+                        <a data-toggle="collapse" href="#collapse-sql-php3-190329-01-top" aria-expanded="true" aria-controls="collapse-sql-php3-190329-01-top" class="">
+                            データベースを設計する
+                        </a>
+                    </li>
+
+                </ol>
+            </div>
+
+
+            <!--                コンテンツ部分-->
+            <div class="col-cont col-sm-12 col-md-10">
+
+                <!--                1.データベースを設計するここから-->
+                <div class="col-12 p-sql-php2 p-sql-php3-190329-01-top collapse multi-collapse show" id="collapse-sql-php3-190329-01-top">
+
+                    <div class="card">
+                        <a data-toggle="collapse" href="#collapse-sql-php3-190329-01" aria-expanded="true" aria-controls="collapse-sql-php3-190329-01" class="">
+                            <div class="card-header" role="tab">
+                                <h5 class="mb-0">
+                                    1.データベースを設計する
+                                </h5>
+                            </div>
+                        </a>
+
+                        <div id="collapse-sql-php3-190329-01" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                            <div class="card-body">
+                                <div class="pikup-box">
+                                    <ol>
+                                        <li>
+                                            <a data-toggle="collapse" href="#collapse-sql-php3-190329-01-1" aria-expanded="true" aria-controls="collapse-sql-php3-190329-01-1" class="">
+                                                必要な機能を考える
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a data-toggle="collapse" href="#collapse-sql-php3-190329-01-2" aria-expanded="true" aria-controls="collapse-sql-php3-190329-01-2" class="">
+                                                各機能に必要な情報を考える
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a data-toggle="collapse" href="#collapse-sql-php3-190329-01-3" aria-expanded="true" aria-controls="collapse-sql-php3-190329-01-3" class="">
+                                                情報をグループ分けし、テーブルを作る
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a data-toggle="collapse" href="#collapse-sql-php3-190329-01-4" aria-expanded="true" aria-controls="collapse-sql-php3-190329-01-4" class="">
+                                                情報を整理する
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a data-toggle="collapse" href="#collapse-sql-php3-190329-01-5" aria-expanded="true" aria-controls="collapse-sql-php3-190329-01-5" class="">
+                                                情報に型を付けてカラムを作る
+                                            </a>
+                                        </li>
+                                    </ol>
+                                </div>
+                                <!--                                <pre><code class="prettyprint"></code></pre>-->
+                                <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                <p class="text-right">作成日：2019.3.29</p>
+                            </div>
+
+                            <div id="collapse-sql-php3-190329-01-1" class="collapse multi-collapse" role="tabpanel" aria-labelledby="headingOne" style="">
+                                <div class="card-body">
+                                    <hr>
+                                    <h4>1.必要な機能を考える</h4>
+                                    <p>
+                                        まずは今回のTwitter風に必要な機能を考えていきます。<br>
+                                        このプログラムで<strong>〇〇ができる</strong>を考えて書き出す！<br>
+                                        とにかく思いついたものを書き出して、あとから絞り込んでいく。というやり方が良い気がします。ただし1から考える場合には、機能を考えるにもどうしたら良いかわからないこともあると思いますので、例えば今回の様に何かのプログラムや構造を元にして考えるのも良いかと思います。
+                                    </p>
+
+                                    <div class="pikup-box">
+                                        <ul>
+                                            <li>〇〇できる</li>
+                                            <li>〇〇できる</li>
+                                            <li>〇〇できる</li>
+                                        </ul>
+                                    </div>
+                                    <p>
+                                        ↑によって考えたものが↓
+                                    </p>
+                                    <ul style="list-style: none;" class="d-flex flex-wrap">
+                                        <li class="mr-2">投稿</li>
+                                        <li class="mr-2">返信</li>
+                                        <li class="mr-2">会員登録</li>
+                                        <li class="mr-2">退会</li>
+                                        <li class="mr-2">写真のアップロード</li>
+                                        <li class="mr-2">ログイン</li>
+                                        <li class="mr-2">ログアウト</li>
+                                    </ul>
+
+                                    <p>
+                                        これらが今回の主要機能となります。
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div id="collapse-sql-php3-190329-01-2" class="collapse multi-collapse" role="tabpanel" aria-labelledby="headingOne" style="">
+                                <div class="card-body">
+                                    <hr>
+                                    <h4>2.各機能に必要な情報を考える</h4>
+                                    <p>
+                                        では各機能にはどんな情報が必要で、データベースに保存しておかなければならないのか？
+                                    </p>
+                                    <div class="pikup-box">
+                                        <ul>
+                                            <li>〇〇できる
+                                                <ul>
+                                                    <li>□□の情報が必要</li>
+                                                    <li>□□の情報が必要</li>
+                                                </ul>
+                                            </li>
+                                            <li>〇〇できる
+                                                <ul>
+                                                    <li>□□の情報が必要</li>
+                                                    <li>□□の情報が必要</li>
+                                                </ul>
+                                            </li>
+                                            <li>〇〇できる
+                                                <ul>
+                                                    <li>□□の情報が必要</li>
+                                                    <li>□□の情報が必要</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <p>
+                                        ↑によって考えたものが↓
+                                    </p>
+                                    <ul style="list-style: none;" class="d-flex flex-wrap">
+                                        <li class="mr-2">投稿 (メッセージ、会員情報)</li>
+                                        <li class="mr-2">返信 (メッセージ、会員情報、返信先のメッセージ)</li>
+                                        <li class="mr-2">会員登録 (ニックネーム、メールアドレス)</li>
+                                        <li class="mr-2">退会</li>
+                                        <li class="mr-2">写真のアップロード (写真のパス)</li>
+                                        <li class="mr-2">ログイン (メールアドレス、パスワード)</li>
+                                        <li class="mr-2">ログアウト</li>
+                                    </ul>
+
+                                </div>
+                            </div>
+
+                            <div id="collapse-sql-php3-190329-01-3" class="collapse multi-collapse" role="tabpanel" aria-labelledby="headingOne" style="">
+                                <div class="card-body">
+                                    <hr>
+                                    <h4>3.情報をグループ分けし、テーブルを作る</h4>
+                                    <p>
+                                        2.で並べた情報に対してグループ分けを考え、テーブルとする。
+                                    </p>
+                                    <div class="pikup-box">
+                                        <ul>
+                                            <li>〇〇できる
+                                                <ul>
+                                                    <li>□□の情報が必要 →投稿グループ</li>
+                                                    <li>□□の情報が必要 →会員グループ</li>
+                                                </ul>
+                                            </li>
+                                            <li>〇〇できる
+                                                <ul>
+                                                    <li>□□の情報が必要 →投稿グループ</li>
+                                                    <li>□□の情報が必要 →会員グループ</li>
+                                                </ul>
+                                            </li>
+                                            <li>〇〇できる
+                                                <ul>
+                                                    <li>□□の情報が必要 →投稿グループ</li>
+                                                    <li>□□の情報が必要 →投稿グループ</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <p>
+                                        ↑により今回は二つのグループに分けられそうなので、↓のテーブルを作ることにする。
+                                    </p>
+                                    <div class="pikup-box">
+                                        <ul>
+                                            <li>会員テーブル(members)</li>
+                                            <li>投稿テーブル(posts)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="collapse-sql-php3-190329-01-4" class="collapse multi-collapse" role="tabpanel" aria-labelledby="headingOne" style="">
+                                <div class="card-body">
+                                    <hr>
+                                    <h4>4.情報を整理する</h4>
+                                    <p>
+                                        足りていない情報がないか検討し、固有情報、プライマリーキーを用意します。<br>
+                                        それぞれの情報に関係性を持たせるため、また識別させるために固有情報が必要なので「ID」として用意します。<br>
+                                        また、各テーブルの固有なIDとしてプライマリーキーを設定します。<br>
+                                        ↓の様に設定しました。
+                                    </p>
+                                    <div class="pikup-box">
+                                        <ul>
+                                            <li>membersテーブル
+                                                <ul>
+                                                    <li>会員ID →プライマリーキー</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                        <ul>
+                                            <li>postsテーブル
+                                                <ul>
+                                                    <li>メッセージID →プライマリーキー</li>
+                                                    <li>投稿者ID</li>
+                                                    <li>返信者メッセージID</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <p>
+                                        また、必要な情報として↓を追加しました。
+                                    </p>
+                                    <ul style="list-style: none;" class="d-flex flex-wrap">
+                                        <li class="mr-2">入会日 (menbers)</li>
+                                        <li class="mr-2">変更日 (menbers)</li>
+                                        <li class="mr-2">投稿日 (posts)</li>
+                                        <li class="mr-2">変更日 (posts)</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div id="collapse-sql-php3-190329-01-5" class="collapse multi-collapse" role="tabpanel" aria-labelledby="headingOne" style="">
+                                <div class="card-body">
+                                    <hr>
+                                    <h4>5.情報に型を付けてカラムを作る</h4>
+                                    <p>
+                                        今までに用意した情報をカラムに置き換えます。<br>
+                                        その際に、名前と型を考えて、用意していきます。<br>
+                                        名前に関してはローマ字ではなく英語の単語が良い様です。出来るだけ的確に表現した名前を付けていきましょう。
+                                    </p>
+
+                                    <h5>membersテーブル(会員グループ)</h5>
+                                    <div class="pickup-table">
+                                        <table>
+                                            <tr>
+                                                <th>カラム名</th>
+                                                <th>型</th>
+                                                <th>情報</th>
+                                                <th>主キー</th>
+                                                <th>AI</th>
+                                            </tr>
+                                            <tr>
+                                                <td>id</td>
+                                                <td>INT</td>
+                                                <td>会員ID</td>
+                                                <td>主</td>
+                                                <td>AI</td>
+                                            </tr>
+                                            <tr>
+                                                <td>name</td>
+                                                <td>VARCHAR(255)</td>
+                                                <td>ニックネーム</td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>email</td>
+                                                <td>VARCHAR(255)</td>
+                                                <td>メールアドレス</td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>password</td>
+                                                <td>VARCHAR(100)</td>
+                                                <td>パスワード</td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>picture</td>
+                                                <td>VARCHAR(255)</td>
+                                                <td>写真のパス</td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>created</td>
+                                                <td>DATETIME</td>
+                                                <td>入会日</td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>modifled</td>
+                                                <td>TIMESTAMP</td>
+                                                <td>変更日</td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+
+                                        </table>
+                                    </div>
+
+                                    <h5>posts(投稿グループ)</h5>
+                                    <div class="pickup-table">
+                                        <table>
+                                            <tr>
+                                                <th>カラム名</th>
+                                                <th>型</th>
+                                                <th>情報</th>
+                                                <th>主キー</th>
+                                                <th>AI</th>
+                                            </tr>
+                                            <tr>
+                                                <td>id</td>
+                                                <td>INT</td>
+                                                <td>メッセージID</td>
+                                                <td>主</td>
+                                                <td>AI</td>
+                                            </tr>
+                                            <tr>
+                                                <td>message</td>
+                                                <td>TEXT</td>
+                                                <td>メッセージ</td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>member_id</td>
+                                                <td>INT</td>
+                                                <td>投稿者のID</td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>reply_post_id</td>
+                                                <td>INT</td>
+                                                <td>返信先のメッセージID</td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>created</td>
+                                                <td>DATETIME</td>
+                                                <td>投稿日</td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>modifled</td>
+                                                <td>TIMESTAMP</td>
+                                                <td>変更日</td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                    <div class="chips-box">
+                                        VARCHAR(M)型はMに0〜255までの数字を指定可能。そのまま最大文字数を表している。
+                                    </div>
+                                    <div class="link-box">
+                                        <h5>リンク</h5>
+                                        <ul>
+                                            <li><a href="http://pentan.info/sql/mysql/mysql_type_string.html">データ型についてはペンタンさん参照</a></li>
+                                            <li><a href="https://dev.mysql.com/doc/refman/5.6/ja/data-types.html">データ型のMySQL公式はこちらへ</a></li>
+                                            <li><a href="https://saruwakakun.com/html-css/basic/table">テーブルの作成方法はサルワカさんへ</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div><!--                1.データベースを設計するここまで-->
+
+
+
+            </div>
+
+
+
+
+        </div><!--        コンテンツカードここまで-->
+
+    </div>
+    <!--containerここまで-->
+
+
+    <!--        footer-->
+    <footer class="foot">
+        <ul class="box2">
+            <a href="../info/info.html">
+                <li class="box3">
+                    <p>本サイトについて</p>
+                </li>
+            </a>
+            <a href="mailto:kotanote2019@gmail.com">
+                <li class="box3">
+                    <p>お問合せ</p>
+                </li>
+            </a>
+            <li class="box3">
+                <p>©︎ 2019 Kotanote.com</p>
+            </li>
+        </ul>
+    </footer>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+    <!--    googleの「code-prettify」を使用する-->
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=sql"></script>
+
+</body>
+
+</html>
