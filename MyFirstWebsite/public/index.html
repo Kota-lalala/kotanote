@@ -14,7 +14,7 @@
     }
 
     //ここで今日のつぶやきのコメントをセットする
-$now_comment = "今日はやっとPHPの学習が進んだ。少し理解ができてきたと思う。のでいい日^^ただ時間かかるなぁ。ツイートは本日も有益情報なし！ということで、1日１回は有益なツイートをする。1日1回は学習報告をする。を今後続ける様にしていこう。ただし、ちーーさな事でもokとする^^;コツコツと続けて成長していこう！
+$now_comment = "「PRACTICE2〜Twitter風ひとこと掲示板を作成する」を追加しました。しかも随時学習報告をするとのツイート済み。あーやってしまった。ここは本来時間をかける部分では無いのに！大体こんな事が出来るという事だけ掴んで次へ行く部分。大きなタイムロス。だが始めてしまったからにはやらねば。ひ〜^^;さーみなさん頑張って続けましょうね。
     ";
 ?>
 
@@ -114,7 +114,7 @@ $now_comment = "今日はやっとPHPの学習が進んだ。少し理解がで�
                     <div class="card-body">
                         <!--                <h4 class="card-title">デザイン修正</h4>-->
                         <p class="card-text">
-                            2019.3.28「SQL学習済み内容の吐き出し部屋〜PHPと共に編」へ15点追加しました。
+                            2019.3.29「PRACTICE2〜Twitter風ひとこと掲示板を作成する」を追加。2点追加しました。
                             <span class="badge badge-info">new</span>
                        </p>
                     </div>
@@ -131,7 +131,7 @@ $now_comment = "今日はやっとPHPの学習が進んだ。少し理解がで�
                     <div class="card-body">
                         <!--                <h4 class="card-title">デザイン修正</h4>-->
                         <p class="card-text">
-                            2019.3.28 少しづつですが微調整しました。プログラミングnoteのカードの幅は一律ブラウザ幅一杯へ。見辛いと思うので。コードへテーマを適用しました。
+                            2019.3.28 「Twitter風」のページをcollapseを組み合わせた構成にしました。
                             <span class="badge badge-info">new</span>
 
                         </p>
@@ -153,7 +153,7 @@ $now_comment = "今日はやっとPHPの学習が進んだ。少し理解がで�
                     <div class="card-body">
                         <h4 class="card-title">Programming note</h4>
                         <p class="con-rec-p">
-                            最新情報:「SQL学習済み内容の吐き出し部屋〜PHPと共に編」を追加しました。また同部屋へ5点追加しました。 -UP- 2019.3.27更新
+                            最新情報:「PRACTICE2〜Twitter風ひとこと掲示板を作成する」を追加。2点追加しました。 -UP- 2019.3.29更新
                             <span class="badge badge-info">new</span>
                         </p>
                         <p class="card-text">
@@ -233,7 +233,7 @@ $now_comment = "今日はやっとPHPの学習が進んだ。少し理解がで�
             <!--                <h4 class="card-title">デザイン修正</h4>-->
             <p class="card-text">
 <!--                「今日のつぶやき」をPHPで聞き出している。内容はトップで$now_commentに入れている-->
-                <?php echo $now_comment; ?>
+                <?php echo htmlspecialchars($now_comment); ?>
             </p>
         </div>
     </div>

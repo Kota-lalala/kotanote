@@ -78,6 +78,7 @@
 
             <div class="col-12 mb-1 p-sql-php p-sql-php3-190329-top">
 
+<!--                このnoteについての説明-->
                 <div class="card">
                     <a data-toggle="collapse" href="#collapse-sql-php3-190329-top" aria-expanded="true" aria-controls="collapse-sql-php3-190329-top" class="">
                         <div class="card-header" role="tab">
@@ -90,17 +91,26 @@
                     <div id="collapse-sql-php3-190329-top" class="collapse multi-collapse" role="tabpanel" aria-labelledby="headingOne" style="">
                         <!--                            <img class="card-img-top" src="../img/prog-sql.png" alt="Card image cap">-->
                         <div class="card-body">
-                            <h4 class="card-title">このnoteについて</h4>
+                            <h5 class="card-title">このnoteについて</h5>
                             <p class="card-text">
                                 本noteには、私が「よくわかるPHPの教科書 PHP5.5対応版」にある「PRACTICE2〜Twitter風ひとこと掲示板を作成する」の部分を学習するにあたり、その学習過程をここに残すことにしました。また分かりやすい様に、説明も加えていくつもりですので、同じ様な初学者の方の参考にしていただけたらとも思います。また、おかしな点など気づかれた方、是非ご連絡いただけたらありがたいです^o^
                             </p>
                         </div>
                         <div class="card-body">
-                            <h4 class="card-title">更新履歴</h4>
+                            <hr>
+                            <h5 class="card-title">更新履歴</h5>
                             <ol class="card-text" reversed>
+                                <li>「2.データベースを作成する」を追加しました-UP- 2019.3.29 18:45更新<span class="badge badge-info">new</span></li>
                                 <li>「1.データベースを設計する」を追加しました-UP- 2019.3.29 18:45更新<span class="badge badge-info">new</span></li>
                                 <li>本noteを追加しました-UP- 2019.3.29 14:00更新</li>
                             </ol>
+                            <hr>
+
+                            <h5>このnoteの使用方法</h5>
+
+                            <div>
+                                <img src="../img/prog-sql-php2-thisnote.png" alt="操作説明画像" width="100%">
+                            </div>
                         </div>
 
                     </div>
@@ -118,6 +128,13 @@
                 <ol reversed>
 
                     <li>
+                        <a data-toggle="collapse" href="#collapse-sql-php3-190329-02-top" aria-expanded="true" aria-controls="collapse-sql-php3-190329-02-top" class="">
+                            データベースを作成する
+                        </a>
+                    </li>
+
+
+                    <li>
                         <a data-toggle="collapse" href="#collapse-sql-php3-190329-01-top" aria-expanded="true" aria-controls="collapse-sql-php3-190329-01-top" class="">
                             データベースを設計する
                         </a>
@@ -129,6 +146,46 @@
 
             <!--                コンテンツ部分-->
             <div class="col-cont col-sm-12 col-md-10">
+
+                <!--                1.データベースを作成するここから-->
+                <div class="col-12 p-sql-php2 p-sql-php3-190329-02-top collapse multi-collapse show" id="collapse-sql-php3-190329-02-top">
+
+                    <div class="card">
+                        <a data-toggle="collapse" href="#collapse-sql-php3-190329-02" aria-expanded="true" aria-controls="collapse-sql-php3-190329-02" class="">
+                            <div class="card-header" role="tab">
+                                <h5 class="mb-0">
+                                    2.データベースを作成する
+                                </h5>
+                            </div>
+                        </a>
+
+                        <div id="collapse-sql-php3-190329-02" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                            <div class="card-body">
+                                <div class="video-box">
+                                    <p>
+                                        設計したデータベースを「phpMyAdmin」にて作成します。が、今回は動画での報告となります。↓をご覧ください。<br>
+                                        テーブル作成。7個のカラム作成。プライマリーキーとオートインクリメントの設定。をしております。
+                                    </p>
+<!--                                    動画埋め込み-->
+                                    <iframe src="https://www.youtube.com/embed/O3RB75oLJCE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                                <div class="link-box">
+                                    <h5>リンク</h5>
+                                    <ul>
+                                        <li><a href="https://www.dbonline.jp/phpmyadmin/">phpSQLAdminの使い方はDBOnlineさんへ</a></li>
+                                        <li><a href="https://www.phpmyadmin.net/">phpSQLAdmin公式はこちらへ</a></li>
+                                        <li><a href="https://www.aiship.jp/knowhow/archives/29116">YouTube動画の埋め込み方法はMOBILE FIRST MARKETING LABOさんへ</a></li>
+                                    </ul>
+                                </div>
+                                <!--                                <pre><code class="prettyprint"></code></pre>-->
+                                <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                <p class="text-right">作成日：2019.3.29</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div><!--                1.データベースを作成するここまで-->
+
 
                 <!--                1.データベースを設計するここから-->
                 <div class="col-12 p-sql-php2 p-sql-php3-190329-01-top collapse multi-collapse show" id="collapse-sql-php3-190329-01-top">
