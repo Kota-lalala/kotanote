@@ -100,6 +100,7 @@
                             <hr>
                             <h5 class="card-title">更新履歴</h5>
                             <ol class="card-text" reversed>
+                                <li>「3.会員登録用画面の初期フォーム作成」を追加しました-UP- 2019.3.30 14:00更新<span class="badge badge-info">new</span></li>
                                 <li>「2.データベースを作成する」を追加しました-UP- 2019.3.29 18:45更新<span class="badge badge-info">new</span></li>
                                 <li>「1.データベースを設計する」を追加しました-UP- 2019.3.29 18:45更新<span class="badge badge-info">new</span></li>
                                 <li>本noteを追加しました-UP- 2019.3.29 14:00更新</li>
@@ -128,12 +129,15 @@
                 <ol reversed>
 
                     <li>
+                        <a data-toggle="collapse" href="#collapse-sql-php3-190330-01-top" aria-expanded="true" aria-controls="collapse-sql-php3-190330-01-top" class="">
+                            会員登録用画面の初期フォーム作成
+                        </a>
+                    </li>
+                    <li>
                         <a data-toggle="collapse" href="#collapse-sql-php3-190329-02-top" aria-expanded="true" aria-controls="collapse-sql-php3-190329-02-top" class="">
                             データベースを作成する
                         </a>
                     </li>
-
-
                     <li>
                         <a data-toggle="collapse" href="#collapse-sql-php3-190329-01-top" aria-expanded="true" aria-controls="collapse-sql-php3-190329-01-top" class="">
                             データベースを設計する
@@ -147,7 +151,188 @@
             <!--                コンテンツ部分-->
             <div class="col-cont col-sm-12 col-md-10">
 
-                <!--                1.データベースを作成するここから-->
+                <!--                3.会員登録用画面の初期フォーム作成-->
+                <div class="col-12 p-sql-php2 p-sql-php3-190330-01-top collapse multi-collapse show" id="collapse-sql-php3-190330-01-top">
+
+                    <div class="card">
+                        <a data-toggle="collapse" href="#collapse-sql-php3-190330-01" aria-expanded="true" aria-controls="collapse-sql-php3-190330-01" class="">
+                            <div class="card-header" role="tab">
+                                <h5 class="mb-0">
+                                    3.会員登録用画面の初期フォーム作成
+                                </h5>
+                            </div>
+                        </a>
+
+                        <div id="collapse-sql-php3-190329-02" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                            <div class="card-body">
+                                <div class="pickup-box">
+                                    <ul>
+                                        <li>
+                                            <a data-toggle="collapse" href="#collapse-sql-php3-190330-01-1" aria-expanded="true" aria-controls="collapse-sql-php3-190330-01-1" class="">
+                                            join/index.php
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a data-toggle="collapse" href="#collapse-sql-php3-190330-01-2" aria-expanded="true" aria-controls="collapse-sql-php3-190330-01-2" class="">
+                                            join/check.php
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a data-toggle="collapse" href="#collapse-sql-php3-190330-01-3" aria-expanded="true" aria-controls="collapse-sql-php3-190330-01-3" class="">
+                                            join/thanks.php
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <p>
+                                        まずは会員登録用画面として用意する上記3つの、初期段階のフォームを作成します。
+                                        後でこの部分にどんどんコードを追加して作り上げていきます。
+                                    </p>
+                                </div>
+                                <div class="link-box">
+                                    <h5>リンク</h5>
+                                    <ul>
+                                        <li><a href="https://rfs.jp/sb/javascript/js-lab/code-prettify.html#i-2">Google Code PrettifyについてはSMARTさんへ</a></li>
+                                        <li><a href="https://webtools.dounokouno.com/htmlescape/">コードのエスケープ変換はWeb制作小物ツールさんへ</a></li>
+                                    </ul>
+                                </div>
+                                <!--                                <pre><code class="prettyprint"></code></pre>-->
+                                <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                <p class="text-right">作成日：2019.3.30</p>
+                            </div>
+                        </div>
+                    </div>
+
+<!--                    join/index.phpについて-->
+                    <div id="collapse-sql-php3-190330-01-1" class="collapse multi-collapse" role="tabpanel" aria-labelledby="headingOne" style="">
+                        <div class="card-body">
+                            <hr>
+                            <h4>join/index.php</h4>
+                            <p>ブラウザ表示</p>
+                            <div class="image-box">
+                                <img src="../img/prog-sql-php2-index-def.png" alt="index画像">
+                            </div>
+                            <p>コード</p>
+                            <pre><code class="prettyprint linenums">
+&lt;form action=&quot;&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;
+
+    &lt;dl&gt;
+        &lt;dt&gt;ニックネーム&lt;span class=&quot;required&quot;&gt;必須&lt;/span&gt;&lt;/dt&gt;
+        &lt;dd&gt;&lt;input type=&quot;text&quot; name=&quot;name&quot; size=&quot;35&quot; maxlength=&quot;255&quot;&gt;&lt;/dd&gt;
+        &lt;dt&gt;メールアドレス&lt;span class=&quot;required&quot;&gt;必須&lt;/span&gt;&lt;/dt&gt;
+        &lt;dd&gt;&lt;input type=&quot;text&quot; name=&quot;email&quot; size=&quot;35&quot; maxlength=&quot;255&quot;&gt;&lt;/dd&gt;
+        &lt;dt&gt;パスワード&lt;span class=&quot;required&quot;&gt;必須&lt;/span&gt;&lt;/dt&gt;
+        &lt;dd&gt;&lt;input type=&quot;password&quot; name=&quot;password&quot; size=&quot;10&quot; maxlength=&quot;20&quot;&gt;&lt;/dd&gt;
+        &lt;dt&gt;写真など&lt;/dt&gt;
+        &lt;dd&gt;&lt;input type=&quot;file&quot; name=&quot;image&quot; size=&quot;35&quot; maxlength=&quot;&quot;&gt;&lt;/dd&gt;
+    &lt;/dl&gt;
+    &lt;div&gt;&lt;input type=&quot;submit&quot; value=&quot;入力内容を確認する&quot;&gt;&lt;/div&gt;
+
+&lt;/form&gt;
+                            </code></pre>
+                            <p>
+                                postでデータ送信。action=""なのでこのファイル自身にフォームのデータをpostで送る。<br>
+                                写真などを扱うので「enctype="multipart/form-data"」を指定する。
+                                入力してもらうinputは4つ用意。「name」「email」「password」「image」<br>
+                                写真以外は必須を明記。<br>
+                                最後のinputのsubmitで入力してもらった5つ(最低4つ)のデータを送信する。
+                            </p>
+
+                            <div class="pickup-box">
+
+                                <ul>join/index.phpからPOST送信するデータ
+                                    <li>name</li>
+                                    <li>email</li>
+                                    <li>password</li>
+                                    <li>image</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--                    join/check.phpについて-->
+                    <div id="collapse-sql-php3-190330-01-2" class="collapse multi-collapse" role="tabpanel" aria-labelledby="headingOne" style="">
+                        <div class="card-body">
+                            <hr>
+                            <h4>join/check.php</h4>
+                            <p>ブラウザ表示</p>
+                            <div class="image-box">
+                                <img src="../img/prog-sql-php2-check-def.png" alt="index画像">
+                            </div>
+                            <p>コード</p>
+                            <pre><code class="prettyprint linenums">
+&lt;pre&gt;&lt;code&gt;&amp;lt;form action=&amp;quot;&amp;quot; method=&amp;quot;post&amp;quot;&amp;gt;
+
+    &amp;lt;dl&amp;gt;
+        &amp;lt;dt&amp;gt;ニックネーム&amp;lt;/dt&amp;gt;
+        &amp;lt;dd&amp;gt;&amp;lt;/dd&amp;gt;
+        &amp;lt;dt&amp;gt;メールアドレス&amp;lt;/dt&amp;gt;
+        &amp;lt;dd&amp;gt;&amp;lt;/dd&amp;gt;
+        &amp;lt;dt&amp;gt;パスワード&amp;lt;/dt&amp;gt;
+        &amp;lt;dd&amp;gt;表示されない&amp;lt;/dd&amp;gt;
+        &amp;lt;dt&amp;gt;写真など&amp;lt;/dt&amp;gt;
+        &amp;lt;dd&amp;gt;&amp;lt;/dd&amp;gt;
+    &amp;lt;/dl&amp;gt;
+    &amp;lt;div&amp;gt;
+        &amp;lt;a href=&amp;quot;index.php?action=rewrite&amp;quot;&amp;gt;&amp;amp;laquo;&amp;amp;nbsp;書き直す&amp;lt;/a&amp;gt;
+        | &amp;lt;input type=&amp;quot;submit&amp;quot; value=&amp;quot;登録する&amp;quot;&amp;gt;
+    &amp;lt;/div&amp;gt;
+
+&amp;lt;/form&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+                            </code></pre>
+                            <p>
+                                postでデータ送信。action=""なのでこのファイル自身にフォームのデータをpostで送る。<br>
+                                確認用のページなのでinputで入力する項目は無し<br>
+                                後にname,mail,写真を表示するようにしていくが、今は無し。<br>
+                                inputのsubmitでjoin/index.phpから受け取った5つ(最低4つ)のデータを送信する。
+                            </p>
+
+                            <div class="pickup-box">
+
+                                <ul>join/check.phpからPOST送信するデータ
+                                    <li>name</li>
+                                    <li>email</li>
+                                    <li>password</li>
+                                    <li>image</li>
+                                </ul>
+                                <p>(join/index.phpから受け取ったデータそのまま)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--                    join/thanks.phpについて-->
+                    <div id="collapse-sql-php3-190330-01-3" class="collapse multi-collapse" role="tabpanel" aria-labelledby="headingOne" style="">
+                        <div class="card-body">
+                            <hr>
+                            <h4>join/thanks.php</h4>
+                            <p>ブラウザ表示</p>
+                            <div class="image-box">
+                                <img src="../img/prog-sql-php2-thanks-def.png" alt="index画像">
+                            </div>
+                            <p>コード</p>
+                            <pre><code class="prettyprint linenums">
+&lt;p&gt;ユーザー登録が完了しました&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;../&quot;&gt;ログインする&lt;/a&gt;&lt;/p&gt;
+                            </code></pre>
+                            <p>
+                                登録が完了したことを表示し、loginへのリンクを張ったのみ。
+                            </p>
+
+                            <div class="pickup-box">
+
+                                <ul>join/thank.phpからPOST送信するデータ(デフォルト)
+                                    <li>無し</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div><!--                3.会員登録用画面の初期フォーム作成-->
+
+
+                <!--                2.データベースを作成するここから-->
                 <div class="col-12 p-sql-php2 p-sql-php3-190329-02-top collapse multi-collapse show" id="collapse-sql-php3-190329-02-top">
 
                     <div class="card">
@@ -184,7 +369,7 @@
                         </div>
                     </div>
 
-                </div><!--                1.データベースを作成するここまで-->
+                </div><!--                2.データベースを作成するここまで-->
 
 
                 <!--                1.データベースを設計するここから-->
@@ -201,7 +386,7 @@
 
                         <div id="collapse-sql-php3-190329-01" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
                             <div class="card-body">
-                                <div class="pikup-box">
+                                <div class="pickup-box">
                                     <ol>
                                         <li>
                                             <a data-toggle="collapse" href="#collapse-sql-php3-190329-01-1" aria-expanded="true" aria-controls="collapse-sql-php3-190329-01-1" class="">
@@ -245,7 +430,7 @@
                                         とにかく思いついたものを書き出して、あとから絞り込んでいく。というやり方が良い気がします。ただし1から考える場合には、機能を考えるにもどうしたら良いかわからないこともあると思いますので、例えば今回の様に何かのプログラムや構造を元にして考えるのも良いかと思います。
                                     </p>
 
-                                    <div class="pikup-box">
+                                    <div class="pickup-box">
                                         <ul>
                                             <li>〇〇できる</li>
                                             <li>〇〇できる</li>
@@ -278,7 +463,7 @@
                                     <p>
                                         では各機能にはどんな情報が必要で、データベースに保存しておかなければならないのか？
                                     </p>
-                                    <div class="pikup-box">
+                                    <div class="pickup-box">
                                         <ul>
                                             <li>〇〇できる
                                                 <ul>
@@ -323,7 +508,7 @@
                                     <p>
                                         2.で並べた情報に対してグループ分けを考え、テーブルとする。
                                     </p>
-                                    <div class="pikup-box">
+                                    <div class="pickup-box">
                                         <ul>
                                             <li>〇〇できる
                                                 <ul>
@@ -348,7 +533,7 @@
                                     <p>
                                         ↑により今回は二つのグループに分けられそうなので、↓のテーブルを作ることにする。
                                     </p>
-                                    <div class="pikup-box">
+                                    <div class="pickup-box">
                                         <ul>
                                             <li>会員テーブル(members)</li>
                                             <li>投稿テーブル(posts)</li>
@@ -367,7 +552,7 @@
                                         また、各テーブルの固有なIDとしてプライマリーキーを設定します。<br>
                                         ↓の様に設定しました。
                                     </p>
-                                    <div class="pikup-box">
+                                    <div class="pickup-box">
                                         <ul>
                                             <li>membersテーブル
                                                 <ul>

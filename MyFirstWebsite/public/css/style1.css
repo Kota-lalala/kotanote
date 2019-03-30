@@ -233,7 +233,7 @@ footer li {
 }
 
 /*ピックアップボックスの設定*/
-.pikup-box {
+.pickup-box {
     box-sizing: border-box;
     border: 5px solid #b5c9f0;
     padding: 10px 5px;
@@ -241,15 +241,15 @@ footer li {
 }
 
 /*ピックアップテーブルの設定*/
-table {
+.pickup-table table {
     border-collapse: collapse;
     border: 2px solid #b5c9f0;
     margin-bottom: 20px;
 }
-table th, table td {
+.pickup-table table th, table td {
     border: 1px dashed #b5c9f0;
 }
-table th {
+.pickup-table table th {
 /*    color: white;*/
     background-color: #b5c9f0;
     text-align: center;
@@ -270,7 +270,7 @@ table th {
     margin-bottom: 20px;
 }
 
-
+/*ビデオボックスの設定*/
 .video-box{
     position:relative;
     width:100%;
@@ -283,4 +283,26 @@ table th {
     right:0;
     width:100%;
     height:100%;
+}
+
+/*イメージボックス*/
+.image-box {
+    border: 5px solid #b1e3f7;
+    margin: 20px;
+    padding: 20px;
+}
+.image-box img {
+    width: 100%;
+}
+
+/*ラインナンバーを1行づつに入れる指示*/
+.prettyprint ol.linenums > li {
+    list-style-type: decimal;
+    background: #ebf8ff;
+}
+
+.prettyprint {
+    background: #ebf8ff;
+    /*  font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;*/
+    border: 0 !important;
 }
