@@ -86,8 +86,8 @@
                     <div class="card-body">
                         <h4 class="card-title">PHP学習済み内容の吐き出し部屋</h4>
                         <p class="con-rec-p">
-                            最新情報:1点を追加しました。-UP- 2019.3.24更新
-<!--                            <span class="badge badge-info">new</span>-->
+                            最新情報:1点を追加しました。-UP- 2019.4.2更新
+                            <span class="badge badge-info">new</span>
                         </p>
                         <p class="card-text">
                             現在PHPを学習中につき、学習した事をただ吐き出すページです。細かい解説は無しでチートシート的に作成していこうと思っています。さっと見られるのが良い所です。現在学習中の方でしたら、あれどうだったっけ？という時にさって見ていただければと思います。ただ面白いページではありませんので、期待はしないで入室願いますm(__)m
@@ -96,6 +96,47 @@
                 </div>
             </div>
 
+<!--            switch文-->
+            <div class="col-12 mb-2">
+                <div class="card h-100 cpp cpp-190324">
+                    <div class="card-header">
+                        switch文
+
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">switch文</h4>
+                        <pre><code class="prettyprint linenums">
+$signal = “fruits&quot;;
+
+switch($fruits) {
+    case “banana&quot;:
+        echo “yellow group&quot;;
+        break;
+    case “apple&quot;:
+        echo “red group&quot;;
+        break;
+    case “melon&quot;:
+        echo “green group&quot;;
+        break;
+    default:
+        echo “other group&quot;;
+}
+                            </code></pre>
+                        <p class="card-text">
+                            switch($fruits)の部分で、$fruitsという変数の中身により、実行するコードを分けることを宣言。<br>
+                            case "banana":の部分で,$fruitsの中身が「bunana」だった場合のコードを書く<br>
+                            break;でswitch文から抜け出す。<br>
+                            この場合は、$fruitsの中身がbunanaだったら「yellow group」と表示してswitch文から抜け出す。<br>
+                            default:にはcaseのいずれにも当てはまらなかった場合に実行するコードを書いておく。
+                        </p>
+                        <!--            <a href="#!" class="card-link">Card link</a>-->
+                        <!--            <p>更新日：2019.3.14</p>-->
+                        <p>作成日：2019.3.21</p>
+                    </div>
+                </div>
+            </div>
+
+<!--            真偽値-->
             <div class="col-12 mb-2">
                 <div class="card h-100 cpp cpp-190324">
                     <div class="card-header">

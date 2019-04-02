@@ -92,7 +92,7 @@
                         <!--                            <img class="card-img-top" src="../img/prog-sql.png" alt="Card image cap">-->
                         <div class="card-body">
                             <h5 class="card-title">このnoteについて</h5>
-                            <p class="card-text">
+                            <p class="card-text"
                                 本noteには、私が「よくわかるPHPの教科書 PHP5.5対応版」にある「PRACTICE2〜Twitter風ひとこと掲示板を作成する」の部分を学習するにあたり、その学習過程をここに残すことにしました。また分かりやすい様に、説明も加えていくつもりですので、同じ様な初学者の方の参考にしていただけたらとも思います。また、おかしな点など気づかれた方、是非ご連絡いただけたらありがたいです^o^
                             </p>
                         </div>
@@ -100,9 +100,10 @@
                             <hr>
                             <h5 class="card-title">更新履歴</h5>
                             <ol class="card-text" reversed>
-                                <li>「3.会員登録用画面の初期フォーム作成」を追加しました-UP- 2019.3.30 14:00更新<span class="badge badge-info">new</span></li>
-                                <li>「2.データベースを作成する」を追加しました-UP- 2019.3.29 18:45更新<span class="badge badge-info">new</span></li>
-                                <li>「1.データベースを設計する」を追加しました-UP- 2019.3.29 18:45更新<span class="badge badge-info">new</span></li>
+                                <li>「4.会員登録用のindex.phpを作成」(書きかけ)を追加しました-UP- 2019.3.31 20:30更新<span class="badge badge-info">new</span></li>
+                                <li>「3.会員登録用画面の初期フォーム作成」を追加しました-UP- 2019.3.30 14:00更新</li>
+                                <li>「2.データベースを作成する」を追加しました-UP- 2019.3.29 18:45更新</li>
+                                <li>「1.データベースを設計する」を追加しました-UP- 2019.3.29 18:45更新</li>
                                 <li>本noteを追加しました-UP- 2019.3.29 14:00更新</li>
                             </ol>
                             <hr>
@@ -129,6 +130,11 @@
                 <ol reversed>
 
                     <li>
+                        <a data-toggle="collapse" href="#collapse-sql-php3-190331-01-top" aria-expanded="true" aria-controls="collapse-sql-php3-190331-01-top" class="">
+                            会員登録用のindex.phpを作成
+                        </a>
+                    </li>
+                    <li>
                         <a data-toggle="collapse" href="#collapse-sql-php3-190330-01-top" aria-expanded="true" aria-controls="collapse-sql-php3-190330-01-top" class="">
                             会員登録用画面の初期フォーム作成
                         </a>
@@ -151,6 +157,261 @@
             <!--                コンテンツ部分-->
             <div class="col-cont col-sm-12 col-md-10">
 
+                <!--                4.会員登録用のindex.phpを作成-->
+                <div class="col-12 p-sql-php2 p-sql-php3-190331-01-top collapse multi-collapse show" id="collapse-sql-php3-190331-01-top">
+
+                    <div class="card">
+                        <a data-toggle="collapse" href="#collapse-sql-php3-190331-01" aria-expanded="true" aria-controls="collapse-sql-php3-190331-01" class="">
+                            <div class="card-header" role="tab">
+                                <h5 class="mb-0">
+                                    4.会員登録用のindex.phpを作成
+                                </h5>
+                            </div>
+                        </a>
+
+                        <div id="collapse-sql-php3-190331-01" class="collapse multi-collapse" role="tabpanel" aria-labelledby="headingOne" style="">
+                            <div class="card-body">
+                                <h5>dbconnect.php を作成する</h5>
+                                <pre><code class="prettyprint linenums">
+&lt;?php
+$db = mysqli_connect(&#039;localhost&#039;,&#039;root&#039;,&#039;&#039;,&#039;mini_bbs&#039;)
+    or die(mysqli_connect_error());
+mysqli_set_charset($db , &#039;utf8&#039;);
+?&gt;
+                                </code></pre>
+                                <h5>index.php を作成する</h5>
+                                <pre><code class="prettyprint linenums">
+&lt;?php
+
+require(&#039;../dbconnect.php&#039;);
+
+//    sessionを開始する
+    session_start();
+
+//$error配列の初期化。&#039;&#039;としておく。じゃないと最初はinputのとこでエラーになる
+$error = array();
+
+//    $_POSTが空ではない場合に実行し、エラー内容をセットする
+if(!empty($_POST)) {
+    if ($_POST[&#039;name&#039;] == &#039;&#039;) {
+        $error[&#039;name&#039;] = &#039;blank&#039;;
+    }
+    if ($_POST[&#039;email&#039;] == &#039;&#039;) {
+        $error[&#039;email&#039;] = &#039;blank&#039;;
+    }
+    if (strlen($_POST[&#039;password&#039;]) &lt; 4) {
+        $error[&#039;password&#039;] = &#039;length&#039;;
+    }
+    if ($_POST[&#039;password&#039;] == &#039;&#039;) {
+        $error[&#039;password&#039;] = &#039;blank&#039;;
+    }
+    $fileName = $_FILES[&#039;image&#039;][&#039;name&#039;];
+    if(!empty($fileName)) {
+        $ext = substr($fileName, -3);
+        if($ext != &#039;jpg&#039; &amp;&amp; $ext != &#039;gif&#039;) {
+            $error[&#039;image&#039;] = &#039;type&#039;;
+        }
+    }
+
+//    重複アカウントのチェック
+    if(empty($error)) {
+        $sql = sprintf(&#039;SELECT COUNT(*) AS cnt FROM members WHERE email=&quot;%s&quot;&#039;,
+                mysqli_real_escape_string($db, $_POST[&#039;email&#039;])
+                );
+        $record = mysqli_query($db,$sql) or die(mysquli_error($db));
+        $table = mysqli_fetch_assoc($record);
+        if($table[&#039;con&#039;] &gt; 0) {
+            $error[&#039;email&#039;] = &#039;duplicate&#039;;
+        }
+    }
+
+//        エラーがなかった(empty()が空だったよ)場合に実行。
+//        imageファイルのアップロード、セッションへの保存など
+    if (empty($error)) {
+        $image = date(&#039;YmdHis&#039;) .$_FILES[&#039;image&#039;][&#039;name&#039;];
+        move_uploaded_file($_FILES[&#039;image&#039;][&#039;tmp_name&#039;], &#039;../member_picture/&#039; .$image);
+
+        $_SESSION[&#039;join&#039;] = $_POST;
+        $_SESSION[&#039;join&#039;][&#039;image&#039;] = $image;
+        header(&#039;Location: check.php&#039;);
+        exit();
+    }
+}
+
+//書き直しで戻ってきたとき(rewriteで受け取ったとき)
+if (isset($_REQUEST[&#039;action&#039;])) {
+    if ($_REQUEST[&#039;action&#039;] == &#039;rewrite&#039;) {
+        $_POST = $_SESSION[&#039;join&#039;];
+        $error[&#039;rewrite&#039;] = true;
+    }
+}
+
+//    inputのvalueに使用する$tmp_postの配列を作成
+    $tmp_post = array(
+        &#039;name&#039; =&gt; &#039;&#039;,
+        &#039;email&#039; =&gt; &#039;&#039;,
+        &#039;password&#039; =&gt; &#039;&#039;,
+        &#039;image&#039; =&gt; &#039;&#039;
+    );
+
+    if(isset($_POST[&#039;name&#039;])){
+        echo &#039;name set &lt;br&gt;&#039;;
+        $tmp_post[&#039;name&#039;] = htmlspecialchars($_POST[&#039;name&#039;],ENT_QUOTES,&#039;UTF-8&#039;);
+        echo $tmp_post[&#039;name&#039;].&#039;&lt;br&gt;&#039;;
+        echo htmlspecialchars($_POST[&#039;name&#039;],ENT_QUOTES,&#039;UTF-8&#039;);
+        echo &#039;question&#039;;
+    } else {
+        $tmp_post[&#039;name&#039;] = &#039;&#039;;
+    }
+    if(isset($_POST[&#039;email&#039;])){
+        $tmp_post[&#039;email&#039;] = htmlspecialchars($_POST[&#039;email&#039;],ENT_QUOTES,&#039;UTF-8&#039;);
+    } else {
+        $tmp_post[&#039;email&#039;] = &#039;&#039;;
+    }
+    if(isset($_POST[&#039;password&#039;])){
+        $tmp_post[&#039;password&#039;] = htmlspecialchars($_POST[&#039;password&#039;],ENT_QUOTES,&#039;UTF-8&#039;);
+    } else {
+        $tmp_post[&#039;password&#039;] = &#039;&#039;;
+    }
+    if(isset($_POST[&#039;image&#039;])){
+        $tmp_post[&#039;image&#039;] = htmlspecialchars($_POST[&#039;image&#039;],ENT_QUOTES,&#039;UTF-8&#039;);
+    } else {
+        $tmp_post[&#039;image&#039;] = &#039;&#039;;
+    }
+?&gt;
+
+
+&lt;!--会員登録の入力フォーム--&gt;
+
+&lt;!--    このフォーム内容のデフォルトの送信先は、このファイル自身index.php--&gt;
+&lt;!--        画像を扱うのでenctype=&quot;multipart/form-data&quot;をセットしている--&gt;
+    &lt;form action=&quot;index.php&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;
+
+    &lt;dl&gt;
+        &lt;dt&gt;ニックネーム&lt;span class=&quot;required&quot;&gt;必須&lt;/span&gt;&lt;/dt&gt;
+        &lt;dd&gt;
+            &lt;input type=&quot;text&quot; name=&quot;name&quot; size=&quot;35&quot; maxlength=&quot;255&quot; value=&quot;&lt;?php echo $tmp_post[&#039;name&#039;]; ?&gt;&quot; &gt;
+            &lt;?php if(isset($error[&#039;image&#039;])): ?&gt;
+                &lt;?php if($error[&#039;name&#039;] == &#039;blank&#039;): ?&gt;
+                &lt;p class=&quot;error&quot;&gt;* ニックネームを入力してください&lt;/p&gt;
+                &lt;?php endif; ?&gt;
+            &lt;?php endif; ?&gt;
+        &lt;/dd&gt;
+        &lt;dt&gt;メールアドレス&lt;span class=&quot;required&quot;&gt;必須&lt;/span&gt;&lt;/dt&gt;
+        &lt;dd&gt;
+            &lt;input type=&quot;text&quot; name=&quot;email&quot; size=&quot;35&quot; maxlength=&quot;255&quot; value=&quot;&lt;?php echo $tmp_post[&#039;email&#039;]; ?&gt;&quot; &gt;
+            &lt;?php if(isset($error[&#039;email&#039;])): ?&gt;
+                &lt;?php if($error[&#039;email&#039;] == &#039;blank&#039;): ?&gt;
+                &lt;p class=&quot;error&quot;&gt;* メールアドレスを入力してください&lt;/p&gt;
+                &lt;?php endif; ?&gt;
+                &lt;?php if($error[&#039;email&#039;] == &#039;duplicate&#039;): ?&gt;
+                &lt;p class=&quot;error&quot;&gt;* 指定されたメールアドレスはすでに登録されています&lt;/p&gt;
+                &lt;?php endif; ?&gt;
+            &lt;?php endif; ?&gt;
+        &lt;/dd&gt;
+        &lt;dt&gt;パスワード&lt;span class=&quot;required&quot;&gt;必須&lt;/span&gt;&lt;/dt&gt;
+        &lt;dd&gt;
+            &lt;input type=&quot;password&quot; name=&quot;password&quot; size=&quot;10&quot; maxlength=&quot;20&quot; value=&quot;&lt;?php echo $tmp_post[&#039;password&#039;]; ?&gt;&quot; &gt;
+            &lt;?php if(isset($error[&#039;password&#039;])): ?&gt;
+                &lt;?php if($error[&#039;password&#039;] == &#039;blank&#039;): ?&gt;
+                &lt;p class=&quot;error&quot;&gt;* パスワードを入力してください&lt;/p&gt;
+                &lt;?php endif; ?&gt;
+            &lt;?php endif; ?&gt;
+            &lt;?php if(isset($error[&#039;password&#039;])): ?&gt;
+                &lt;?php if($error[&#039;password&#039;] == &#039;length&#039;): ?&gt;
+                &lt;p class=&quot;error&quot;&gt;* パスワードは4文字以上で入力してください&lt;/p&gt;
+                &lt;?php endif; ?&gt;
+            &lt;?php endif; ?&gt;
+        &lt;/dd&gt;
+        &lt;dt&gt;写真など&lt;/dt&gt;
+        &lt;dd&gt;
+            &lt;input type=&quot;file&quot; name=&quot;image&quot; size=&quot;35&quot; maxlength=&quot;&quot;&gt;
+            &lt;?php if(isset($error[&#039;image&#039;])): ?&gt;
+                &lt;?php if($error[&#039;image&#039;] == &#039;type&#039;):  ?&gt;
+                &lt;p class=&quot;error&quot;&gt;* 「.gif」または「.jpg」の画像を指定してください&lt;/p&gt;
+                &lt;?php endif; ?&gt;
+            &lt;?php endif; ?&gt;
+            &lt;?php if(!empty($error)):  ?&gt;
+            &lt;p class=&quot;error&quot;&gt;* すみませんが画像を改めて指定してください&lt;/p&gt;
+            &lt;?php endif; ?&gt;
+            &lt;/dd&gt;
+    &lt;/dl&gt;
+    &lt;div&gt;&lt;input type=&quot;submit&quot; value=&quot;入力内容を確認する&quot;&gt;&lt;/div&gt;
+
+&lt;/form&gt;
+                                </code></pre>
+<!--
+                                <div class="link-box">
+                                    <h5>リンク</h5>
+                                    <ul>
+                                        <li><a href="https://rfs.jp/sb/javascript/js-lab/code-prettify.html#i-2">Google Code PrettifyについてはSMARTさんへ</a></li>
+                                        <li><a href="https://webtools.dounokouno.com/htmlescape/">コードのエスケープ変換はWeb制作小物ツールさんへ</a></li>
+                                    </ul>
+                                </div>
+-->
+                                <!--                                <pre><code class="prettyprint"></code></pre>-->
+                                <!--            <p class="text-right">更新日：2019.3.14</p>-->
+                                <p class="text-right">作成日：2019.3.31</p>
+                            </div>
+<!--                    join/index.phpについて-->
+<!--
+
+                    <div id="collapse-sql-php3-190330-01-1" class="collapse multi-collapse" role="tabpanel" aria-labelledby="headingOne" style="">
+                        <div class="card-body">
+                            <hr>
+                            <h4>join/index.php</h4>
+                            <p>ブラウザ表示</p>
+                            <div class="image-box">
+                                <img src="../img/prog-sql-php2-index-def.png" alt="index画像">
+                            </div>
+                            <p>コード</p>
+                            <pre><code class="prettyprint linenums">
+&lt;form action=&quot;&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;
+
+    &lt;dl&gt;
+        &lt;dt&gt;ニックネーム&lt;span class=&quot;required&quot;&gt;必須&lt;/span&gt;&lt;/dt&gt;
+        &lt;dd&gt;&lt;input type=&quot;text&quot; name=&quot;name&quot; size=&quot;35&quot; maxlength=&quot;255&quot;&gt;&lt;/dd&gt;
+        &lt;dt&gt;メールアドレス&lt;span class=&quot;required&quot;&gt;必須&lt;/span&gt;&lt;/dt&gt;
+        &lt;dd&gt;&lt;input type=&quot;text&quot; name=&quot;email&quot; size=&quot;35&quot; maxlength=&quot;255&quot;&gt;&lt;/dd&gt;
+        &lt;dt&gt;パスワード&lt;span class=&quot;required&quot;&gt;必須&lt;/span&gt;&lt;/dt&gt;
+        &lt;dd&gt;&lt;input type=&quot;password&quot; name=&quot;password&quot; size=&quot;10&quot; maxlength=&quot;20&quot;&gt;&lt;/dd&gt;
+        &lt;dt&gt;写真など&lt;/dt&gt;
+        &lt;dd&gt;&lt;input type=&quot;file&quot; name=&quot;image&quot; size=&quot;35&quot; maxlength=&quot;&quot;&gt;&lt;/dd&gt;
+    &lt;/dl&gt;
+    &lt;div&gt;&lt;input type=&quot;submit&quot; value=&quot;入力内容を確認する&quot;&gt;&lt;/div&gt;
+
+&lt;/form&gt;
+                            </code></pre>
+                            <p>
+                                postでデータ送信。action=""なのでこのファイル自身にフォームのデータをpostで送る。<br>
+                                写真などを扱うので「enctype="multipart/form-data"」を指定する。
+                                入力してもらうinputは4つ用意。「name」「email」「password」「image」<br>
+                                写真以外は必須を明記。<br>
+                                最後のinputのsubmitで入力してもらった5つ(最低4つ)のデータを送信する。
+                            </p>
+
+                            <div class="pickup-box">
+
+                                <ul>join/index.phpからPOST送信するデータ
+                                    <li>name</li>
+                                    <li>email</li>
+                                    <li>password</li>
+                                    <li>image</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+-->
+
+
+                        </div>
+
+                    </div><!--                    cardここまで-->
+
+
+
+                </div><!--                4.会員登録用のindex.phpを作成-->
+
                 <!--                3.会員登録用画面の初期フォーム作成-->
                 <div class="col-12 p-sql-php2 p-sql-php3-190330-01-top collapse multi-collapse show" id="collapse-sql-php3-190330-01-top">
 
@@ -163,7 +424,7 @@
                             </div>
                         </a>
 
-                        <div id="collapse-sql-php3-190330-01" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                        <div id="collapse-sql-php3-190330-01" class="collapse multi-collapse" role="tabpanel" aria-labelledby="headingOne" style="">
                             <div class="card-body">
                                 <div class="pickup-box">
                                     <ul>
@@ -199,8 +460,6 @@
                                 <!--            <p class="text-right">更新日：2019.3.14</p>-->
                                 <p class="text-right">作成日：2019.3.30</p>
                             </div>
-                        </div>
-
 <!--                    join/index.phpについて-->
                     <div id="collapse-sql-php3-190330-01-1" class="collapse multi-collapse" role="tabpanel" aria-labelledby="headingOne" style="">
                         <div class="card-body">
@@ -325,6 +584,9 @@
                         </div>
                     </div>
 
+
+                                                </div>
+
                     </div><!--                    cardここまで-->
 
 
@@ -344,7 +606,7 @@
                             </div>
                         </a>
 
-                        <div id="collapse-sql-php3-190329-02" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                        <div id="collapse-sql-php3-190329-02" class="collapse multi-collapse" role="tabpanel" aria-labelledby="headingOne" style="">
                             <div class="card-body">
                                     <p>
                                         設計したデータベースを「phpMyAdmin」にて作成します。が、今回は動画での報告となります。↓をご覧ください。<br>
@@ -384,7 +646,7 @@
                             </div>
                         </a>
 
-                        <div id="collapse-sql-php3-190329-01" class="collapse multi-collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                        <div id="collapse-sql-php3-190329-01" class="collapse multi-collapse" role="tabpanel" aria-labelledby="headingOne" style="">
                             <div class="card-body">
                                 <div class="pickup-box">
                                     <ol>

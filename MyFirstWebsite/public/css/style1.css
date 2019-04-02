@@ -306,3 +306,30 @@ footer li {
     /*  font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;*/
     border: 0 !important;
 }
+
+/*music-note用設定*/
+.music-note {
+    color: white;
+    background-color: black;
+}
+
+.music-note h1 {
+    color: white;
+}
+
+.music-note .card {
+    background-color: black;
+/*    border: 1px solid lightblue;*/
+}
+
+.music-note .card:hover {
+    background-color: black;
+}
+
+.music-note .card:hover .card-header {
+    background-color: black;
+}
+
+.music-note .card-header {
+    text-align: center;
+}
