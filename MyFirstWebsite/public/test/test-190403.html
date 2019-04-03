@@ -1,0 +1,127 @@
+<!--お世話になったサイトです。ありがとうございました。またよろしくお願いいたしますm(_ _)m-->
+<!--https://www.irasutoya.com/-->
+<!--https://rfs.jp/sb/javascript/js-lab/smartphone_user-agent.html-->
+<!--https://www.myu-zin.com/webridge/archives/1038.html-->
+<!--http://fukidesign.com/wp/?p=897-->
+
+
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <!-- Required meta tags -->
+        <!-- Bootstrap4.3.1用 -->
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<!--        メイン用 style.css  レスポンシブ用 responsive.css-->
+        <link rel="stylesheet" type="text/css" href="test-style.css">
+        <link rel="stylesheet" type="text/css" href="css/responsive.css" media="screen and (max-width: 1120px)">
+
+<!--        FontAwesome用-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+
+        <title>Kotanote</title>
+    </head>
+    <body>
+
+        <header>
+
+        </header>
+
+        <div class="title-box">
+            <div class="image-box">
+                <img class="flag" src="./flag-Australia.png" alt="オーストラリア国旗の画像">
+                <img class="flag" src="./flag-England.png" alt="イギリス国旗の画像">
+                <img class="flag" src="./flag-America.png" alt="アメリカ国旗の画像">
+                <img class="flag" src="./flag-Canada.png" alt="カナダ国旗の画像">
+                <div class="fuki-pink">A</div>
+                <div class="fuki-yellow">あ</div>
+            </div>
+            <h1>お手軽通訳</h1>
+            <h2>OTEGARU interpreter</h2>
+        </div>
+
+<!--        セレクトボックス-英語--->
+        <div class="select-box usa">
+            <div class="lang-box">
+                <p>英 語</p>
+                <p class="p-border"></p>
+                <p>English</p>
+            </div>
+            <div class="flag-box">
+                <img src="./flag-America.png" alt="アメリカ国旗の画像">
+            </div>
+            <div class="number-box">
+                <div class="round">1</div>
+                <div class="round">2</div>
+                <div class="round">3</div>
+            </div>
+        </div>
+
+<!--        セレクトボックス-中国語--->
+        <div class="select-box china">
+            <div class="lang-box">
+                <p>中国語</p>
+                <p class="p-border"></p>
+                <p>中 文</p>
+            </div>
+            <div class="flag-box">
+                <img src="./flag-China.png" alt="中国国旗の画像">
+            </div>
+            <div class="number-box">
+                <div class="round">1</div>
+                <div class="round">2</div>
+                <div class="round">3</div>
+            </div>
+        </div>
+
+<!--        セレクトボックス-韓国語--->
+        <div class="select-box korea">
+            <div class="lang-box">
+                <p>韓国語</p>
+                <p class="p-border"></p>
+                <p>한글로</p>
+            </div>
+            <div class="flag-box">
+                <img src="./flag-South-Korea.png" alt="韓国国旗の画像">
+            </div>
+            <div class="number-box">
+                <div class="round">1</div>
+                <div class="round">2</div>
+                <div class="round">3</div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            document.write("JavaScriptを使って出力しています。");
+            // iPhone
+            if ( navigator.userAgent.indexOf('iPhone') > 0 ){
+                document.write("iPhoneです。");
+                // iPad
+            } else if( navigator.userAgent.indexOf('iPad') > 0 ){
+                document.write("iPadです。");
+                // iPod
+            } else if( navigator.userAgent.indexOf('iPod') > 0 ){
+                document.write("iPodです。");
+                // Android
+            } else if( navigator.userAgent.indexOf('Android') > 0 ){
+                document.write("Androidです。");
+            } else {
+                document.write("それ以外です。");
+            }
+        </script>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+    </body>
+</html>

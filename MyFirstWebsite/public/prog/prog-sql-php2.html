@@ -92,7 +92,7 @@
                         <!--                            <img class="card-img-top" src="../img/prog-sql.png" alt="Card image cap">-->
                         <div class="card-body">
                             <h5 class="card-title">このnoteについて</h5>
-                            <p class="card-text"
+                            <p class="card-text">
                                 本noteには、私が「よくわかるPHPの教科書 PHP5.5対応版」にある「PRACTICE2〜Twitter風ひとこと掲示板を作成する」の部分を学習するにあたり、その学習過程をここに残すことにしました。また分かりやすい様に、説明も加えていくつもりですので、同じ様な初学者の方の参考にしていただけたらとも思います。また、おかしな点など気づかれた方、是非ご連絡いただけたらありがたいです^o^
                             </p>
                         </div>
@@ -100,7 +100,8 @@
                             <hr>
                             <h5 class="card-title">更新履歴</h5>
                             <ol class="card-text" reversed>
-                                <li>「4.会員登録用のindex.phpを作成」(書きかけ)を追加しました-UP- 2019.3.31 20:30更新<span class="badge badge-info">new</span></li>
+                                <li>「4.会員登録用のindex.phpを作成」(書きかけ)へ追記しました-UP- 2019.4.3 18:00更新<span class="badge badge-info">new</span></li>
+                                <li>「4.会員登録用のindex.phpを作成」(書きかけ)を追加しました-UP- 2019.3.31 20:30更新
                                 <li>「3.会員登録用画面の初期フォーム作成」を追加しました-UP- 2019.3.30 14:00更新</li>
                                 <li>「2.データベースを作成する」を追加しました-UP- 2019.3.29 18:45更新</li>
                                 <li>「1.データベースを設計する」を追加しました-UP- 2019.3.29 18:45更新</li>
@@ -171,16 +172,39 @@
 
                         <div id="collapse-sql-php3-190331-01" class="collapse multi-collapse" role="tabpanel" aria-labelledby="headingOne" style="">
                             <div class="card-body">
-                                <h5>dbconnect.php を作成する</h5>
-                                <pre><code class="prettyprint linenums">
+                                <div class="pickup-box">
+                                    <ol>
+                                        <li>
+                                            <a data-toggle="collapse" href="#collapse-sql-php3-190331-01-1" aria-expanded="true" aria-controls="collapse-sql-php3-190331-01-1" class="">
+                                                コード全文
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a data-toggle="collapse" href="#collapse-sql-php3-190331-01-2" aria-expanded="true" aria-controls="collapse-sql-php3-190331-01-2" class="">
+                                                コードを部分的に解説
+                                            </a>
+                                        </li>
+                                    </ol>
+                                </div>
+                                <p class="text-right">更新日：2019.4.3</p>
+                                <p class="text-right">作成日：2019.3.31</p>
+                            </div>
+
+<!--                            コード全文-->
+                            <div id="collapse-sql-php3-190331-01-1" class="collapse multi-collapse" role="tabpanel" aria-labelledby="headingOne" style="">
+                                <div class="card-body">
+                                    <h4>コード全文</h4>
+                                    <hr>
+                                    <h5>dbconnect.php を作成する</h5>
+                                    <pre><code class="prettyprint linenums">
 &lt;?php
 $db = mysqli_connect(&#039;localhost&#039;,&#039;root&#039;,&#039;&#039;,&#039;mini_bbs&#039;)
     or die(mysqli_connect_error());
 mysqli_set_charset($db , &#039;utf8&#039;);
 ?&gt;
-                                </code></pre>
-                                <h5>index.php を作成する</h5>
-                                <pre><code class="prettyprint linenums">
+                                    </code></pre>
+                                    <h5>index.php を作成する</h5>
+                                    <pre><code class="prettyprint linenums">
 &lt;?php
 
 require(&#039;../dbconnect.php&#039;);
@@ -339,22 +363,134 @@ if (isset($_REQUEST[&#039;action&#039;])) {
     &lt;div&gt;&lt;input type=&quot;submit&quot; value=&quot;入力内容を確認する&quot;&gt;&lt;/div&gt;
 
 &lt;/form&gt;
-                                </code></pre>
-<!--
-                                <div class="link-box">
-                                    <h5>リンク</h5>
-                                    <ul>
-                                        <li><a href="https://rfs.jp/sb/javascript/js-lab/code-prettify.html#i-2">Google Code PrettifyについてはSMARTさんへ</a></li>
-                                        <li><a href="https://webtools.dounokouno.com/htmlescape/">コードのエスケープ変換はWeb制作小物ツールさんへ</a></li>
-                                    </ul>
+                                    </code></pre>
                                 </div>
--->
-                                <!--                                <pre><code class="prettyprint"></code></pre>-->
-                                <!--            <p class="text-right">更新日：2019.3.14</p>-->
-                                <p class="text-right">作成日：2019.3.31</p>
                             </div>
-<!--                    join/index.phpについて-->
-<!--
+
+<!--                            コードを部分的に解説-->
+                            <div id="collapse-sql-php3-190331-01-2" class="collapse multi-collapse" role="tabpanel" aria-labelledby="headingOne" style="">
+                                <div class="card-body">
+                                    <hr>
+                                    <h4>コードを部分的に解説</h4>
+                                    <p>ここでは先ほどのコードを部分的に区切って解説していきます。</p>
+                                    <pre><code class="prettyprint linenums">
+&lt;?php
+
+require(&#039;../dbconnect.php&#039;);
+
+    session_start();
+
+                                    </code></pre>
+                                    <p>
+                                        php開始<br>
+                                        require()で別ファイルのdbconnect.phpを実行しています。<br>
+                                        dbconnect.phpは先ほどコードを載せておいたと思いますが、サーバーへの接続コードを記述してあります<br>
+                                        session_start()でセッションをスタートさせます。
+                                    </p>
+                                    <pre><code class="prettyprint linenums">
+$error = array();
+
+if(!empty($_POST)) {
+
+    // (1)POST値のチェック
+    if ($_POST[&#039;name&#039;] == &#039;&#039;) {
+        $error[&#039;name&#039;] = &#039;blank&#039;;
+    }
+    if ($_POST[&#039;email&#039;] == &#039;&#039;) {
+        $error[&#039;email&#039;] = &#039;blank&#039;;
+    }
+    if (strlen($_POST[&#039;password&#039;]) &lt; 4) {
+        $error[&#039;password&#039;] = &#039;length&#039;;
+    }
+    if ($_POST[&#039;password&#039;] == &#039;&#039;) {
+        $error[&#039;password&#039;] = &#039;blank&#039;;
+    }
+    $fileName = $_FILES[&#039;image&#039;][&#039;name&#039;];
+    if(!empty($fileName)) {
+        $ext = substr($fileName, -3);
+        if($ext != &#039;jpg&#039; &amp;&amp; $ext != &#039;gif&#039;) {
+            $error[&#039;image&#039;] = &#039;type&#039;;
+        }
+    }
+                                    </code></pre>
+                                    <p5>if(!empty($_POST)) { }のコード(1)POST値のチェック</p5>
+                                    <p>
+                                        この部分では、未入力の場合、passwordが4文字以下の場合、imageがjpgかgif以外だった場合に、$errorに値を保存し、後で利用できる様にしています。<br>
+                                        $error = array();の部分は書籍には載っておりません。ですが私がコードを書いて実行してみると、どうやら$errorが未定義なのに評価に使われていてエラーが発生している様なのです。ので、ここでまず定義のみしておくことにしました。<br>
+                                        if(!empty($_POST)) { }の部分は$_POSTが空ではなかった場合に実行する。<br>
+                                        3回に分けて解説をしていきます。<br>
+                                        $_POST['name']が''(空)だった場合に$error[&#039;name&#039;]にblankを入れています。つまりnameが入力されていなかった場合にblankをする。で、後ほどinputの下に表示する項目を追加し、blankだった場合は・・・という具合に使います。<br>
+                                        strlen()は文字数を得るファンクションで、4文字以上のパスワードが満たされているかをここでチェック。falseなら$error[&#039;password&#039;]にlengthを入れ、後で使用します。<br>
+                                        inputでファイルパスを指定したことにより$_FILES[&#039;image&#039;][&#039;name&#039;]にその情報が保存されていますので、$fileNameに取り出しておきます。<br>
+                                        次にif(!empty($fileName)) {}の部分で、先ほどの$fileNameが空ではないなら{}内のコードを実行。<br>
+                                        substr()でファイル名の後ろから3文字を取り出し、$extに保存しています。<br>
+                                        次のif文で$extがjpgまたはgifかどうかを確認し、falseなら$error[&#039;image&#039;]にtypeを代入しておきます。
+                                    </p>
+                                    <pre><code class="prettyprint linenums">
+// (2)重複アカウントのチェック
+if(empty($error)) {
+    $sql = sprintf(&#039;SELECT COUNT(*) AS cnt FROM members WHERE email=&quot;%s&quot;&#039;,
+            mysqli_real_escape_string($db, $_POST[&#039;email&#039;])
+            );
+    $record = mysqli_query($db,$sql) or die(mysquli_error($db));
+    $table = mysqli_fetch_assoc($record);
+    if($table[&#039;con&#039;] &gt; 0) {
+        $error[&#039;email&#039;] = &#039;duplicate&#039;;
+    }
+}
+                                    </code></pre>
+                                    <p5>if(!empty($_POST)) { }のコード(2)重複アカウントのチェック</p5>
+                                    <p>
+                                        ここでは、同じemailの値が既に登録されていないかをチェックしています。<br>
+                                        if(empty($error)) {}つまり、$errorが空だった場合、つまりエラーがなかった場合のみ実行。<br>
+                                        「$sql〜」でsql文を$sqlに代入している。ここの文は入力されたemailの値をWHEREの条件に指定して、その値を持つレコードをカウントした数を、データベースから取り出す指示です。<br>
+                                        mysqli_real_escape_string()でサニタイズしてPOSTから呼び出した値を、sprintf()により書式を%Sとしてemailの値に使用し、SELECT文を作っている。<br>
+                                        「$record〜」の部分で、$dbに対して$sqlのSQL文を実行し、レコードを$recordに取り出しています。「or die()」はエラーが発生した時用。<br>
+                                        「$table〜」の部分で、mysqli_fetch_assoc()を使い$recordから取り出したレコードを$tableに連想配列として保存しています。<br>
+                                        「if〜」の部分で、もしそのカウント数が0よりも大きいなら(つまり1個でもあれば)エラーにduplicateを入れる。<br>
+                                    </p>
+                                    <pre><code class="prettyprint linenums">
+    // (3)エラーがなかった(empty()が空だったよ)場合に実行
+    if (empty($error)) {
+        $image = date(&#039;YmdHis&#039;) .$_FILES[&#039;image&#039;][&#039;name&#039;];
+        move_uploaded_file($_FILES[&#039;image&#039;][&#039;tmp_name&#039;], &#039;../member_picture/&#039; .$image);
+
+        $_SESSION[&#039;join&#039;] = $_POST;
+        $_SESSION[&#039;join&#039;][&#039;image&#039;] = $image;
+        header(&#039;Location: check.php&#039;);
+        exit();
+    } else {
+        echo &#039;エラーがあります&#039;;
+    }
+}
+                                    </code></pre>
+                                    <p>
+                                        こちらも$errorが空(エラーがなかった)の場合に実行する。<br>
+                                        $imageにファイルのパスを代入している。<br>
+                                        date()を使い、今の「年月日時分秒」を取り出してファイル名の先頭に使っている。<br>
+                                        そこに$_FILES[&#039;image&#039;][&#039;name&#039;]を付けて、ファイル名としています。<br>
+                                        move_uploaded_file(A,B)を使ってファイルをアップロード。指定したファイルAをサーバーのBへアップロードします<br>
+                                        $_SESSION[&#039;join&#039;] = $_POSTで、POSTの値をSESSIONに保存しています。<br>
+                                        $_SESSION[&#039;join&#039;][&#039;image&#039;] = $image;で、画像のファイル名をSESSIOに保存しています。<br>
+                                        これにより、SESSIONを閉じるまではそのデータが利用可能です。<br>
+                                        「header〜」の部分でcheck.phpにページを移動させて、次のexit()で今のindex.phpを閉じています。<br>
+                                        else以降の部分は$errorがあった場合に、その旨を表示させています。
+                                    </p>
+                                    <pre><code class="prettyprint linenums">
+                                    </code></pre>
+                                    <p></p>
+                                    <pre><code class="prettyprint linenums">
+                                    </code></pre>
+                                    <p></p>
+                                    <pre><code class="prettyprint linenums">
+                                    </code></pre>
+                                    <p></p>
+                                </div>
+                            </div>
+
+
+
+                    <!--
 
                     <div id="collapse-sql-php3-190330-01-1" class="collapse multi-collapse" role="tabpanel" aria-labelledby="headingOne" style="">
                         <div class="card-body">
