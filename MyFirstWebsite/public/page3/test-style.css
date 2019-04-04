@@ -1,0 +1,428 @@
+body {
+    background-color: #b7d9e7;
+    padding-top: 30px;
+}
+
+.contents {
+    width: 315px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*タイトルボックスの設定*/
+.title-box {
+    /*
+    width: 315px;
+    margin-left: auto;
+    margin-right: auto;
+    */
+    width: 100%;
+    padding-top: 35px;
+    text-align: center;
+    position: relative;
+}
+.title-box image-box {
+    width: 250px;
+    height: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    position: relative;
+}
+.title-box img {
+    width: 100%;
+    position: absolute;
+}
+.title-box img:nth-child(1n) {
+    top: 10px;
+    left:70px;
+}
+.title-box img:nth-child(2n) {
+    top: 5px;
+    left:90px;
+}
+.title-box img:nth-child(3n) {
+    top: 5px;
+    left: 190px;
+    z-index: 1;
+}
+.title-box img:nth-child(4n) {
+    top: 10px;
+    left: 210px;
+}
+.title-box div:nth-child(1n) {
+    top: 5px;
+    left: 125px;
+}
+.title-box div:nth-child(2n) {
+    top: 5px;
+    left: 150px;
+}
+.title-box h1 {
+    font-family: 'Kosugi Maru', sans-serif;
+    font-size: 40px;
+    margin-bottom: 0;
+}
+.title-box h2{
+    font-size: 14px;
+}
+.title-box .flag{
+    width: 30px;
+    position: absolute;
+}
+
+.fuki-pink {
+    width: 30px;
+    height: 30px;
+    color:white;
+    background: url(./fuki-pink.png);
+    background-size: cover;
+    position: absolute;
+}
+.fuki-yellow {
+    width: 30px;
+    height: 30px;
+    color:gray;
+    background: url(./fuki-yellow.png);
+    background-size: cover;
+    position: absolute;
+}
+
+
+/*セレクトボックスの設定*/
+.select-box {
+    box-sizing: border-box;
+/*    width:315px;*/
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5px;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 20px;
+    background-color: white;
+}
+
+/* 1/3-ラングボックスの設定*/
+.lang-box {
+    width: 65px;
+}
+.lang-box p {
+    text-align: center;
+    margin-bottom: 0;
+}
+.lang-box p:first-child {
+    font-size: 18px;
+    font-weight: bold;
+}
+.lang-box p:last-child {
+    font-size: 12px;
+}
+.lang-box .p-border {
+    border-bottom: 1px solid;
+}
+
+/* 2/3-フラッグボックスの設定*/
+.select-box .flag-box {
+    width: 50px;
+}
+.select-box .flag-box img{
+    width: 100%;
+}
+
+/* 3/3-ナンバーボックスの設定*/
+.number-box {
+    width: 165px;
+    display: flex;
+    justify-content: space-between;
+}
+.round {
+    width: 43px;
+    height: 43px;
+    background-color: orange;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 43px;
+    font-size: 20px;
+    color:white;
+    box-sizing: content-box;
+    border: 5px solid lightgray;
+}
+
+/*usaの場合*/
+.usa {
+    border: 5px solid #d2712a;
+}
+.usa .lang-box p {
+    color: #d2712a;
+}
+.usa .round {
+    background-color: #d2712a;
+}
+
+/*chinaの場合*/
+.china {
+    border: 5px solid #275d92;
+}
+.china .lang-box p {
+    color: #275d92;
+}
+.china .round {
+    background-color: #275d92;
+}
+
+/*koreaの場合*/
+.korea {
+    border: 5px solid #2f7741;
+}
+.korea .lang-box p {
+    color: #2f7741;
+}
+.korea .round {
+    background-color: #2f7741;
+}
+
+
+/*コールボックスの設定*/
+.call-box {
+    width:100%;
+    height: 90px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+.call-box img {
+    width: 80px;
+    height: 80px;
+}
+.call-box i {
+    font-size: 50px;
+    color:darkorange;
+}
+.call-box2 {
+    text-align: center;
+    color: white;
+    text-shadow: 0px 0px 4px rgba(0, 0, 0, 1);
+}
+.call-box2 p:nth-child(1n) {
+    font-size:16px;
+    margin-bottom: 0;
+}
+.call-box2 span {
+    font-size:25px;
+}
+
+@media screen and (min-width:480px) {
+    /*　画面サイズが480pxからはここを読み込む　*/
+    .contents {
+        width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+@media screen and (min-width:768px) and ( max-width:1024px) {
+    /*　画面サイズが768pxから1024pxまではここを読み込む　*/
+    .contents {
+        width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    /*    タイトルボックスイメージの位置*/
+    .title-box img:nth-child(1n) {
+        top: 10px;
+        left:270px;
+    }
+    .title-box img:nth-child(2n) {
+        top: 5px;
+        left:290px;
+    }
+    .title-box img:nth-child(3n) {
+        top: 5px;
+        left: 390px;
+        z-index: 1;
+    }
+    .title-box img:nth-child(4n) {
+        top: 10px;
+        left: 410px;
+    }
+    .title-box div:nth-child(1n) {
+        top: 5px;
+        left:325px;
+    }
+    .title-box div:nth-child(2n) {
+        top: 5px;
+        left: 350px;
+    }
+
+    /*セレクトボックスの設定*/
+    .select-box {
+        width: 32%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 5px;
+        padding: 15px 10px;
+        display: inline-block;
+        border-radius: 20px;
+        background-color: white;
+        text-align: center;
+    }
+    .lang-box {
+        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 15px;
+    }
+    .lang-box p:nth-child(1n) {
+        display: inline-block;
+        font-size: 1.3em;
+    }
+    .lang-box p:nth-child(2n) {
+        display: none;
+    }
+    .lang-box p:nth-child(3n) {
+        display: inline-block;
+        font-size:0.8em;
+    }
+    /* 2/3-フラッグボックスの設定*/
+    .select-box .flag-box {
+        width: 80px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 15px;
+    }
+    /* 3/3-ナンバーボックスの設定*/
+    .number-box {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 15px;
+    }
+    .round {
+        width: 50px;
+        height: 50px;
+        background-color: orange;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 50px;
+        font-size: 25px;
+        color:white;
+        box-sizing: content-box;
+        border: 5px solid lightgray;
+    }
+/*    コールボックス*/
+    .call-box {
+        width:70%;
+        height: 90px;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-end;
+    }
+}
+
+
+@media screen and (min-width:1024px) {
+    /*　画面サイズが1024pxからはここを読み込む　*/
+    .contents {
+        width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+/*    タイトルボックスイメージの位置*/
+    .title-box img:nth-child(1n) {
+        top: 10px;
+        left:370px;
+    }
+    .title-box img:nth-child(2n) {
+        top: 5px;
+        left:390px;
+    }
+    .title-box img:nth-child(3n) {
+        top: 5px;
+        left: 490px;
+        z-index: 1;
+    }
+    .title-box img:nth-child(4n) {
+        top: 10px;
+        left: 510px;
+    }
+    .title-box div:nth-child(1n) {
+        top: 5px;
+        left:425px;
+    }
+    .title-box div:nth-child(2n) {
+        top: 5px;
+        left: 450px;
+    }
+
+
+    /*セレクトボックスの設定*/
+    .select-box {
+        width: 33%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 5px;
+        padding: 15px 10px;
+        display: inline-block;
+        border-radius: 20px;
+        background-color: white;
+        text-align: center;
+    }
+    .lang-box {
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 15px;
+    }
+    .lang-box p:nth-child(1n) {
+        display: inline-block;
+        font-size: 1.5em;
+    }
+    .lang-box p:nth-child(2n) {
+        display: none;
+    }
+    .lang-box p:nth-child(3n) {
+        display: inline-block;
+        font-size:1em;
+    }
+    /* 2/3-フラッグボックスの設定*/
+    .select-box .flag-box {
+        width: 100px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 15px;
+    }
+    /* 3/3-ナンバーボックスの設定*/
+    .number-box {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 15px;
+    }
+    .round {
+        width: 65px;
+        height: 65px;
+        background-color: orange;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 65px;
+        font-size: 30px;
+        color:white;
+        box-sizing: content-box;
+        border: 5px solid lightgray;
+    }
+    /*    コールボックス*/
+    .call-box {
+        width:70%;
+        height: 90px;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-end;
+    }
+}
+

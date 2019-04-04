@@ -24,6 +24,8 @@
 <!--        FontAwesome用-->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
+<!--       google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Kosugi+Maru&amp;subset=japanese" rel="stylesheet">
 
         <title>Kotanote</title>
     </head>
@@ -33,12 +35,16 @@
 
         </header>
 
+<!--        コンテンツここから-->
+        <div class="contents">
+
+<!--        タイトルボックス-->
         <div class="title-box">
             <div class="image-box">
-                <img class="flag" src="./flag-Australia.png" alt="オーストラリア国旗の画像">
-                <img class="flag" src="./flag-England.png" alt="イギリス国旗の画像">
-                <img class="flag" src="./flag-America.png" alt="アメリカ国旗の画像">
-                <img class="flag" src="./flag-Canada.png" alt="カナダ国旗の画像">
+                <img class="flag" src="./flag-Australia.png" alt="オーストラリア国旗">
+                <img class="flag" src="./flag-England.png" alt="イギリス国旗">
+                <img class="flag" src="./flag-America.png" alt="アメリカ国旗">
+                <img class="flag" src="./flag-Canada.png" alt="カナダ国旗">
                 <div class="fuki-pink">A</div>
                 <div class="fuki-yellow">あ</div>
             </div>
@@ -54,7 +60,7 @@
                 <p>English</p>
             </div>
             <div class="flag-box">
-                <img src="./flag-America.png" alt="アメリカ国旗の画像">
+                <img src="./flag-America.png" alt="アメリカ国旗">
             </div>
             <div class="number-box">
                 <div class="round">1</div>
@@ -71,7 +77,7 @@
                 <p>中 文</p>
             </div>
             <div class="flag-box">
-                <img src="./flag-China.png" alt="中国国旗の画像">
+                <img src="./flag-China.png" alt="中国国旗">
             </div>
             <div class="number-box">
                 <div class="round">1</div>
@@ -88,7 +94,7 @@
                 <p>한글로</p>
             </div>
             <div class="flag-box">
-                <img src="./flag-South-Korea.png" alt="韓国国旗の画像">
+                <img src="./flag-South-Korea.png" alt="韓国国旗">
             </div>
             <div class="number-box">
                 <div class="round">1</div>
@@ -97,24 +103,23 @@
             </div>
         </div>
 
-        <script type="text/javascript">
-            document.write("JavaScriptを使って出力しています。");
-            // iPhone
-            if ( navigator.userAgent.indexOf('iPhone') > 0 ){
-                document.write("iPhoneです。");
-                // iPad
-            } else if( navigator.userAgent.indexOf('iPad') > 0 ){
-                document.write("iPadです。");
-                // iPod
-            } else if( navigator.userAgent.indexOf('iPod') > 0 ){
-                document.write("iPodです。");
-                // Android
-            } else if( navigator.userAgent.indexOf('Android') > 0 ){
-                document.write("Androidです。");
-            } else {
-                document.write("それ以外です。");
-            }
-        </script>
+<!--        コールセンターの使い方-->
+        <div class="call-box">
+            <div><img src="operator.png" alt="オペレーター"></div>
+            <div><i class="fas fa-caret-right"></i></div>
+            <div><img src="operator.png" alt="オペレーター"></div>
+            <div><i class="fas fa-caret-right"></i></div>
+            <div><img src="operator.png" alt="オペレーター"></div>
+        </div>
+        <div class="call-box2">
+            <p>コールはこちらへ↓</p>
+            <span id="call-box-number"></span>
+        </div>
+
+        </div>
+<!--        コンテンツここまで-->
+
+
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -122,6 +127,19 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
+        <script type="text/javascript">
 
+
+            const isIOS = /[ \(]iP/.test(navigator.userAgent)
+            const isIOSmac = /Mac|PPC/.test(navigator.userAgent)
+            if(isIOS){
+                $('#call-box-number').html('<a href="facetime:アカウント名?call">FaceTime : xxx-xxxx-xxxx</a>');
+            } else if(isIOSmac) {
+                $('#call-box-number').html('<a href="facetime:アカウント名?call">FaceTime : xxx-xxxx-xxxx</a>');
+            } else {
+                $('#call-box-number').html('<a href="skype:アカウント名?call">Skype : xxx-xxxx-xxxx</a>');
+            }
+
+        </script>
     </body>
 </html>
