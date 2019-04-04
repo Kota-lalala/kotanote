@@ -3,10 +3,10 @@
 $(function() {
 
     //index.phpの新着情報への書き込み文章
-    $('.newinfo-text').html('2019.4.3 「Twitter風」の記事へ追記をしました。');
+    $('.newinfo-text').html('2019.4.4 「「SQL学習済み内容の吐き出し部屋」noteへ1点の記事を追加しました');
 
     //index.phpのリリースノートへの書き込み文章
-    $('.release-text').html('2019.4.3 トップページ(本ページ)の背景色を時間により変更する様にしました。(jQuery)');
+    $('.release-text').html('2019.4.4 AlertでiOSかMacOSかによりOSを表示するようにしました(jQuery)');
 
     //時間帯によって色を変える
 

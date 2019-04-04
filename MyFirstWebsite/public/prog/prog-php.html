@@ -86,12 +86,53 @@
                     <div class="card-body">
                         <h4 class="card-title">PHP学習済み内容の吐き出し部屋</h4>
                         <p class="con-rec-p">
-                            最新情報:1点を追加しました。-UP- 2019.4.2更新
+                            最新情報:1点を追加しました。-UP- 2019.4.4更新
                             <span class="badge badge-info">new</span>
                         </p>
                         <p class="card-text">
                             現在PHPを学習中につき、学習した事をただ吐き出すページです。細かい解説は無しでチートシート的に作成していこうと思っています。さっと見られるのが良い所です。現在学習中の方でしたら、あれどうだったっけ？という時にさって見ていただければと思います。ただ面白いページではありませんので、期待はしないで入室願いますm(__)m
                         </p>
+                    </div>
+                </div>
+            </div>
+
+<!--            while文-->
+            <div class="col-12 mb-2">
+                <div class="card h-100 cpp cpp-190404">
+                    <div class="card-header">
+                        while文
+
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">while文</h4>
+                        <pre><code class="prettyprint linenums">
+//while文
+$i = 0;
+while($i &lt; 10) {
+    echo $i;
+    $i++;
+}
+
+//do-while文
+$i = 0;
+do {
+    echo $i;
+    $i++;
+}while($i &lt; 10);
+                        </code></pre>
+                        <p class="card-text">
+                            ()無いの条件が真の間繰り返し実行される。<br>
+                            まずは$i=0としてカウントするための変数を用意する<br>
+                            ($i &lt; 10)の部分は$iが10より小さい間は繰り返し実行されるという意味<br>
+                            $i++の部分は必ず必要。もしくは何かの時に条件の結果が偽になるようにすること<br>
+                            じゃ無いと無限ループにおちいり止まらなくなってしまうので。<br>
+                            次へ<br>
+                            doから始まるコードで、while()の部分が後ろに来ている<br>
+                            これはdoでまず実行してから、条件を確認する。ので、必ず1回は実行する。という時に使用する。<br>
+                        </p>
+                        <!--            <a href="#!" class="card-link">Card link</a>-->
+                        <!--            <p>更新日：2019.3.14</p>-->
+                        <p>作成日：2019.4.4</p>
                     </div>
                 </div>
             </div>

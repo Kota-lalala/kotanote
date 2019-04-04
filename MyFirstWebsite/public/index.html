@@ -14,7 +14,7 @@
     }
 
     //ここで今日のつぶやきのコメントをセットする
-$now_comment = "自分でWebアプリを作ってみる。さて、codelife1stのみなさんはどんどん作っている様で凄い。と言ってばかりいないで自分も作ろうと思う。せっかくSQLをやったのでデータベースも組み合わせた簡易日記帳？簡易ツイッター？的なものを作ろうと思う。とりあえず簡単な機能で形にして、バージョンアップしていけば良いかなと。とにかく形にしてみよう。後、一つの事に時間をかけ過ぎる所があるので、ある程度時間を決めて、マルチタスクで進める様にしていこうと思う。じゃないと進まない！ので
+$now_comment = "今日は欲張ってしまった。クラウドワークスに応募。だがその前に応募用のサンプルページを作成してから。Webアプリの作成にも取り掛かった。で、PHP入門講座を読み。Webサイトを更新してという具合。ん、頑張った！ロードマップでは大分遅れているので、ペースアップしよう。早く追いつくぞ！ではおやすみなさいzzZZ
     ";
 ?>
 
@@ -96,6 +96,7 @@ $now_comment = "自分でWebアプリを作ってみる。さて、codelife1st�
     <!--   アラートでお知らせ-->
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         <strong><?php print($now_bot.$now); ?></strong>
+        <span id="alert-os"></span>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -154,7 +155,7 @@ $now_comment = "自分でWebアプリを作ってみる。さて、codelife1st�
                     <div class="card-body">
                         <h4 class="card-title">Programming note</h4>
                         <p class="con-rec-p">
-                            最新情報: 「Twitter風」の記事へ追記をしました。 -UP- 2019.4.3更新
+                            最新情報: 「SQL学習済み内容の吐き出し部屋」noteへ追記を1点をしました。 -UP- 2019.4.4更新
                             <span class="badge badge-info">new</span>
                         </p>
                         <p class="card-text">
@@ -197,13 +198,6 @@ $now_comment = "自分でWebアプリを作ってみる。さて、codelife1st�
             <h1>おすすめ note</h1>
             <p class="con-rec-pg">本サイトが勝手におすすめするサイトや情報など。</p>
 <p class="con-rec-p">最新情報:「manablog」【保存版】プログラミング基礎の完全ロードマップ【挫折しない教材】-UP- 2019.3.11更新</p>
-        </div>
-
-        music コンテンツ
-        <div class="con-music box1">
-            <h1>Music note</h1>
-            <p class="con-rec-pg">AWAにて気になった曲やアーティストをご紹介。</p>
-<p class="con-rec-p">最新情報:「藤巻亮太」〜3月9日〜 -UP- 2019.3.11更新</p>
         </div>
 
                 YouTube コンテンツ
@@ -271,11 +265,24 @@ $now_comment = "自分でWebアプリを作ってみる。さて、codelife1st�
     <script src="js/script.js"></script>
 
 <!--    Bootstrapのポップアップ用-->
-    <script>
+    <script type="text/javascript">
         $(function(){
             $('[data-toggle="popover"]').popover()
         });
+
+        //iOSかMacOSかその他かを判断。alertに出力している。
+        const isIOS = /[ \(]iP/.test(navigator.userAgent)
+        const isIOSmac = /Mac|PPC/.test(navigator.userAgent)
+        if(isIOS){
+            $('#alert-os').html('Hi iOS !');
+        } else if(isIOSmac) {
+            $('#alert-os').html('Hi MacOS !');
+        } else {
+            $('#alert-os').html('Hi not iOSandMacOS !');
+        }
+
     </script>
+
 </body>
 
 </html>
