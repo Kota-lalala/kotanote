@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <!-- Bootstrap4.3.1用 -->
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<!--        メイン用 style.css-->
+        <link rel="stylesheet" type="text/css" href="css/style-wet.css">
+
+<!--        FontAwesome用-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+
+        <title>weatherアプリ</title>
+
+        <!--        jQuery googleapis 331 を入れてみた-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+    </head>
+    <body>
+
+        <header>
+            <h1 class="text-center mt-5">今のお天気なあに ？</h1>
+            <h5 class="text-center">ver 1.0</h5>
+            <p class="text-center mt-3">今の天気の絵をクリックしてね♪</p>
+        </header>
+
+
+        <div class="weather-top-box d-flex flex-row">
+            <button type="button" id="weather-sunny"><img src="img/weather0-sunny.png" alt="晴れ"><p id="sunny-count"></p></button>
+            <button type="button" id="weather-cloudy"><img src="img/weather1-cloudy.png" alt="曇り"><p id="cloudy-count"></p></button>
+            <button type="button" id="weather-rain"><img src="img/weather2-rain.png" alt="雨"><p id="rain-count"></p></button>
+        </div>
+
+        <div class="text-center" style="width:70%; margin-left: auto; margin-right: auto;">
+            <p>あなたの居る場所の今の天気をクリックしてくださいね。みんなのクリック数によってそれぞれのお天気が大きくなったり、小さくなったり変化しますよ。</p>
+        </div>
+
+
+
+<!--
+        <script type="text/javascript">
+            $.ajax({
+                success : function(response){
+                    alert('成功');
+                },
+                error: function(){
+                    //通信失敗時の処
+                    alert('通信失敗');
+                }
+            });
+        </script>
+-->
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!--        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
+<!--        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>-->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+<!--        javascript-->
+        <script type="text/javascript">
+//            晴れ、曇り、雨のボタンがクリックされた時にファンクションを実行
+            $('#weather-sunny').click(function(){
+                weatherSave('晴れ');
+            });
+            $('#weather-cloudy').click(function(){
+                weatherSave('曇り');
+            });
+            $('#weather-rain').click(function(){
+                weatherSave('雨');
+            });
+
+//            ajaxでphpにアクセスする
+            function weatherSave(wetherName){
+                jQuery.ajax({
+                    type:'POST',
+                    url: 'test.php',
+                    dataType:'json',
+                    data: {'weather':wetherName},
+                    success: function( msg ) {
+                        $( '#result' ).html(msg[0]);
+                        weatherControl(msg);
+                    }
+                });
+            }
+
+//            ajaxで得たデータを用いて画像のサイズを調整
+            function weatherControl(msg) {
+                var weatherSum = 0;
+                var weather = [];
+                msg[0] = Number(msg[0]);
+                msg[1] = Number(msg[1]);
+                msg[2] = Number(msg[2]);
+                weatherSum = msg[0]+msg[1]+msg[2];
+                weather[0] = (msg[0]/weatherSum).toFixed(2)*100;
+                weather[1] = (msg[1]/weatherSum).toFixed(2)*100;
+                weather[2] = (msg[2]/weatherSum).toFixed(2)*100;
+                weather[0]+="%";
+                weather[1]+="%";
+                weather[2]+="%";
+                $( '#sunny-count' ).html(msg[0]);
+                $( '#cloudy-count' ).html(msg[1]);
+                $( '#rain-count' ).html(msg[2]);
+                $( '#weather-sunny' ).css('width',weather[0]);
+                $( '#weather-cloudy' ).css('width',weather[1]);
+                $( '#weather-rain' ).css('width',weather[2]);
+            }
+        </script>
+
+                        <!--        オリジナルのjsとjQueryを使ったコード-->
+
+<!--
+        <script type="text/javascript">
+            $('#weather-sunny').click(function(){
+                $.ajax({
+                    type:'POST',
+                    url:'./test.php',
+                    dataType:'json',
+                    data:{},
+                    success: function(msg) {
+                            document.getElementById("result").innerHTML=msg['name'];
+                    }
+                });
+            });
+        </script>
+-->
+
+<!--
+        <script type="text/javascript">
+            $(function(){
+                $('#weather-sunny').on('click',function(){
+                    $.ajax({
+                        url:'./test.php',
+                        type:'POST',
+                        dataType:'json',
+                        data:{}
+                    })
+                        .done( (data) => {
+                        $('#result').html(data['name']);
+                        console.log(data);
+                    })
+                        .fail( (data) => {
+                        $('.result').html('ng');
+                        console.log('ng');
+                    })
+                        .always( (data) => {
+
+                    });
+                });
+            });
+        </script>
+-->
+
+
+    </body>
+</html>

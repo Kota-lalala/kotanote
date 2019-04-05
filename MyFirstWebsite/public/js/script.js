@@ -3,10 +3,10 @@
 $(function() {
 
     //index.phpの新着情報への書き込み文章
-    $('.newinfo-text').html('2019.4.4 「「SQL学習済み内容の吐き出し部屋」noteへ1点の記事を追加しました');
+    $('.newinfo-text').html('2019.4.5 「今のお天気なあに？」を追加しました。');
 
     //index.phpのリリースノートへの書き込み文章
-    $('.release-text').html('2019.4.4 AlertでiOSかMacOSかによりOSを表示するようにしました(jQuery)');
+    $('.release-text').html('2019.4.5 「今のお天気なあに？」を追加しました。(PHP&jQuery&MySQL)');
 
     //時間帯によって色を変える
 
