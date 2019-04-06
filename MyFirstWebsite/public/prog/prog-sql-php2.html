@@ -100,8 +100,9 @@
                             <hr>
                             <h5 class="card-title">更新履歴</h5>
                             <ol class="card-text" reversed>
-                                <li>「4.会員登録用のindex.phpを作成」(書きかけ)へ追記しました-UP- 2019.4.3 18:00更新<span class="badge badge-info">new</span></li>
-                                <li>「4.会員登録用のindex.phpを作成」(書きかけ)を追加しました-UP- 2019.3.31 20:30更新
+                                <li>「4.会員登録用のindex.phpを作成」(書きかけ)へ追記しました-UP- 2019.4.6 18:00更新<span class="badge badge-info">new</span></li>
+                                <li>「4.会員登録用のindex.phpを作成」(書きかけ)へ追記しました-UP- 2019.4.3 18:00更新</li>
+                                <li>「4.会員登録用のindex.phpを作成」(書きかけ)を追加しました-UP- 2019.3.31 20:30更新</li>
                                 <li>「3.会員登録用画面の初期フォーム作成」を追加しました-UP- 2019.3.30 14:00更新</li>
                                 <li>「2.データベースを作成する」を追加しました-UP- 2019.3.29 18:45更新</li>
                                 <li>「1.データベースを設計する」を追加しました-UP- 2019.3.29 18:45更新</li>
@@ -186,7 +187,7 @@
                                         </li>
                                     </ol>
                                 </div>
-                                <p class="text-right">更新日：2019.4.3</p>
+                                <p class="text-right">更新日：2019.4.6</p>
                                 <p class="text-right">作成日：2019.3.31</p>
                             </div>
 
@@ -278,12 +279,9 @@ if (isset($_REQUEST[&#039;action&#039;])) {
         &#039;image&#039; =&gt; &#039;&#039;
     );
 
+//    inputでの表示用に文字をセット
     if(isset($_POST[&#039;name&#039;])){
-        echo &#039;name set &lt;br&gt;&#039;;
         $tmp_post[&#039;name&#039;] = htmlspecialchars($_POST[&#039;name&#039;],ENT_QUOTES,&#039;UTF-8&#039;);
-        echo $tmp_post[&#039;name&#039;].&#039;&lt;br&gt;&#039;;
-        echo htmlspecialchars($_POST[&#039;name&#039;],ENT_QUOTES,&#039;UTF-8&#039;);
-        echo &#039;question&#039;;
     } else {
         $tmp_post[&#039;name&#039;] = &#039;&#039;;
     }
@@ -476,6 +474,71 @@ if(empty($error)) {
                                         「header〜」の部分でcheck.phpにページを移動させて、次のexit()で今のindex.phpを閉じています。<br>
                                         else以降の部分は$errorがあった場合に、その旨を表示させています。
                                     </p>
+                                    <pre><code class="prettyprint linenums">
+//書き直しで戻ってきたとき(rewriteで受け取ったとき)
+//isset()で初期の$_REQUEST[&#039;action&#039;]未定義の時には実行しない様に
+if (isset($_REQUEST[&#039;action&#039;])) {
+    if ($_REQUEST[&#039;action&#039;] == &#039;rewrite&#039;) {
+        $_POST = $_SESSION[&#039;join&#039;];
+        $error[&#039;rewrite&#039;] = true;
+    }
+}
+                                    </code></pre>
+                                    <p>
+                                        書き直しの時の為に必要なコード。<br>
+                                        書き直しする為に戻す時にaction=rewriteというデータをつけるので、そのデータをここで処理する。<br>
+                                        まずif(isset〜)で$_REQUEST[&#039;action&#039;]が空ではない場合のみに実行する。<br>
+                                        さらにif($_REQUEST〜)の部分で値がrewriteであれば実行する。<br>
+                                        その中身は$_POSTに$_SESSION[&#039;join&#039;]の値を入れ、入力済みのデータをまた$_POSTから引きだせる様にしている。<br>
+                                        最後はエラーのrewriteをtrueにしている。<br>
+                                    </p>
+                                    <pre><code class="prettyprint linenums">
+$tmp_post = array(
+        &#039;name&#039; =&gt; &#039;&#039;,
+        &#039;email&#039; =&gt; &#039;&#039;,
+        &#039;password&#039; =&gt; &#039;&#039;,
+        &#039;image&#039; =&gt; &#039;&#039;
+    );
+                                    </code></pre>
+                                    <p>
+                                        入力済みのデータを入れておく為の$tmp_postを定義しておく。定義なしで使用しようとするとエラーになってしまうので、ここに定義を入れました。<br>
+                                        name,email,password,imageそれぞれを定義しています。<br>
+                                    </p>
+                                    <pre><code class="prettyprint linenums">
+if(isset($_POST[&#039;name&#039;])){
+    $tmp_post[&#039;name&#039;] = htmlspecialchars($_POST[&#039;name&#039;],ENT_QUOTES,&#039;UTF-8&#039;);
+} else {
+    $tmp_post[&#039;name&#039;] = &#039;&#039;;
+}
+if(isset($_POST[&#039;email&#039;])){
+    $tmp_post[&#039;email&#039;] = htmlspecialchars($_POST[&#039;email&#039;],ENT_QUOTES,&#039;UTF-8&#039;);
+} else {
+    $tmp_post[&#039;email&#039;] = &#039;&#039;;
+}
+if(isset($_POST[&#039;password&#039;])){
+    $tmp_post[&#039;password&#039;] = htmlspecialchars($_POST[&#039;password&#039;],ENT_QUOTES,&#039;UTF-8&#039;);
+} else {
+    $tmp_post[&#039;password&#039;] = &#039;&#039;;
+}
+if(isset($_POST[&#039;image&#039;])){
+    $tmp_post[&#039;image&#039;] = htmlspecialchars($_POST[&#039;image&#039;],ENT_QUOTES,&#039;UTF-8&#039;);
+} else {
+    $tmp_post[&#039;image&#039;] = &#039;&#039;;
+}
+                                    </code></pre>
+                                    <p>
+                                        入力済みのデータを表示させる為にデータを用意している。<br>
+                                        if(isset〜)でそのPOSTの値が定義済みかチェックし、<br>
+                                        済みならPOSTの値を$tmp_postに代入している。<br>
+                                        またその際にhtmlspecialchars()でサニタイズして渡している<br>
+                                        入力してもらったデータをhtmlに出力する時は必ず使用する。と思えておく。<br>
+                                    </p>
+                                    <pre><code class="prettyprint linenums">
+                                    </code></pre>
+                                    <p></p>
+                                    <pre><code class="prettyprint linenums">
+                                    </code></pre>
+                                    <p></p>
                                     <pre><code class="prettyprint linenums">
                                     </code></pre>
                                     <p></p>
