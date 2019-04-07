@@ -14,10 +14,7 @@
     }
 
     //ここで今日のつぶやきのコメントをセットする
-$now_comment = "今日はマナブさんのロードマップのjQueryの動画を見ました。セレクタの指定にも様々な方法があ流のですね、これを駆使すれば細かい指示が出来そう。使い方次第でしょうか？<br>
-「今のお天気なあに？」を修正しました。全てのクリックを集計していたので、どんどん集計数が増えていってしまった^^;ので、今から1時間前までのデータのみ。に変えました。まだまだやりたいことはいっぱいあるけど、ロードマップも進めて、WordPressに進みたいな。他の方々はオリジナルテーマを作り終えてる人もいるので。マナブさんも教材進めてくださっている様なので。1日1日をコツコツと頑張りましょう^0^<br>
-Music noteへ「BOKE」〜CIKI〜を追加しました。曲の雰囲気がとても好きです。このアーティストご存知の方いらっしゃいますか？歌詞の内容がわかったら教えて欲しいですm(_ _)mお休みなさい！
-
+$now_comment = "今日はトップページへ「今のお天気なあに？」へのリンクを追加しました。あんなに奥にあったら入り口わからん！となりますよね。自分のサイトは雑然としているので、徐々に整えて行きたいとは思っています。ロードマップの学習のjQueryが終わりました。今度はWordPressに入ります。設置、SEO対策、ブログを書く、オリジナルテーマの作成などありますが、最も難しいと思っているのが、ブログを書く事ですね。正直記事を書くことは大変苦手です。何について書くのか？どんな内容を書くのか？マナブさんは毎日続けておられるのですが、凄いと本当に思います。とはいえマナブさんのロードマップで、他との大きな違い。そして大きなメリットの一つとなるのがこの部分だと思います。これほどの情報をもらってやらないなんてありえない！のでもちろんやってみます^^コツコツ行きましょう！
     ";
 ?>
 
@@ -150,12 +147,35 @@ Music noteへ「BOKE」〜CIKI〜を追加しました。曲の雰囲気がと�
 
         <div class="row mb-4">
 
+            <!--        今のお天気なあに？-->
+            <div class="col-12 mb-2">
+                <div class="con-prog card h-100">
+                    <div class="card-img-top-wet">
+                        <img class="card-img-top" src="img/prog-weather.jpg" alt="今のお天気なあに">
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h4 class="card-title">「今のお天気なあに？」</h4>
+                        <a href="prog/weather/index.html" class="btn-top btn  btn-outline-primary">クリックしに行く</a>
+                        <hr>
+                        <p class="con-rec-p">
+                            最新情報: 「今のお天気なあに？」を修正しました。 -UP- 2019.4.7更新
+                            <span class="badge badge-info">new</span>
+                        </p>
+                        <p class="card-text">
+                            「今のお天気なあに？」を公開しました。今のお天気をクリックしてくださいね。クリック数の割合で絵が大きくなったり、小さくなったりします。今後も徐々に機能を追加していきますので、クリックしてもらえると嬉しいです^^
+                        </p>
+                    </div>
+                </div>
+            </div>
+
             <!--        プログラミング コンテンツ-->
             <div class="col-12 col-md-6 mb-2">
                 <div class="con-prog card h-100">
                     <img class="card-img-top" src="img/prog-top.jpg" alt="Card image cap">
-                    <div class="card-body">
+                    <div class="card-body d-flex flex-column">
                         <h4 class="card-title">Programming note</h4>
+                        <a href="prog/prog.html" class="btn-top btn  btn-outline-primary">Let's go see it !</a>
+                        <hr>
                         <p class="con-rec-p">
                             最新情報: 「今のお天気なあに？」を修正しました。 -UP- 2019.4.6更新
                             <span class="badge badge-info">new</span>
@@ -165,11 +185,10 @@ Music noteへ「BOKE」〜CIKI〜を追加しました。曲の雰囲気がと�
                         <p class="card-text">
                             ※一応メインコンテンツです※プログラミングに関する情報を記載。本サイト制作者のメモ的noteです。
                             が、これから始める方のせめて参考になればと思います。
-                            <button type="button" class="btn btn-sm btn-primary" data-container="body" data-toggle="popover" data-placement="top" data-content="SQLとPHPのコンテンツ入荷しました！" data-original-title="" title="">
+                            <button type="button" class="btn btn-sm btn-primary" data-container="body" data-toggle="popover" data-placement="top" data-content="SQLとPHPのコンテンツ入荷しました！" data-original-title="" title="" style="display: inline-block;">
                                 ?
                             </button>
                         </p>
-                        <a href="prog/prog.html" class="btn-top btn  btn-outline-primary">Let's go see it !</a>
                     </div>
                 </div>
             </div>
@@ -180,6 +199,8 @@ Music noteへ「BOKE」〜CIKI〜を追加しました。曲の雰囲気がと�
                     <img class="card-img-top" src="img/music-top.jpg" alt="Card image cap">
                     <div class="card-body">
                         <h4 class="card-title">Music note</h4>
+                        <a href="music/music.html" class="btn-top btn  btn-outline-primary">Let's listen now !</a>
+                        <hr>
                         <p class="con-rec-p">
                             最新情報:「BOKE」〜CIKI〜  -UP- 2019.4.6更新
                             <span class="badge badge-info">new</span>
@@ -187,7 +208,7 @@ Music noteへ「BOKE」〜CIKI〜を追加しました。曲の雰囲気がと�
                         <p class="card-text">
                             ♪AWAにて気になった曲やアーティストをご紹介していきますので、プログラミングの合間に聞いてみてくださいね♪
                         </p>
-                        <a href="music/music.html" class="btn-top btn  btn-outline-primary">Let's listen now !</a>
+
                     </div>
                 </div>
             </div>

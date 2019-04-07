@@ -2,11 +2,11 @@
 <!DOCTYPE html>
 <html lang="ja">
     <head>
-        <!-- Bootstrap4.3.1用 -->
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+        <!-- Bootstrap4.3.1用 -->
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -16,34 +16,96 @@
 <!--        FontAwesome用-->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
-
-        <title>weatherアプリ</title>
-
-        <!--        jQuery googleapis 331 を入れてみた-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+        <title>今のお天気なあに ？</title>
 
     </head>
     <body>
 
         <header>
             <h1 class="text-center mt-5">今のお天気なあに ？</h1>
-            <h5 class="text-center">ver 1.0</h5>
+            <h5 class="text-center">ver 1.11</h5>
             <p class="text-center mt-3">今の天気の絵をクリックしてね♪</p>
         </header>
 
-
+<!--        メインコンテンツ-->
         <div class="weather-top-box d-flex flex-row">
-            <button type="button" id="weather-sunny"><img src="img/weather0-sunny.png" alt="晴れ"><p id="sunny-count"></p></button>
-            <button type="button" id="weather-cloudy"><img src="img/weather1-cloudy.png" alt="曇り"><p id="cloudy-count"></p></button>
-            <button type="button" id="weather-rain"><img src="img/weather2-rain.png" alt="雨"><p id="rain-count"></p></button>
+            <button type="button" id="weather-sunny">
+                <img src="img/weather0-sunny.png" alt="晴れ">
+                <p id="sunny-count"></p>
+            </button>
+            <button type="button" id="weather-cloudy">
+                <img src="img/weather1-cloudy.png" alt="曇り">
+                <p id="cloudy-count"></p>
+            </button>
+            <button type="button" id="weather-rain">
+                <img src="img/weather2-rain.png" alt="雨">
+                <p id="rain-count"></p>
+            </button>
         </div>
 
-        <div class="text-center" style="width:70%; margin-left: auto; margin-right: auto;">
-            <p>あなたの居る場所の今の天気をクリックしてくださいね。みんなのクリック数によってそれぞれのお天気が大きくなったり、小さくなったり変化しますよ。</p>
+<!--        ツイッターのシェアボタン-->
+        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="「今のお天気なあに？」気軽にクリックしてくださいね。クリックしてくれると成長していきます！育ててやって下さい^0^" data-url="https://kotanote.com/kotanote/public/prog/weather/" data-via="kota_lalala" data-hashtags="codelife1st" data-related="manabubannai " data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<!--        このサイトについて・リリースノート-->
+        <div class="accordion" id="accordionExample">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h2 class="mb-0 text-center">
+                        <button class="btn" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" onfocus="this.blur();">
+                            このサイトについて
+                        </button>
+                    </h2>
+                </div>
+
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body">
+                        訪問していただいたあなたの場所の今の天気をクリックしてください！みんなのクリック数でお天気絵の大きさが変わります。今後もバージョンアップしながら機能を増やしていきますので、またクリックしてもらえたら嬉しいです。
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                    <h2 class="mb-0 text-center">
+                        <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" onfocus="this.blur();">
+                            リリースノート
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <ul>
+                            <li>2019.4.7 差が大きすぎると0になり、いなくなってしまうので、最低値を1に修正</li>
+                            <li>2019.4.7 ツイッターのシェアボタンを追加。</li>
+                            <li>2019.4.7 kotanoteのフッターを追加。</li>
+                            <li>2019.4.7 リリースノートを追加。</li>
+                            <li>2019.4.6 before(全てのクリックの総数)after(今から1時間以内のクリック数)に絞りました。</li>
+                            <li>2019.4.5 「今のお天気なあに？ver1.0」公開開始しました！</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
 
+        <!--        footer-->
+        <footer class="foot mt-3 text-center">
+            <ul class="box2">
+                <a href="../../info/info.html">
+                    <li class="box3">
+                        <p>Kotanoteについて</p>
+                    </li>
+                </a>
+                <a href="mailto:kotanote2019@gmail.com">
+                    <li class="box3">
+                        <p>お問合せ</p>
+                    </li>
+                </a>
+                <li class="box3">
+                    <p>©︎ 2019 Kotanote.com</p>
+                </li>
+            </ul>
+        </footer>
 
 <!--
         <script type="text/javascript">
@@ -106,6 +168,11 @@
                 weather[0] = (msg[0]/weatherSum).toFixed(2)*100;
                 weather[1] = (msg[1]/weatherSum).toFixed(2)*100;
                 weather[2] = (msg[2]/weatherSum).toFixed(2)*100;
+                for(let i=0;i<3;i++){
+                    if(weather[i] < 1){
+                        weather[i]=1;
+                    }
+                }
                 weather[0]+="%";
                 weather[1]+="%";
                 weather[2]+="%";

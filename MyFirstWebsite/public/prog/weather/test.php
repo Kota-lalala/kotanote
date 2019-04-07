@@ -11,15 +11,15 @@ mysqli_query($db , $sqlIn) or die(mysqli_error($db));
 
 //データベースのweatherの点数をカウントして呼び出し、その値を返す
 $count = array();
-$sqlOut = 'SELECT COUNT(weather) AS cnt FROM main WHERE weather="晴れ"';
+$sqlOut = 'SELECT COUNT(weather) AS cnt FROM main WHERE weather="晴れ" AND  created >= date_sub(NOW(), interval 1 hour)';
 $recordSetOut = mysqli_query($db , $sqlOut);
 $data = mysqli_fetch_assoc($recordSetOut);
 $count[0] = $data['cnt'];
-$sqlOut = 'SELECT COUNT(weather) AS cnt FROM main WHERE weather="曇り"';
+$sqlOut = 'SELECT COUNT(weather) AS cnt FROM main WHERE weather="曇り" AND  created >= date_sub(NOW(), interval 1 hour)';
 $recordSetOut = mysqli_query($db , $sqlOut);
 $data = mysqli_fetch_assoc($recordSetOut);
 $count[1] = $data['cnt'];
-$sqlOut = 'SELECT COUNT(weather) AS cnt FROM main WHERE weather="雨"  ';
+$sqlOut = 'SELECT COUNT(weather) AS cnt FROM main WHERE weather="雨"   AND  created >= date_sub(NOW(), interval 1 hour)';
 $recordSetOut = mysqli_query($db , $sqlOut);
 $data = mysqli_fetch_assoc($recordSetOut);
 $count[2] = $data['cnt'];
