@@ -1,4 +1,28 @@
-li {
+body {
+    background-color: darkorange;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+h2 {
+    font-size:20px;
+}
+
+h5 {
+    font-size: 20px;
+}
+
+p {
+    font-size: 16px;
+}
+
+ul {
+    padding-left: 0;
+}
+
+ul li {
     list-style-type: none;
 }
 
@@ -13,12 +37,16 @@ a:hover {
     border: none;
 }
 
-.weather-top-box {
+.top-box {
     width: 90%;
     margin-left: auto;
     margin-right: auto;
+    display: flex;
+    justify-content: center;
 }
 
+
+/*今のお天気なあに？の設定*/
 .weather-top-box div {
     width: 30%;
 }
@@ -35,15 +63,145 @@ button{
     padding: 0;
     appearance: none;
 }
-
 button:focus {
     outline: none;
+}
+button:hover {
+    width: 100%;
 }
 
 .card {
     color: black;
+    background-color: darkorange;
 }
 
 footer p{
     color: darkgray;
 }
+
+/*music の設定*/
+
+/*awa部分の設定*/
+.music-iframe {
+    width: 354px;
+    height: 354px;
+}
+
+.awa-div {
+    text-align: center;
+}
+
+.awa-div iframe {
+    border: 20px solid #ade7f8;
+    border-radius: 30px;
+}
+
+.awa-come {
+    text-align: center;
+}
+
+.music-bgcolor {
+    background-color: white;
+}
+
+.music-note {
+    color: white;
+    background-color: white;
+}
+
+.music-note h1 {
+    color: white;
+}
+
+.music-note .card,
+.music-note .card-header {
+    background-color: white;
+    border: none;
+}
+
+.music-note .card:hover {
+    background-color: white;
+}
+
+.music-note .card:hover .card-header {
+    background-color: white;
+}
+
+.music-note .card-header {
+    text-align: center;
+}
+
+/*移動用の三角ボタン*/
+.triangle {
+    width: 5%;
+    margin: 0 20px auto;
+}
+
+.triangle i {
+    font-size: 90px;
+    color: #fafa94;
+}
+
+.triangle i:hover {
+    cursor: pointer;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+/*    width: 90%;*/
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#caret-up {
+    display: none;
+}
+
+#caret-down {
+    display: none;
+}
+
+/*infoの設定*/
+.info .card-header {
+    padding: 0;
+}
+
+/*スマホでの表示の際にリストの点が表示されている！？ので、
+とりあえずはここの設定を切ってみる。
+@media screen and (max-width: 1024px) {
+    h1 {
+        font-size: 35px;
+    }
+    .triangle i {
+        font-size: 80px;
+        color: #fafa94;
+    }
+
+}
+@media screen and (max-width: 896px) {
+    h1 {
+        font-size: 20px;
+    }
+    h2 {
+        font-size: 12px;
+    }
+    h5 {
+        font-size: 16px;
+    }
+    p {
+        font-size: 14px;
+    }
+    .triangle i {
+        font-size: 70px;
+        color: #fafa94;
+    }
+
+@media screen and (max-width: 480px) {
+    .triangle i {
+        font-size: 60px;
+        color: #fafa94;
+    }
+
+}
+*/

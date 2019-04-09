@@ -14,7 +14,7 @@
     }
 
     //ここで今日のつぶやきのコメントをセットする
-$now_comment = "今日はトップページへ「今のお天気なあに？」へのリンクを追加しました。あんなに奥にあったら入り口わからん！となりますよね。自分のサイトは雑然としているので、徐々に整えて行きたいとは思っています。ロードマップの学習のjQueryが終わりました。今度はWordPressに入ります。設置、SEO対策、ブログを書く、オリジナルテーマの作成などありますが、最も難しいと思っているのが、ブログを書く事ですね。正直記事を書くことは大変苦手です。何について書くのか？どんな内容を書くのか？マナブさんは毎日続けておられるのですが、凄いと本当に思います。とはいえマナブさんのロードマップで、他との大きな違い。そして大きなメリットの一つとなるのがこの部分だと思います。これほどの情報をもらってやらないなんてありえない！のでもちろんやってみます^^コツコツ行きましょう！
+$now_comment = "今日はWordPressをXサーバーにインストールしました。サーバーの管理画面から出来てしまうので、インストール自体はとても簡単なんですね。色々考えずにブログを立ち上げるだけだったら、あとは操作方法を覚えればすぐに出来てしまうんだな。インストール後はマナブさん情報の設定をして・・・ん〜部分的に解らない。このコードを追加ってどこへ？が分からない部分が多々あった。ので、分からない部分はテーマの自作を終えてからの方が良さそう。テーマが作れる状態ならわかるでしょう。それと、WordPressのインストール先を/wpにしたんだけど、それだとkotanote/wp/となってしまい、せっかく独自ドメイン取ってあるのにもったいない。ので、明日削除してもう一度インストールからやり直そうと思う。今ならそれも出来るから。「今のお天気なあに？」に改良を加えました。夜になるとお日様がお星様へ。背景色などの色は時間帯によって、何段階かに分け、変わるようにしてみました。まだまだやりたい事はいっぱい。これは楽しいんだけど、これやってると仕事から遠ざかる？？？でも楽しいんだよね。さあ、寝ましょうかね。また明日。お休みなさい(- -)zzZZ
     ";
 ?>
 
@@ -34,7 +34,7 @@ $now_comment = "今日はトップページへ「今のお天気なあに？」�
 
     <!--        メイン用 style.css  レスポンシブ用 responsive.css-->
     <link rel="stylesheet" type="text/css" href="css/style1.css">
-    <link rel="stylesheet" type="text/css" href="css/responsive.css" media="screen and (max-width: 1120px)">
+<!--    <link rel="stylesheet" type="text/css" href="css/responsive.css" media="screen and (max-width: 1120px)">-->
 
     <!--        FontAwesome用-->
     <link rel="stylesheet" href="https://use.fontawesoßme.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -103,48 +103,38 @@ $now_comment = "今日はトップページへ「今のお天気なあに？」�
     </div>
 
     <div class="container">
-        <!--            新着情報-->
 
+
+<!--        新着情報・リリースノート-->
         <div class="row mb-4">
 
+            <!--            新着情報-->
             <div class="col-12 col-md-6 mb-2">
                 <div class="card h-100">
-                    <div class="card-header">
-                        新着情報
-                    </div>
+                    <div class="card-header">新着情報</div>
                     <div class="card-body">
-                        <!--                <h4 class="card-title">デザイン修正</h4>-->
-<!--                            jQueryの別ファイルscript.jsからこの部分表示へ変更 2019.4.2-->
-                        <p class="card-text newinfo-text"></p>
+                        <p class="card-text newinfo-text"></p><!--jQueryの別ファイルscript.jsからこの部分表示へ変更 2019.4.2-->
                         <span class="badge badge-info">new</span>
-<!--                            2019.3.30 music note へ「さよならメモリーズ」〜supercell〜 を追加しました。-->
-                        <!--                            <span class="badge badge-info">new</span>-->
                     </div>
                 </div>
             </div>
 
             <!--            リリースノート-->
-
             <div class="col-12 col-md-6 mb-2">
                 <div class="card h-100">
-                    <div class="card-header">
-                        リリースノート
-                    </div>
+                    <div class="card-header">リリースノート</div>
                     <div class="card-body">
-                        <!--                <h4 class="card-title">デザイン修正</h4>-->
-                        <p class="card-text release-text">
-<!--                            jQueryの別ファイルscript.jsからこの部分表示へ変更 2019.4.1-->
-                        </p>
+                        <p class="card-text release-text"></p><!--jQueryの別ファイルscript.jsからこの部分表示へ変更 2019.4.1-->
                         <span class="badge badge-info">new</span>
                     </div>
                 </div>
             </div>
 
         </div>
+
+
+
         <!--    各種コンテンツ-->
-
-
-
         <div class="row mb-4">
 
             <!--        今のお天気なあに？-->
@@ -158,11 +148,12 @@ $now_comment = "今日はトップページへ「今のお天気なあに？」�
                         <a href="prog/weather/index.html" class="btn-top btn  btn-outline-primary">クリックしに行く</a>
                         <hr>
                         <p class="con-rec-p">
-                            最新情報: 「今のお天気なあに？」を修正しました。 -UP- 2019.4.7更新
+                            最新情報: 「今のお天気なあに？」を改良しました。(ver1.22) -UP- 2019.4.9更新
                             <span class="badge badge-info">new</span>
                         </p>
                         <p class="card-text">
-                            「今のお天気なあに？」を公開しました。今のお天気をクリックしてくださいね。クリック数の割合で絵が大きくなったり、小さくなったりします。今後も徐々に機能を追加していきますので、クリックしてもらえると嬉しいです^^
+                            「今のお天気なあに？」を公開しました。今のお天気をクリックしてくださいね。クリック数の割合で絵が大きくなったり、小さくなったりします。今後も徐々に機能を追加していきますので、クリックしてもらえると嬉しいです^^<br>
+                            ver1.2情報・・・ページを追加しました！でも入室できるのはネズミとうさぎとうまととりのみ。各自5分づつだけですよ。
                         </p>
                     </div>
                 </div>

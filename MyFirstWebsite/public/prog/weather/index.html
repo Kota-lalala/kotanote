@@ -21,71 +21,147 @@
     </head>
     <body>
 
+
+<!--       header-->
         <header>
-            <h1 class="text-center mt-5">今のお天気なあに ？</h1>
-            <h5 class="text-center">ver 1.11</h5>
-            <p class="text-center mt-3">今の天気の絵をクリックしてね♪</p>
+
+            <!--            三角　左側-->
+            <div class="triangle tri-up">
+                <i class="fas fa-caret-up" id="caret-up"></i>
+<!--                <p>aaa</p>-->
+            </div>
+
+            <div class="header-title">
+                <h1 class="text-center mt-3">今のお天気なあに？</h1>
+                <h5 class="text-center">ver 1.22</h5>
+                <p class="text-center mt-2">今の天気の絵をクリックしてね ♪</p>
+            </div>
+
+            <!--            三角　右側-->
+            <div class="triangle tri-down">
+                <i class="fas fa-caret-down" id="caret-down"></i>
+<!--                <p>bbb</p>-->
+            </div>
+
         </header>
 
-<!--        メインコンテンツ-->
-        <div class="weather-top-box d-flex flex-row">
-            <button type="button" id="weather-sunny">
-                <img src="img/weather0-sunny.png" alt="晴れ">
-                <p id="sunny-count"></p>
-            </button>
-            <button type="button" id="weather-cloudy">
-                <img src="img/weather1-cloudy.png" alt="曇り">
-                <p id="cloudy-count"></p>
-            </button>
-            <button type="button" id="weather-rain">
-                <img src="img/weather2-rain.png" alt="雨">
-                <p id="rain-count"></p>
-            </button>
-        </div>
 
-<!--        ツイッターのシェアボタン-->
-        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="「今のお天気なあに？」気軽にクリックしてくださいね。クリックしてくれると成長していきます！育ててやって下さい^0^" data-url="https://kotanote.com/kotanote/public/prog/weather/" data-via="kota_lalala" data-hashtags="codelife1st" data-related="manabubannai " data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <article>
 
-<!--        このサイトについて・リリースノート-->
-        <div class="accordion" id="accordionExample">
-            <div class="card">
-                <div class="card-header" id="headingOne">
-                    <h2 class="mb-0 text-center">
-                        <button class="btn" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" onfocus="this.blur();">
-                            このサイトについて
-                        </button>
-                    </h2>
-                </div>
+<!--            今のお天気なあに？のセクション-->
+            <section class="weather top-box">
 
-                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                    <div class="card-body">
-                        訪問していただいたあなたの場所の今の天気をクリックしてください！みんなのクリック数でお天気絵の大きさが変わります。今後もバージョンアップしながら機能を増やしていきますので、またクリックしてもらえたら嬉しいです。
+               <!--        メインコンテンツ-->
+               <div class=" weather-top-box d-flex flex-row">
+                   <button type="button" id="weather-sunny">
+                       <img id="weather-sunny-img" src="img/weather0-sunny.png" alt="晴れ">
+                       <p id="sunny-count"></p>
+                   </button>
+                   <button type="button" id="weather-cloudy">
+                       <img src="img/weather1-cloudy.png" alt="曇り">
+                       <p id="cloudy-count"></p>
+                   </button>
+                   <button type="button" id="weather-rain">
+                       <img src="img/weather2-rain.png" alt="雨">
+                       <p id="rain-count"></p>
+                   </button>
+               </div>
+
+           </section>
+
+<!--            musicのセクション-->
+            <section class="music music-note top-box">
+
+            <!--            「ハルノヒ」〜あいみょん〜-->
+                <div>
+                    <div class="card h-100 cm-190323">
+                        <div class="card-header mb-0">
+                            <h2 style="text-align: center">「ハルノヒ」〜あいみょん〜</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="awa-div">
+                                <iframe src="https://embed.awa.fm/track/653bb7ab24d01a855f30/?t=1554380346" width="100%" height="354" frameborder="0" allowtransparency="true"></iframe>
+                            </div>
+                            <div class="card-link" style="text-align: center">
+                                <a href="http://www.aimyong.net/">
+                                    あいみょん<br>
+                                    <span>http://www.aimyong.net/</span>
+                                </a>
+                            </div>
+                            <div class="awa-come">
+                                <p>
+                                    君の強さと僕の弱さを分け合えば、一人じゃ無理でも出来るかも。
+                                </p>
+                                <!--            <p>更新日：2019.3.14</p>-->
+                                <p>掲載日：2019.4.8</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="card">
-                <div class="card-header" id="headingTwo">
-                    <h2 class="mb-0 text-center">
-                        <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" onfocus="this.blur();">
-                            リリースノート
-                        </button>
-                    </h2>
-                </div>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                    <div class="card-body">
-                        <ul>
-                            <li>2019.4.7 差が大きすぎると0になり、いなくなってしまうので、最低値を1に修正</li>
-                            <li>2019.4.7 ツイッターのシェアボタンを追加。</li>
-                            <li>2019.4.7 kotanoteのフッターを追加。</li>
-                            <li>2019.4.7 リリースノートを追加。</li>
-                            <li>2019.4.6 before(全てのクリックの総数)after(今から1時間以内のクリック数)に絞りました。</li>
-                            <li>2019.4.5 「今のお天気なあに？ver1.0」公開開始しました！</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
 
-        </div>
+        </section>
+
+<!--            pictureのセクション？-->
+            <section class="pic">
+
+            </section>
+
+<!--            インフォメーション-->
+            <section class="info">
+                <!--        ツイッターのシェアボタン-->
+                <div class="m-3">
+                    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="「今のお天気なあに？」気軽にクリックしてくださいね。クリックしてくれると成長していきます！育ててやって下さい^0^" data-url="https://kotanote.com/kotanote/public/prog/weather/" data-via="kota_lalala" data-hashtags="codelife1st" data-related="manabubannai " data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+
+                <!--        このサイトについて・リリースノート-->
+                <div class="accordion" id="accordionExample">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h2 class="mb-0 text-center">
+                                <button class="btn" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" onfocus="this.blur();">
+                                    このサイトについて
+                                </button>
+                            </h2>
+                        </div>
+
+                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div class="card-body">
+                                訪問していただいたあなたの場所の今の天気をクリックしてください！みんなのクリック数でお天気絵の大きさが変わります。今後もバージョンアップしながら機能を増やしていきますので、またクリックしてもらえたら嬉しいです。
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                            <h2 class="mb-0 text-center">
+                                <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" onfocus="this.blur();">
+                                    リリースノート
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <ul>
+                                    <li>2019.4.9 時間によって色を変更する機能を追加しました。(ver1.22)</li>
+                                    <li>2019.4.9 夜はお星様機能を追加しました。(ver1.21)</li>
+                                    <li>2019.4.8 ページを追加しました！(でも入室できるのはネズミとうさぎとうまととりのみ。各自5分づつだけですよ^^(ver1.2)</li>
+                                    <li>2019.4.7 カーソルが乗っている時に解り易い様、大きくなるようにしました。</li>
+                                    <li>2019.4.7 差が大きすぎると0になり、いなくなってしまうので、最低値を1に修正</li>
+                                    <li>2019.4.7 ツイッターのシェアボタンを追加。</li>
+                                    <li>2019.4.7 kotanoteのフッターを追加。</li>
+                                    <li>2019.4.7 リリースノートを追加。</li>
+                                    <li>2019.4.6 before(全てのクリックの総数)after(今から1時間以内のクリック数)に絞りました。</li>
+                                    <li>2019.4.5 「今のお天気なあに？ver1.0」公開開始しました！</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </article>
+
 
 
         <!--        footer-->
@@ -131,8 +207,20 @@
 
 
 <!--        javascript-->
-        <script type="text/javascript">
-//            晴れ、曇り、雨のボタンがクリックされた時にファンクションを実行
+    <script type="text/javascript">
+            if(nowTime()) {
+//                alert('aaa');
+                $('#caret-down').show();
+            } else {
+                $('#caret-down').hide();
+//                alert('bbb');
+            }
+
+            changeImg();
+
+            $('.music').hide();
+
+    //            晴れ、曇り、雨のボタンがクリックされた時にファンクションを実行
             $('#weather-sunny').click(function(){
                 weatherSave('晴れ');
             });
@@ -143,13 +231,13 @@
                 weatherSave('雨');
             });
 
-//            ajaxでphpにアクセスする
-            function weatherSave(wetherName){
+    //            ajaxでphpにアクセスする
+            function weatherSave(weatherName){
                 jQuery.ajax({
                     type:'POST',
                     url: 'test.php',
                     dataType:'json',
-                    data: {'weather':wetherName},
+                    data: {'weather':weatherName},
                     success: function( msg ) {
                         $( '#result' ).html(msg[0]);
                         weatherControl(msg);
@@ -157,25 +245,25 @@
                 });
             }
 
-//            ajaxで得たデータを用いて画像のサイズを調整
+    //            ajaxで得たデータを用いて画像のサイズを調整
             function weatherControl(msg) {
-                var weatherSum = 0;
-                var weather = [];
+                let weatherSum = 0;
+                let weather = [];
+                let tmp = [];
                 msg[0] = Number(msg[0]);
                 msg[1] = Number(msg[1]);
                 msg[2] = Number(msg[2]);
                 weatherSum = msg[0]+msg[1]+msg[2];
-                weather[0] = (msg[0]/weatherSum).toFixed(2)*100;
-                weather[1] = (msg[1]/weatherSum).toFixed(2)*100;
+                weather[0] = (msg[0]/weatherSum).toFixed(2)*100;//toFiexed(2)で少数第2位までで切っている
+                weather[1] = (msg[1]/weatherSum).toFixed(2)*100;//*100でパーセント表現出来るようにしている
                 weather[2] = (msg[2]/weatherSum).toFixed(2)*100;
                 for(let i=0;i<3;i++){
                     if(weather[i] < 1){
                         weather[i]=1;
                     }
+                    tmp[i]=weather[i];
+                    weather[i]+="%";
                 }
-                weather[0]+="%";
-                weather[1]+="%";
-                weather[2]+="%";
                 $( '#sunny-count' ).html(msg[0]);
                 $( '#cloudy-count' ).html(msg[1]);
                 $( '#rain-count' ).html(msg[2]);
@@ -183,6 +271,102 @@
                 $( '#weather-cloudy' ).css('width',weather[1]);
                 $( '#weather-rain' ).css('width',weather[2]);
             }
+
+
+            //ここからは三角ボタンを使用したページ切り替え用
+    //            downだったら
+            $('#caret-down').click(function(){
+                if(nowTime()) {
+                    $('.weather').slideToggle(1000);
+                    $('.music').slideToggle(1000);
+                    $('header h1').text('music page');
+                    $('header h5').slideToggle(1000);
+                    $('header p').text('音楽を聴いて気分を変えてみてはいかがですか ♪');
+                    $('#caret-down').slideToggle(1000);
+                    $('#caret-up').slideToggle(1000);
+                } else {
+                    $('#caret-down').slideToggle(1000);
+                }
+            });
+    //            upだったら
+            $('#caret-up').click(function(){
+                $('.weather').slideToggle(1000);
+                $('.music').slideToggle(1000);
+                $('header h1').text('今のお天気なあに？');
+                $('header h5').slideToggle(1000);
+                $('header p').text('今の天気の絵をクリックしてね ♪');
+                $('#caret-up').slideToggle(1000);
+                if(nowTime()) {
+                    $('#caret-down').slideToggle(1000);
+                }
+            });
+    //        今の時刻を取得し、3つの条件に合っているかチェック。
+            function nowTime(){
+                var now = new Date(); //インスタンス生成し、今の情報を得る
+                var h = now.getHours(); //時を取得
+                var mi = now.getMinutes(); //分を取得
+                //            決めた時間内ならture、異なるならfalseを返す
+                if(h == 0 && mi >= 0 && mi < 16) {
+                    return true;
+                } else if(h == 6 && mi >= 0 && mi< 5) {
+                    return true;
+                } else if(h == 12 && mi >= 0 && mi< 5) {
+                    return true;
+                } else if(h == 18 && mi >= 0 && mi< 5) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+        //時間帯によって画像を変える
+        function changeImg(){
+            const d = new Date();
+            const hour = d.getHours();
+
+            if(hour >= 5 && hour < 19){
+                $('#weather-sunny').html('<img src="img/weather0-sunny.png" alt="晴れの太陽">');
+                console.log('晴れの太陽');
+            } else {
+                $('#weather-sunny').html('<img src="img/weather0-sunny-star.png" alt="晴れの星">');
+                console.log('晴れの星');
+            }
+        }
+
+        //時間帯と天気によって背景色を変える
+        function changeImg(){
+            const d = new Date();
+//            const hour = d.getHours();
+            const hour = 21;
+
+            if(hour >= 3 && hour < 5){
+                $('body').css('background-color','slategray');
+                $('.card').css('background-color','slategray');
+            } else if(hour >= 5 && hour < 8){
+                $('body').css('background-color','lemonchiffon');
+                $('.card').css('background-color','lemonchiffon');
+                console.log('朝焼け');
+            } else if(hour >= 8 && hour < 16){
+                $('body').css('background-color','aliceblue');
+                $('.card').css('background-color','aliceblue');
+            } else if(hour >= 16 && hour < 19){
+                $('body').css('background-color','navajowhite');
+                $('.card').css('background-color','navajowhite');
+            } else if(hour >= 19 && hour < 21){
+                $('body').css('background-color','lightgray');
+                $('.card').css('background-color','lightgray');
+            } else {
+                $('body').css('background-color','black');
+                $('.card').css('background-color','black');
+                $('body').css('color','white');
+                $('.card').css('color','white');
+                $('button').css('color','white');
+            }
+        }
+        function weatherJudje(){
+
+        }
+
         </script>
 
                         <!--        オリジナルのjsとjQueryを使ったコード-->
