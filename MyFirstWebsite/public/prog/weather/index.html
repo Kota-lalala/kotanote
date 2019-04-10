@@ -21,6 +21,16 @@
     </head>
     <body>
 
+        <!--   アラートでお知らせ-->
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+            <strong>musicページ追加しました。でも入室できるのはネズミとうさぎとうまととりのみ。各自5分づつだけです\(^O^)/</strong>
+            <span id="alert-os"></span>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+
 
 <!--       header-->
         <header>
@@ -28,7 +38,6 @@
             <!--            三角　左側-->
             <div class="triangle tri-up">
                 <i class="fas fa-caret-up" id="caret-up"></i>
-<!--                <p>aaa</p>-->
             </div>
 
             <div class="header-title">
@@ -40,7 +49,6 @@
             <!--            三角　右側-->
             <div class="triangle tri-down">
                 <i class="fas fa-caret-down" id="caret-down"></i>
-<!--                <p>bbb</p>-->
             </div>
 
         </header>
@@ -141,6 +149,7 @@
                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                             <div class="card-body">
                                 <ul>
+                                    <li>2019.4.10 alertを追加しました。(ver1.221)</li>
                                     <li>2019.4.9 時間によって色を変更する機能を追加しました。(ver1.22)</li>
                                     <li>2019.4.9 夜はお星様機能を追加しました。(ver1.21)</li>
                                     <li>2019.4.8 ページを追加しました！(でも入室できるのはネズミとうさぎとうまととりのみ。各自5分づつだけですよ^^(ver1.2)</li>
@@ -208,12 +217,11 @@
 
 <!--        javascript-->
     <script type="text/javascript">
+
             if(nowTime()) {
-//                alert('aaa');
                 $('#caret-down').show();
             } else {
                 $('#caret-down').hide();
-//                alert('bbb');
             }
 
             changeImg();

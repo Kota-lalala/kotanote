@@ -100,7 +100,8 @@
                             <hr>
                             <h5 class="card-title">更新履歴</h5>
                             <ol class="card-text" reversed>
-                                <li>「4.会員登録用のindex.phpを作成」(書きかけ)へ追記しました-UP- 2019.4.6 18:00更新<span class="badge badge-info">new</span></li>
+                                <li>「4.会員登録用のindex.phpを作成」(書きかけ)へ追記しました-UP- 2019.4.10 21:30更新<span class="badge badge-info">new</span></li>
+                                <li>「4.会員登録用のindex.phpを作成」(書きかけ)へ追記しました-UP- 2019.4.6 18:00更新</li>
                                 <li>「4.会員登録用のindex.phpを作成」(書きかけ)へ追記しました-UP- 2019.4.3 18:00更新</li>
                                 <li>「4.会員登録用のindex.phpを作成」(書きかけ)を追加しました-UP- 2019.3.31 20:30更新</li>
                                 <li>「3.会員登録用画面の初期フォーム作成」を追加しました-UP- 2019.3.30 14:00更新</li>
@@ -313,7 +314,7 @@ if (isset($_REQUEST[&#039;action&#039;])) {
         &lt;dt&gt;ニックネーム&lt;span class=&quot;required&quot;&gt;必須&lt;/span&gt;&lt;/dt&gt;
         &lt;dd&gt;
             &lt;input type=&quot;text&quot; name=&quot;name&quot; size=&quot;35&quot; maxlength=&quot;255&quot; value=&quot;&lt;?php echo $tmp_post[&#039;name&#039;]; ?&gt;&quot; &gt;
-            &lt;?php if(isset($error[&#039;image&#039;])): ?&gt;
+            &lt;?php if(isset($error[&#039;name&#039;])): ?&gt;
                 &lt;?php if($error[&#039;name&#039;] == &#039;blank&#039;): ?&gt;
                 &lt;p class=&quot;error&quot;&gt;* ニックネームを入力してください&lt;/p&gt;
                 &lt;?php endif; ?&gt;
@@ -534,8 +535,33 @@ if(isset($_POST[&#039;image&#039;])){
                                         入力してもらったデータをhtmlに出力する時は必ず使用する。と思えておく。<br>
                                     </p>
                                     <pre><code class="prettyprint linenums">
+&lt;form action=&quot;index.php&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;
+
+&lt;dl&gt;
+    &lt;dt&gt;ニックネーム&lt;span class=&quot;required&quot;&gt;必須&lt;/span&gt;&lt;/dt&gt;
+    &lt;dd&gt;
+        &lt;input type=&quot;text&quot; name=&quot;name&quot; size=&quot;35&quot; maxlength=&quot;255&quot; value=&quot;&lt;?php echo $tmp_post[&#039;name&#039;]; ?&gt;&quot; &gt;
+        &lt;?php if(isset($error[&#039;name&#039;])): ?&gt;
+            &lt;?php if($error[&#039;name&#039;] == &#039;blank&#039;): ?&gt;
+            &lt;p class=&quot;error&quot;&gt;* ニックネームを入力してください&lt;/p&gt;
+            &lt;?php endif; ?&gt;
+        &lt;?php endif; ?&gt;
+    &lt;/dd&gt;
                                     </code></pre>
-                                    <p></p>
+                                    <p>
+                                        ここからフォームをスタート。<br>
+                                        submit後にactionとして指定されているindex.phpへ飛ぶ。<br>
+                                        postでの送信。<br>
+                                        また画像ファイルを扱うのでenctype=&quot;multipart/form-data&quot;を指定している<br>
+                                        次にインプットとしてニックネームを入力してもらうようにしてある。<br>
+                                        nameをnameとしてあるので、postで送信されるデータの名前はname。<br>
+                                        valueは最初に表示させるテキスト。ここではphpを入れ込んである。<br>
+                                        $tmp_post[&#039;name&#039;]には、最初は空、書き直しの際には入力済みデータが入っている<br>
+                                        isset()で$error[&#039;name&#039;]が未定義でなく、<br>
+                                        かつ、$error[&#039;name&#039;] == &#039;blank&#039;の場合、つまり未入力だった場合<br>
+                                        「* ニックネームを入力してください」と表示をする。<br>
+                                        という指示がここまでです。
+                                    </p>
                                     <pre><code class="prettyprint linenums">
                                     </code></pre>
                                     <p></p>

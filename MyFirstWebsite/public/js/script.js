@@ -3,11 +3,11 @@
 $(function() {
 
     //index.phpの新着情報への書き込み文章
-    $('.newinfo-text').html('2019.4.9 Programming noteの「今のお天気なあに？」を改良しました。(v1.22です)');
+    $('.newinfo-text').html('2019.4.10 Programming noteの「Twitter風」の記事へ追記しました。(まだ書きかけ)');
 
 
     //index.phpのリリースノートへの書き込み文章
-    $('.release-text').html('2019.4.9 「今のお天気なあに？」にjQuery(js)による画像と色の自動切り替え機能を追加しました');
+    $('.release-text').html('2019.4.9 「今のお天気なあに？」にalertを追加しました');
 
     //時間帯によって色を変える
 
