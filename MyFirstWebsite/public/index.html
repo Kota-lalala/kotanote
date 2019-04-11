@@ -14,7 +14,8 @@
     }
 
     //ここで今日のつぶやきのコメントをセットする
-$now_comment = "今日はWordPressを再インストールしました。昨日インストールしたのですが、wpフォルダに入れた為、本日やり直し。一応インストール作業は終了。でも中身は全然。さて何を書こうかな？今日はメモの魔力を途中まで読みました。文章力、思考力が不足している自分を少しでもレベルアップさせるために、役立つかな？と。ファクトを書いて、それを抽象化して、それを転用してアクションにつなげる。プログラミングと一緒では？そのまま役に立ちそう。クラスを作成する際にも役立つ思考だと感じた。実際に活用していこうと思います。リツイートさせてもらった「型」の話。なるほどと思いました。良いものを真似する。すでにあるものを再度0から作らずに活用していく。大切事に思います。マナブさんなど今活躍している人の真似をして、型を身につけ、そこから型を破っていく。まずはとにかく、実行。止まっている時間は勿体無いので。明日も頑張りましょう。おやすみなさい(^^)
+$now_comment = "今日からWordPressのオリジナルテーマ作りを始めました。一応の形までは持って行けたかな。明日はそこからいじっていきたいと思います。それが終わったら、鬼の模写が待っている。まずはテーマ作りをしっかりやって、カスタマイズ方法を覚えたい。またブログも始めて、その中で操作方法は覚えて行けたらと思っています。やりながら覚える。のが早くて覚えられると思うので、とどまらず進めたい。遅くなってしまった。ではまた明日。おやすみなさいzzZZ
+
     ";
 ?>
 
@@ -49,7 +50,7 @@ $now_comment = "今日はWordPressを再インストールしました。昨日�
     <title>Kotanote</title>
 </head>
 
-<body class="index-body">
+    <body class="index-body" id="cont">
 
 
 
@@ -138,7 +139,7 @@ $now_comment = "今日はWordPressを再インストールしました。昨日�
         <div class="row mb-4">
 
             <!--        今のお天気なあに？-->
-            <div class="col-12 mb-2">
+            <div class="col-12 mb-2" id="now-weather">
                 <div class="con-prog card h-100">
                     <div class="card-img-top-wet">
                         <img class="card-img-top" src="img/prog-weather.jpg" alt="今のお天気なあに">
@@ -149,7 +150,7 @@ $now_comment = "今日はWordPressを再インストールしました。昨日�
                         <hr>
                         <p class="con-rec-p">
                             最新情報: 「今のお天気なあに？」を改良しました。(ver1.22) -UP- 2019.4.9更新
-                            <span class="badge badge-info">new</span>
+<!--                            <span class="badge badge-info">new</span>-->
                         </p>
                         <p class="card-text">
                             「今のお天気なあに？」を公開しました。今のお天気をクリックしてくださいね。クリック数の割合で絵が大きくなったり、小さくなったりします。今後も徐々に機能を追加していきますので、クリックしてもらえると嬉しいです^^<br>
@@ -172,7 +173,7 @@ $now_comment = "今日はWordPressを再インストールしました。昨日�
                             最新情報: 「今のお天気なあに？」を修正しました。 -UP- 2019.4.6更新
                             <span class="badge badge-info">new</span>
 -->
-                            最新情報:「Twitter風」の記事へ追記しました。(まだ書きかけ)-UP- 2019.4.10更新
+                            最新情報:「使用しているサーバーについて」を追加しました-UP- 2019.4.11更新
                             <span class="badge badge-info">new</span>
                         </p>
                         <p class="card-text">
@@ -284,6 +285,7 @@ $now_comment = "今日はWordPressを再インストールしました。昨日�
 
 <!--    Bootstrapのポップアップ用-->
     <script type="text/javascript">
+
         $(function(){
             $('[data-toggle="popover"]').popover()
         });
@@ -298,6 +300,10 @@ $now_comment = "今日はWordPressを再インストールしました。昨日�
         } else {
             $('#alert-os').html('Hi not iOSandMacOS !');
         }
+
+
+
+
 
     </script>
 

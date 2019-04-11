@@ -3,11 +3,11 @@
 $(function() {
 
     //index.phpの新着情報への書き込み文章
-    $('.newinfo-text').html('2019.4.10 Programming noteの「Twitter風」の記事へ追記しました。(まだ書きかけ)');
+    $('.newinfo-text').html('2019.4.11 Programming noteへ「使用しているサーバーについて」の記事を追加しました。');
 
 
     //index.phpのリリースノートへの書き込み文章
-    $('.release-text').html('2019.4.9 「今のお天気なあに？」にalertを追加しました');
+    $('.release-text').html('2019.4.10 「今のお天気なあに？」にalertを追加しました');
 
     //時間帯によって色を変える
 
