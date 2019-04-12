@@ -3,7 +3,7 @@
 $(function() {
 
     //index.phpの新着情報への書き込み文章
-    $('.newinfo-text').html('2019.4.11 Programming noteへ「使用しているサーバーについて」の記事を追加しました。');
+    $('.newinfo-text').html('2019.4.12 Programming noteへ「使用しているパソコンについて」の記事を追加しました。');
 
 
     //index.phpのリリースノートへの書き込み文章
